@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>神棍MAX的iOS杂货铺</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="代理 代理设计模式的作用:  1.A对象监听B对象的一些行为，A成为B的代理 2.B对象想告诉A对象一些事情，A成为B的代理   代理设计模式的总结：  如果你想监听别人的一些行为，那么你就要成为别人的代理 如果你想告诉别人一些事情，那么就让别人成为你的代理   代理设计模式的开发步骤  1.拟一份协议（协议名字的格式：控件名 + Delegate），在协议里面声明一些代理方法（一般代理方法都是@">
+  <meta name="description" content="#代理、通知、KVC、KVO 代理 代理设计模式的作用:  A对象监听B对象的一些行为，A成为B的代理 B对象想告诉A对象一些事情，A成为B的代理   代理设计模式的总结：  如果你想监听别人的一些行为，那么你就要成为别人的代理 如果你想告诉别人一些事情，那么就让别人成为你的代理   代理设计模式的开发步骤  拟一份协议（协议名字的格式：控件名 + Delegate），在协议里面声明一些代理方法（">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="神棍MAX的iOS杂货铺">
 <meta property="og:url" content="http://yoursite.com/2017/08/12/代理 与 通知/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="代理 代理设计模式的作用:  1.A对象监听B对象的一些行为，A成为B的代理 2.B对象想告诉A对象一些事情，A成为B的代理   代理设计模式的总结：  如果你想监听别人的一些行为，那么你就要成为别人的代理 如果你想告诉别人一些事情，那么就让别人成为你的代理   代理设计模式的开发步骤  1.拟一份协议（协议名字的格式：控件名 + Delegate），在协议里面声明一些代理方法（一般代理方法都是@">
-<meta property="og:updated_time" content="2017-08-12T10:06:44.000Z">
+<meta property="og:site_name" content="神棍MAX的iOS杂货铺">
+<meta property="og:description" content="#代理、通知、KVC、KVO 代理 代理设计模式的作用:  A对象监听B对象的一些行为，A成为B的代理 B对象想告诉A对象一些事情，A成为B的代理   代理设计模式的总结：  如果你想监听别人的一些行为，那么你就要成为别人的代理 如果你想告诉别人一些事情，那么就让别人成为你的代理   代理设计模式的开发步骤  拟一份协议（协议名字的格式：控件名 + Delegate），在协议里面声明一些代理方法（">
+<meta property="og:updated_time" content="2017-08-13T07:08:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="代理 代理设计模式的作用:  1.A对象监听B对象的一些行为，A成为B的代理 2.B对象想告诉A对象一些事情，A成为B的代理   代理设计模式的总结：  如果你想监听别人的一些行为，那么你就要成为别人的代理 如果你想告诉别人一些事情，那么就让别人成为你的代理   代理设计模式的开发步骤  1.拟一份协议（协议名字的格式：控件名 + Delegate），在协议里面声明一些代理方法（一般代理方法都是@">
+<meta name="twitter:title" content="神棍MAX的iOS杂货铺">
+<meta name="twitter:description" content="#代理、通知、KVC、KVO 代理 代理设计模式的作用:  A对象监听B对象的一些行为，A成为B的代理 B对象想告诉A对象一些事情，A成为B的代理   代理设计模式的总结：  如果你想监听别人的一些行为，那么你就要成为别人的代理 如果你想告诉别人一些事情，那么就让别人成为你的代理   代理设计模式的开发步骤  拟一份协议（协议名字的格式：控件名 + Delegate），在协议里面声明一些代理方法（">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="神棍MAX的iOS杂货铺" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -37,7 +37,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">神棍MAX的iOS杂货铺</a>
       </h1>
       
     </div>
@@ -75,11 +75,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><ul>
+        <p>#代理、通知、KVC、KVO</p>
+<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><ul>
 <li><p>代理设计模式的作用:</p>
 <ul>
-<li>1.A对象监听B对象的一些行为，A成为B的代理</li>
-<li>2.B对象想告诉A对象一些事情，A成为B的代理</li>
+<li>A对象监听B对象的一些行为，A成为B的代理</li>
+<li>B对象想告诉A对象一些事情，A成为B的代理</li>
 </ul>
 </li>
 <li><p>代理设计模式的总结：</p>
@@ -90,14 +91,39 @@
 </li>
 <li><p>代理设计模式的开发步骤</p>
 <ul>
-<li>1.拟一份协议（协议名字的格式：控件名 + Delegate），在协议里面声明一些代理方法（一般代理方法都是@optional）</li>
-<li>2.声明一个代理属性：@property (nonatomic, weak) id&lt;代理协议&gt; delegate;</li>
-<li>3.在内部发生某些行为时，调用代理对应的代理方法，通知代理内部发生什么事</li>
-<li>4.设置代理：xxx.delegate = yyy;</li>
-<li>5.yyy对象遵守协议，实现代理方法</li>
+<li>拟一份协议（协议名字的格式：控件名 + Delegate），在协议里面声明一些代理方法（一般代理方法都是@optional）</li>
+<li>声明一个代理属性：@property (nonatomic, weak) id&lt;代理协议&gt; delegate;</li>
+<li>在内部发生某些行为时，调用代理对应的代理方法，通知代理内部发生什么事</li>
+<li>设置代理：xxx.delegate = yyy;</li>
+<li>yyy对象遵守协议，实现代理方法</li>
 </ul>
 </li>
 </ul>
+<h2 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h2><ul>
+<li><p>通知设计模式的作用：</p>
+<ul>
+<li>每一个应用程序都有一个通知中心(NSNotificationCenter)实例，专门负责协助不同对象之间的消息通信</li>
+<li>任何一个对象都可以向通知中心发布通知(NSNotification)，描述自己在做什么。其他感兴趣的对象(Observer)可以申请在某个特定通知发布时(或在某个特定的对象发布通知时)收到这个通知</li>
+</ul>
+</li>
+<li><p>通知设计模式的总结</p>
+<ul>
+<li>如果你想告诉别人一些事情，那么你就要发布通知<ul>
+<li>如果你想监听别人的一些行为，那么你就要注册监听通知</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>通知设计模式的开发步骤<ul>
+<li>A文件中发布通知</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)postNotification:(<span class="built_in">NSNotification</span> *)notification;<span class="comment">//发布一个notification通知，可在notification对象中设置通知的名称、通知发布者、额外信息等</span>- (<span class="keyword">void</span>)postNotificationName:(<span class="built_in">NSString</span> *)aName object:(<span class="keyword">id</span>)anObject;<span class="comment">//发布一个名称为aName的通知，anObject为这个通知的发布者</span>- (<span class="keyword">void</span>)postNotificationName:(<span class="built_in">NSString</span> *)aName object:(<span class="keyword">id</span>)anObject userInfo:(<span class="built_in">NSDictionary</span> *)aUserInfo;<span class="comment">//发布一个名称为aName的通知，anObject为这个通知的发布者，aUserInfo为额外信息</span></div></pre></td></tr></table></figure>
+<ul>
+<li>B文件注册监听通知</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)addObserver:(<span class="keyword">id</span>)observer </div><div class="line">           selector:(SEL)aSelector </div><div class="line">               name:(<span class="built_in">NSString</span> *)aName </div><div class="line">             object:(<span class="keyword">id</span>)anObject;<span class="comment">/*</span></div><div class="line"><span class="comment"> *observer：监听器，即谁要接收这个通知</span></div><div class="line"><span class="comment">*aSelector：收到通知后，回调监听器的这个方法，并且把通知对象当做参数传入    *aName：通知的名称。如果为nil，那么无论通知的名称是什么，监听器都能收到这个通知 *anObject：通知发布者。如果为anObject和aName都为nil，监听器都收到所有的通知*/</span></div><div class="line">- (<span class="keyword">id</span>)addObserverForName:(<span class="built_in">NSString</span> *)name</div><div class="line">                  object:(<span class="keyword">id</span>)obj </div><div class="line">                   queue:(<span class="built_in">NSOperationQueue</span> *)queue </div><div class="line">              usingBlock:(</div><div class="line">                   <span class="keyword">void</span> (^)(<span class="built_in">NSNotification</span> *note)</div><div class="line">                   )block;</div><div class="line"> <span class="comment">/*                   *name：通知的名称  *obj：通知发布者*block：收到对应的通知时，会回调这个block*queue：决定了block在哪个操作队列中执行，如果传nil，默认在当前操作队列中同步执行*/</span></div><div class="line">```	</div><div class="line">  * B文件取消注册通知  </div><div class="line">   * 通知中心不会保留(<span class="keyword">retain</span>)监听器对象，在通知中心注册过的对象，必须在该对象释放前取消注册。否则，当相应的通知再次出现时，通知中心仍然会向该监听器发送消息。因为相应的监听器对象已经被释放了，所以可能会导致应用崩溃</div><div class="line">  </div><div class="line">```objc<span class="comment">//通知中心提供了相应的方法来取消注册监听器</span>- (<span class="keyword">void</span>)removeObserver:(<span class="keyword">id</span>)observer;- (<span class="keyword">void</span>)removeObserver:(<span class="keyword">id</span>)observer </div><div class="line">                  name:(<span class="built_in">NSString</span> *)aName </div><div class="line">                object:(<span class="keyword">id</span>)anObject;<span class="comment">//一般在监听器销毁之前取消注册（如在监听器中加入下列代码）：</span>- (<span class="keyword">void</span>)dealloc &#123;	<span class="comment">//[super dealloc];  非ARC中需要调用此句</span>    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] removeObserver:<span class="keyword">self</span>];&#125;</div></pre></td></tr></table></figure>
 <h2 id="代理和通知的区别"><a href="#代理和通知的区别" class="headerlink" title="代理和通知的区别"></a>代理和通知的区别</h2><ul>
 <li>代理：1个对象只能告诉另1个对象发生了什么事</li>
 <li>通知：1个对象可以告诉N个对象发生了什么事</li>
@@ -112,7 +138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/12/代理 与 通知/" data-id="cj6a6la680002q2cvqpq8siwe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/12/代理 与 通知/" data-id="cj6ae5m8d0001avip2llnvy18" class="article-share-link">Share</a>
       
       
     </footer>
@@ -165,10 +191,6 @@
       <ul>
         
           <li>
-            <a href="/2017/08/13/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
             <a href="/2017/08/12/2017-8-12-iOS杂记之UITableView/">(no title)</a>
           </li>
         
@@ -188,7 +210,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 John Doe<br>
+      &copy; 2017 TAMAX<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

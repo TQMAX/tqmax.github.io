@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>神棍MAX的iOS杂货铺</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="tableView性能优化 - cell的循环利用方式112345678910111213141516171819202122/** *  什么时候调用：每当有一个cell进入视野范围内就会调用 */- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPa">
+  <meta name="description" content="#2017-8-12-iOS杂记之UITableView tableView性能优化 - cell的循环利用方式112345678910111213141516171819202122/** *  什么时候调用：每当有一个cell进入视野范围内就会调用 */- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtInd">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="神棍MAX的iOS杂货铺">
 <meta property="og:url" content="http://yoursite.com/2017/08/12/2017-8-12-iOS杂记之UITableView/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="tableView性能优化 - cell的循环利用方式112345678910111213141516171819202122/** *  什么时候调用：每当有一个cell进入视野范围内就会调用 */- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPa">
+<meta property="og:site_name" content="神棍MAX的iOS杂货铺">
+<meta property="og:description" content="#2017-8-12-iOS杂记之UITableView tableView性能优化 - cell的循环利用方式112345678910111213141516171819202122/** *  什么时候调用：每当有一个cell进入视野范围内就会调用 */- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtInd">
 <meta property="og:image" content="http://yoursite.com/2017/08/12/2017-8-12-iOS杂记之UITableView/images/Snip20150602_152.png">
 <meta property="og:image" content="http://yoursite.com/2017/08/12/2017-8-12-iOS杂记之UITableView/images/Snip20150602_153.png">
 <meta property="og:image" content="http://yoursite.com/2017/08/12/2017-8-12-iOS杂记之UITableView/images/Snip20150602_110.png">
@@ -22,13 +22,13 @@
 <meta property="og:image" content="http://yoursite.com/2017/08/12/2017-8-12-iOS杂记之UITableView/images/Snip20150602_299.png">
 <meta property="og:image" content="http://yoursite.com/2017/08/12/2017-8-12-iOS杂记之UITableView/images/Snip20150602_298.png">
 <meta property="og:image" content="http://yoursite.com/2017/08/12/2017-8-12-iOS杂记之UITableView/images/Snip20150602_300.png">
-<meta property="og:updated_time" content="2017-08-12T10:06:44.000Z">
+<meta property="og:updated_time" content="2017-08-13T05:59:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="tableView性能优化 - cell的循环利用方式112345678910111213141516171819202122/** *  什么时候调用：每当有一个cell进入视野范围内就会调用 */- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPa">
+<meta name="twitter:title" content="神棍MAX的iOS杂货铺">
+<meta name="twitter:description" content="#2017-8-12-iOS杂记之UITableView tableView性能优化 - cell的循环利用方式112345678910111213141516171819202122/** *  什么时候调用：每当有一个cell进入视野范围内就会调用 */- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtInd">
 <meta name="twitter:image" content="http://yoursite.com/2017/08/12/2017-8-12-iOS杂记之UITableView/images/Snip20150602_152.png">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="神棍MAX的iOS杂货铺" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -49,7 +49,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">神棍MAX的iOS杂货铺</a>
       </h1>
       
     </div>
@@ -87,7 +87,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="tableView性能优化-cell的循环利用方式1"><a href="#tableView性能优化-cell的循环利用方式1" class="headerlink" title="tableView性能优化 - cell的循环利用方式1"></a>tableView性能优化 - cell的循环利用方式1</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> *  什么时候调用：每当有一个cell进入视野范围内就会调用</span></div><div class="line"><span class="comment"> */</span></div><div class="line">- (<span class="built_in">UITableViewCell</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView cellForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</div><div class="line">&#123;</div><div class="line">    <span class="comment">// 0.重用标识</span></div><div class="line">    <span class="comment">// 被static修饰的局部变量：只会初始化一次，在整个程序运行过程中，只有一份内存</span></div><div class="line">    <span class="keyword">static</span> <span class="built_in">NSString</span> *ID = <span class="string">@"cell"</span>;</div><div class="line"></div><div class="line">    <span class="comment">// 1.先根据cell的标识去缓存池中查找可循环利用的cell</span></div><div class="line">    <span class="built_in">UITableViewCell</span> *cell = [tableView dequeueReusableCellWithIdentifier:ID];</div><div class="line"></div><div class="line">    <span class="comment">// 2.如果cell为nil（缓存池找不到对应的cell）</span></div><div class="line">    <span class="keyword">if</span> (cell == <span class="literal">nil</span>) &#123;</div><div class="line">        cell = [[<span class="built_in">UITableViewCell</span> alloc] initWithStyle:<span class="built_in">UITableViewCellStyleDefault</span> reuseIdentifier:ID];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 3.覆盖数据</span></div><div class="line">    cell.textLabel.text = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"testdata - %zd"</span>, indexPath.row];</div><div class="line"></div><div class="line">    <span class="keyword">return</span> cell;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>#2017-8-12-iOS杂记之UITableView</p>
+<h2 id="tableView性能优化-cell的循环利用方式1"><a href="#tableView性能优化-cell的循环利用方式1" class="headerlink" title="tableView性能优化 - cell的循环利用方式1"></a>tableView性能优化 - cell的循环利用方式1</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> *  什么时候调用：每当有一个cell进入视野范围内就会调用</span></div><div class="line"><span class="comment"> */</span></div><div class="line">- (<span class="built_in">UITableViewCell</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView cellForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</div><div class="line">&#123;</div><div class="line">    <span class="comment">// 0.重用标识</span></div><div class="line">    <span class="comment">// 被static修饰的局部变量：只会初始化一次，在整个程序运行过程中，只有一份内存</span></div><div class="line">    <span class="keyword">static</span> <span class="built_in">NSString</span> *ID = <span class="string">@"cell"</span>;</div><div class="line"></div><div class="line">    <span class="comment">// 1.先根据cell的标识去缓存池中查找可循环利用的cell</span></div><div class="line">    <span class="built_in">UITableViewCell</span> *cell = [tableView dequeueReusableCellWithIdentifier:ID];</div><div class="line"></div><div class="line">    <span class="comment">// 2.如果cell为nil（缓存池找不到对应的cell）</span></div><div class="line">    <span class="keyword">if</span> (cell == <span class="literal">nil</span>) &#123;</div><div class="line">        cell = [[<span class="built_in">UITableViewCell</span> alloc] initWithStyle:<span class="built_in">UITableViewCellStyleDefault</span> reuseIdentifier:ID];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 3.覆盖数据</span></div><div class="line">    cell.textLabel.text = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"testdata - %zd"</span>, indexPath.row];</div><div class="line"></div><div class="line">    <span class="keyword">return</span> cell;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="tableView性能优化-cell的循环利用方式2"><a href="#tableView性能优化-cell的循环利用方式2" class="headerlink" title="tableView性能优化 - cell的循环利用方式2"></a>tableView性能优化 - cell的循环利用方式2</h2><ul>
 <li>定义一个全局变量</li>
 </ul>
@@ -222,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/12/2017-8-12-iOS杂记之UITableView/" data-id="cj6a6la5u0001q2cvmbbf77go" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/12/2017-8-12-iOS杂记之UITableView/" data-id="cj6ae5m880000avip37sbq80g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -230,15 +231,6 @@
   
     
 <nav id="article-nav">
-  
-    <a href="/2017/08/13/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Hello World
-        
-      </div>
-    </a>
   
   
     <a href="/2017/08/12/代理 与 通知/" id="article-nav-older" class="article-nav-link-wrap">
@@ -280,10 +272,6 @@
       <ul>
         
           <li>
-            <a href="/2017/08/13/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
             <a href="/2017/08/12/2017-8-12-iOS杂记之UITableView/">(no title)</a>
           </li>
         
@@ -303,7 +291,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 John Doe<br>
+      &copy; 2017 TAMAX<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
