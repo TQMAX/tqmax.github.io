@@ -291,7 +291,7 @@
 
     <!-- Custom Head -->
     
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -411,6 +411,17 @@
 
     <!-- Qrcode -->
     
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="https://pan.baidu.com/share/qrcode?w=246&h=246&url=http://yoursite.com/2017/08/13/键盘弹出/">
+    
+</ul>
+    
 
     <!-- Tags (bookmark) -->
     
@@ -487,9 +498,30 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 先监听键盘通知</span></div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(keyboardWillChangeFrame:) name:<span class="built_in">UIKeyboardWillChangeFrameNotification</span> object:<span class="literal">nil</span>];</div></pre></td></tr></table></figure>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#pragma mark - 键盘处理</span></div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)keyboardWillChangeFrame:(<span class="built_in">NSNotification</span> *)note &#123;</div><div class="line">    <span class="comment">// 取出键盘最终的frame</span></div><div class="line">    <span class="built_in">CGRect</span> rect = [note.userInfo[<span class="built_in">UIKeyboardFrameEndUserInfoKey</span>] <span class="built_in">CGRectValue</span>];</div><div class="line">    <span class="comment">// 取出键盘弹出需要花费的时间</span></div><div class="line">    <span class="keyword">double</span> duration = [note.userInfo[<span class="built_in">UIKeyboardAnimationDurationUserInfoKey</span>] doubleValue];</div><div class="line">    <span class="comment">// 修改transform</span></div><div class="line">    [<span class="built_in">UIView</span> animateWithDuration:duration animations:^&#123;</div><div class="line">        <span class="built_in">CGFloat</span> ty = [<span class="built_in">UIScreen</span> mainScreen].bounds.size.height - rect.origin.y;</div><div class="line">        <span class="keyword">self</span>.view.transform = <span class="built_in">CGAffineTransformMakeTranslation</span>(<span class="number">0</span>, - ty);</div><div class="line">    &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//最后清空通知</span></div><div class="line">- (<span class="keyword">void</span>)dealloc</div><div class="line">&#123;</div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] removeObserver:<span class="keyword">self</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <pre class=" language-objc"><code class="language-objc">// 先监听键盘通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+</code></pre>
+<pre class=" language-objc"><code class="language-objc">#pragma mark - 键盘处理
+
+- (void)keyboardWillChangeFrame:(NSNotification *)note {
+    // 取出键盘最终的frame
+    CGRect rect = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    // 取出键盘弹出需要花费的时间
+    double duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    // 修改transform
+    [UIView animateWithDuration:duration animations:^{
+        CGFloat ty = [UIScreen mainScreen].bounds.size.height - rect.origin.y;
+        self.view.transform = CGAffineTransformMakeTranslation(0, - ty);
+    }];
+}
+</code></pre>
+<pre class=" language-objc"><code class="language-objc">//最后清空通知
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+</code></pre>
+
     
 
     
@@ -592,6 +624,8 @@
             </a>
         </li>
         
+            <li class="divider"></li>
+        
     
 
     <!-- Archives  -->
@@ -613,6 +647,21 @@
     
 
     <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </ul>
+        </li>
+        
     
 
     <!-- Pages  -->
@@ -749,7 +798,7 @@ It will not impact the appearance and can give developers a lot of support :)
 
         <!--Copyright-->
         <div id="copyright">
-            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>神棍MAX的iOS杂货铺
+            Copyright&nbsp;©&nbsp;2015&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>神棍MAX的iOS杂货铺
         </div>
 
         <!-- Paradox Footer Right Section -->

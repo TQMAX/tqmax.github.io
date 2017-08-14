@@ -291,7 +291,7 @@
 
     <!-- Custom Head -->
     
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -411,6 +411,17 @@
 
     <!-- Qrcode -->
     
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="https://pan.baidu.com/share/qrcode?w=246&h=246&url=http://yoursite.com/2017/08/12/2017-8-12-iOS杂记之UITableView/">
+    
+</ul>
+    
 
     <!-- Tags (bookmark) -->
     
@@ -488,19 +499,60 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <p>###UITableView</p>
-<h2 id="tableView性能优化-cell的循环利用方式1"><a href="#tableView性能优化-cell的循环利用方式1" class="headerlink" title="tableView性能优化 - cell的循环利用方式1"></a>tableView性能优化 - cell的循环利用方式1</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> *  什么时候调用：每当有一个cell进入视野范围内就会调用</span></div><div class="line"><span class="comment"> */</span></div><div class="line">- (<span class="built_in">UITableViewCell</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView cellForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</div><div class="line">&#123;</div><div class="line">    <span class="comment">// 0.重用标识</span></div><div class="line">    <span class="comment">// 被static修饰的局部变量：只会初始化一次，在整个程序运行过程中，只有一份内存</span></div><div class="line">    <span class="keyword">static</span> <span class="built_in">NSString</span> *ID = <span class="string">@"cell"</span>;</div><div class="line"></div><div class="line">    <span class="comment">// 1.先根据cell的标识去缓存池中查找可循环利用的cell</span></div><div class="line">    <span class="built_in">UITableViewCell</span> *cell = [tableView dequeueReusableCellWithIdentifier:ID];</div><div class="line"></div><div class="line">    <span class="comment">// 2.如果cell为nil（缓存池找不到对应的cell）</span></div><div class="line">    <span class="keyword">if</span> (cell == <span class="literal">nil</span>) &#123;</div><div class="line">        cell = [[<span class="built_in">UITableViewCell</span> alloc] initWithStyle:<span class="built_in">UITableViewCellStyleDefault</span> reuseIdentifier:ID];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 3.覆盖数据</span></div><div class="line">    cell.textLabel.text = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"testdata - %zd"</span>, indexPath.row];</div><div class="line"></div><div class="line">    <span class="keyword">return</span> cell;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="tableView性能优化-cell的循环利用方式1"><a href="#tableView性能优化-cell的循环利用方式1" class="headerlink" title="tableView性能优化 - cell的循环利用方式1"></a>tableView性能优化 - cell的循环利用方式1</h2><pre class=" language-objc"><code class="language-objc">/**
+ *  什么时候调用：每当有一个cell进入视野范围内就会调用
+ */
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // 0.重用标识
+    // 被static修饰的局部变量：只会初始化一次，在整个程序运行过程中，只有一份内存
+    static NSString *ID = @"cell";
+
+    // 1.先根据cell的标识去缓存池中查找可循环利用的cell
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+
+    // 2.如果cell为nil（缓存池找不到对应的cell）
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+    }
+
+    // 3.覆盖数据
+    cell.textLabel.text = [NSString stringWithFormat:@"testdata - %zd", indexPath.row];
+
+    return cell;
+}
+</code></pre>
 <h2 id="tableView性能优化-cell的循环利用方式2"><a href="#tableView性能优化-cell的循环利用方式2" class="headerlink" title="tableView性能优化 - cell的循环利用方式2"></a>tableView性能优化 - cell的循环利用方式2</h2><ul>
 <li>定义一个全局变量</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义重用标识</span></div><div class="line"><span class="built_in">NSString</span> *ID = <span class="string">@"cell"</span>;</div></pre></td></tr></table></figure>
+<pre class=" language-objc"><code class="language-objc">// 定义重用标识
+NSString *ID = @"cell";
+</code></pre>
 <ul>
 <li>注册某个标识对应的cell类型</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在这个方法中注册cell</span></div><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line"></div><div class="line">    <span class="comment">// 注册某个标识对应的cell类型</span></div><div class="line">    [<span class="keyword">self</span>.tableView registerClass:[<span class="built_in">UITableViewCell</span> <span class="keyword">class</span>] forCellReuseIdentifier:ID];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class=" language-objc"><code class="language-objc">// 在这个方法中注册cell
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    // 注册某个标识对应的cell类型
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
+}
+</code></pre>
 <ul>
 <li>在数据源方法中返回cell</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">UITableViewCell</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView cellForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</div><div class="line">&#123;</div><div class="line">    <span class="comment">// 1.去缓存池中查找cell</span></div><div class="line">    <span class="built_in">UITableViewCell</span> *cell = [tableView dequeueReusableCellWithIdentifier:ID];</div><div class="line"></div><div class="line">    <span class="comment">// 2.覆盖数据</span></div><div class="line">    cell.textLabel.text = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"testdata - %zd"</span>, indexPath.row];</div><div class="line"></div><div class="line">    <span class="keyword">return</span> cell;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class=" language-objc"><code class="language-objc">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // 1.去缓存池中查找cell
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+
+    // 2.覆盖数据
+    cell.textLabel.text = [NSString stringWithFormat:@"testdata - %zd", indexPath.row];
+
+    return cell;
+}
+</code></pre>
 <h2 id="tableView性能优化-cell的循环利用方式3"><a href="#tableView性能优化-cell的循环利用方式3" class="headerlink" title="tableView性能优化 - cell的循环利用方式3"></a>tableView性能优化 - cell的循环利用方式3</h2><ul>
 <li><p>在storyboard中设置UITableView的Dynamic Prototypes Cell<br><img src="images/Snip20150602_152.png" alt=""></p>
 </li>
@@ -509,14 +561,47 @@
 <li><p>在代码中利用重用标识获取cell</p>
 </li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 0.重用标识</span></div><div class="line"><span class="comment">// 被static修饰的局部变量：只会初始化一次，在整个程序运行过程中，只有一份内存</span></div><div class="line"><span class="keyword">static</span> <span class="built_in">NSString</span> *ID = <span class="string">@"cell"</span>;</div><div class="line"></div><div class="line"><span class="comment">// 1.先根据cell的标识去缓存池中查找可循环利用的cell</span></div><div class="line"><span class="built_in">UITableViewCell</span> *cell = [tableView dequeueReusableCellWithIdentifier:ID];</div><div class="line"></div><div class="line"><span class="comment">// 2.覆盖数据</span></div><div class="line">cell.textLabel.text = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"cell - %zd"</span>, indexPath.row];</div><div class="line"></div><div class="line"><span class="keyword">return</span> cell;</div></pre></td></tr></table></figure>
+<pre class=" language-objc"><code class="language-objc">// 0.重用标识
+// 被static修饰的局部变量：只会初始化一次，在整个程序运行过程中，只有一份内存
+static NSString *ID = @"cell";
+
+// 1.先根据cell的标识去缓存池中查找可循环利用的cell
+UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+
+// 2.覆盖数据
+cell.textLabel.text = [NSString stringWithFormat:@"cell - %zd", indexPath.row];
+
+return cell;
+</code></pre>
 <h2 id="错误将UIViewController当做UITableViewController来用"><a href="#错误将UIViewController当做UITableViewController来用" class="headerlink" title="错误将UIViewController当做UITableViewController来用"></a>错误将UIViewController当做UITableViewController来用</h2><p><img src="images/Snip20150602_110.png" alt=""></p>
-<h2 id="UITableView的常见设置"><a href="#UITableView的常见设置" class="headerlink" title="UITableView的常见设置"></a>UITableView的常见设置</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 分割线颜色</span></div><div class="line"><span class="keyword">self</span>.tableView.separatorColor = [<span class="built_in">UIColor</span> redColor];</div><div class="line"></div><div class="line"><span class="comment">// 隐藏分割线</span></div><div class="line"><span class="keyword">self</span>.tableView.separatorStyle = <span class="built_in">UITableViewCellSeparatorStyleNone</span>;</div></pre></td></tr></table></figure>
-<h2 id="UITableViewCell的常见设置"><a href="#UITableViewCell的常见设置" class="headerlink" title="UITableViewCell的常见设置"></a>UITableViewCell的常见设置</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 取消选中的样式</span></div><div class="line">cell.selectionStyle = <span class="built_in">UITableViewCellSelectionStyleNone</span>;</div><div class="line"><span class="comment">// 设置选中的背景色</span></div><div class="line"><span class="built_in">UIView</span> *selectedBackgroundView = [[<span class="built_in">UIView</span> alloc] init];</div><div class="line">selectedBackgroundView.backgroundColor = [<span class="built_in">UIColor</span> redColor];</div><div class="line">cell.selectedBackgroundView = selectedBackgroundView;</div><div class="line"></div><div class="line"><span class="comment">// 设置默认的背景色</span></div><div class="line">cell.backgroundColor = [<span class="built_in">UIColor</span> blueColor];</div><div class="line"></div><div class="line"><span class="comment">// 设置默认的背景色</span></div><div class="line"><span class="built_in">UIView</span> *backgroundView = [[<span class="built_in">UIView</span> alloc] init];</div><div class="line">backgroundView.backgroundColor = [<span class="built_in">UIColor</span> greenColor];</div><div class="line">cell.backgroundView = backgroundView;</div><div class="line"></div><div class="line"><span class="comment">// backgroundView的优先级 &gt; backgroundColor</span></div><div class="line"><span class="comment">// 设置指示器</span></div><div class="line"><span class="comment">//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;</span></div><div class="line">cell.accessoryView = [[<span class="built_in">UISwitch</span> alloc] init];</div></pre></td></tr></table></figure>
+<h2 id="UITableView的常见设置"><a href="#UITableView的常见设置" class="headerlink" title="UITableView的常见设置"></a>UITableView的常见设置</h2><pre class=" language-objc"><code class="language-objc">// 分割线颜色
+self.tableView.separatorColor = [UIColor redColor];
+
+// 隐藏分割线
+self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+</code></pre>
+<h2 id="UITableViewCell的常见设置"><a href="#UITableViewCell的常见设置" class="headerlink" title="UITableViewCell的常见设置"></a>UITableViewCell的常见设置</h2><pre class=" language-objc"><code class="language-objc">// 取消选中的样式
+cell.selectionStyle = UITableViewCellSelectionStyleNone;
+// 设置选中的背景色
+UIView *selectedBackgroundView = [[UIView alloc] init];
+selectedBackgroundView.backgroundColor = [UIColor redColor];
+cell.selectedBackgroundView = selectedBackgroundView;
+
+// 设置默认的背景色
+cell.backgroundColor = [UIColor blueColor];
+
+// 设置默认的背景色
+UIView *backgroundView = [[UIView alloc] init];
+backgroundView.backgroundColor = [UIColor greenColor];
+cell.backgroundView = backgroundView;
+
+// backgroundView的优先级 > backgroundColor
+// 设置指示器
+//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+cell.accessoryView = [[UISwitch alloc] init];
+</code></pre>
 <h2 id="自定义cell"><a href="#自定义cell" class="headerlink" title="自定义cell"></a>自定义cell</h2><ul>
-<li><p><code>等高的cell</code></p>
-<ul>
-<li><p><code>storyboard自定义cell</code></p>
+<li><figcaption><ul></figcaption><pre class=" language-等高的cell</code></p>"><code class="language-等高的cell</code></p>"><li><p><code>storyboard自定义cell</code></p>
 <ul>
 <li>1.创建一个继承自UITableViewCell的子类，比如XMGDealCell<br><br><img src="images/Snip20150602_305.png" alt=""></li>
 <li>2.在storyboard中<ul>
@@ -582,7 +667,7 @@
 </li>
 </ul>
 </li>
-<li><p><code>代码自定义cell(使用autolayout)</code></p>
+<li><p><code>代码自定义cell(使用autolayout)</code></pre>
 <ul>
 <li>1.创建一个继承自UITableViewCell的子类，比如XMGDealCell<ul>
 <li>在initWithStyle:reuseIdentifier:方法中<ul>
@@ -730,6 +815,8 @@
             </a>
         </li>
         
+            <li class="divider"></li>
+        
     
 
     <!-- Archives  -->
@@ -751,6 +838,21 @@
     
 
     <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </ul>
+        </li>
+        
     
 
     <!-- Pages  -->
@@ -887,7 +989,7 @@ It will not impact the appearance and can give developers a lot of support :)
 
         <!--Copyright-->
         <div id="copyright">
-            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>神棍MAX的iOS杂货铺
+            Copyright&nbsp;©&nbsp;2015&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>神棍MAX的iOS杂货铺
         </div>
 
         <!-- Paradox Footer Right Section -->

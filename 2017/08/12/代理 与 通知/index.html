@@ -291,7 +291,7 @@
 
     <!-- Custom Head -->
     
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -410,6 +410,17 @@
     -->
 
     <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="https://pan.baidu.com/share/qrcode?w=246&h=246&url=http://yoursite.com/2017/08/12/代理 与 通知/">
+    
+</ul>
     
 
     <!-- Tags (bookmark) -->
@@ -535,7 +546,51 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)postNotification:(<span class="built_in">NSNotification</span> *)notification;<span class="comment">//发布一个notification通知，可在notification对象中设置通知的名称、通知发布者、额外信息等</span>- (<span class="keyword">void</span>)postNotificationName:(<span class="built_in">NSString</span> *)aName object:(<span class="keyword">id</span>)anObject;<span class="comment">//发布一个名称为aName的通知，anObject为这个通知的发布者</span>- (<span class="keyword">void</span>)postNotificationName:(<span class="built_in">NSString</span> *)aName object:(<span class="keyword">id</span>)anObject userInfo:(<span class="built_in">NSDictionary</span> *)aUserInfo;<span class="comment">//发布一个名称为aName的通知，anObject为这个通知的发布者，aUserInfo为额外信息</span></div><div class="line">```	</div><div class="line">	</div><div class="line">```objc</div><div class="line">- (<span class="keyword">void</span>)addObserver:(<span class="keyword">id</span>)observer </div><div class="line">           selector:(SEL)aSelector </div><div class="line">               name:(<span class="built_in">NSString</span> *)aName </div><div class="line">             object:(<span class="keyword">id</span>)anObject;<span class="comment">/*</span></div><div class="line"><span class="comment"> *observer：监听器，即谁要接收这个通知</span></div><div class="line"><span class="comment">*aSelector：收到通知后，回调监听器的这个方法，并且把通知对象当做参数传入    *aName：通知的名称。如果为nil，那么无论通知的名称是什么，监听器都能收到这个通知 *anObject：通知发布者。如果为anObject和aName都为nil，监听器都收到所有的通知*/</span></div><div class="line">- (<span class="keyword">id</span>)addObserverForName:(<span class="built_in">NSString</span> *)name</div><div class="line">                  object:(<span class="keyword">id</span>)obj </div><div class="line">                   queue:(<span class="built_in">NSOperationQueue</span> *)queue </div><div class="line">              usingBlock:(</div><div class="line">                   <span class="keyword">void</span> (^)(<span class="built_in">NSNotification</span> *note)</div><div class="line">                   )block;</div><div class="line"> <span class="comment">/*                   *name：通知的名称  *obj：通知发布者*block：收到对应的通知时，会回调这个block*queue：决定了block在哪个操作队列中执行，如果传nil，默认在当前操作队列中同步执行*/</span></div><div class="line">```	</div><div class="line">```objc<span class="comment">//通知中心提供了相应的方法来取消注册监听器</span>- (<span class="keyword">void</span>)removeObserver:(<span class="keyword">id</span>)observer;- (<span class="keyword">void</span>)removeObserver:(<span class="keyword">id</span>)observer </div><div class="line">                  name:(<span class="built_in">NSString</span> *)aName </div><div class="line">                object:(<span class="keyword">id</span>)anObject;<span class="comment">//一般在监听器销毁之前取消注册（如在监听器中加入下列代码）：</span>- (<span class="keyword">void</span>)dealloc &#123;	<span class="comment">//[super dealloc];  非ARC中需要调用此句</span>    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] removeObserver:<span class="keyword">self</span>];&#125;</div></pre></td></tr></table></figure>
+<pre class=" language-objc"><code class="language-objc">- (void)postNotification:(NSNotification *)notification;
+//发布一个notification通知，可在notification对象中设置通知的名称、通知发布者、额外信息等
+
+- (void)postNotificationName:(NSString *)aName object:(id)anObject;
+//发布一个名称为aName的通知，anObject为这个通知的发布者
+
+- (void)postNotificationName:(NSString *)aName object:(id)anObject userInfo:(NSDictionary *)aUserInfo;
+//发布一个名称为aName的通知，anObject为这个通知的发布者，aUserInfo为额外信息
+</code></pre>
+<pre class=" language-objc"><code class="language-objc">- (void)addObserver:(id)observer 
+           selector:(SEL)aSelector 
+               name:(NSString *)aName 
+             object:(id)anObject;
+/*
+ *observer：监听器，即谁要接收这个通知
+*aSelector：收到通知后，回调监听器的这个方法，并且把通知对象当做参数传入
+    *aName：通知的名称。如果为nil，那么无论通知的名称是什么，监听器都能收到这个通知
+ *anObject：通知发布者。如果为anObject和aName都为nil，监听器都收到所有的通知
+*/
+
+- (id)addObserverForName:(NSString *)name
+                  object:(id)obj 
+                   queue:(NSOperationQueue *)queue 
+              usingBlock:(
+                   void (^)(NSNotification *note)
+                   )block;
+ /*                  
+ *name：通知的名称
+  *obj：通知发布者
+*block：收到对应的通知时，会回调这个block
+*queue：决定了block在哪个操作队列中执行，如果传nil，默认在当前操作队列中同步执行
+*/
+</code></pre>
+<pre class=" language-objc"><code class="language-objc">//通知中心提供了相应的方法来取消注册监听器
+- (void)removeObserver:(id)observer;
+- (void)removeObserver:(id)observer 
+                  name:(NSString *)aName 
+                object:(id)anObject;
+
+//一般在监听器销毁之前取消注册（如在监听器中加入下列代码）：
+- (void)dealloc {
+    //[super dealloc];  非ARC中需要调用此句
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+</code></pre>
 <h2 id="代理和通知的区别"><a href="#代理和通知的区别" class="headerlink" title="代理和通知的区别"></a>代理和通知的区别</h2><ul>
 <li>代理：1个对象只能告诉另1个对象发生了什么事</li>
 <li>通知：1个对象可以告诉N个对象发生了什么事</li>
@@ -545,7 +600,18 @@
 <li>KVO(Key Value Observing)常用作用：监听模型属性值的改变</li>
 <li>KVO的使用步骤<br></li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// cc监听了aa的name属性的改变</span></div><div class="line">[aa addObserver:cc forKeyPath:<span class="string">@"name"</span> options: <span class="built_in">NSKeyValueObservingOptionOld</span> context:<span class="literal">nil</span>];</div><div class="line"></div><div class="line"><span class="comment">// cc得实现监听方法</span></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 当监听到object的keyPath属性发生了改变</span></div><div class="line"><span class="comment"> */</span></div><div class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath ofObject:(<span class="keyword">id</span>)object change:(<span class="built_in">NSDictionary</span> *)change context:(<span class="keyword">void</span> *)context</div><div class="line">&#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"监听到%@对象的%@属性发生了改变， %@"</span>, object, keyPath, change);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class=" language-objc"><code class="language-objc">// cc监听了aa的name属性的改变
+[aa addObserver:cc forKeyPath:@"name" options: NSKeyValueObservingOptionOld context:nil];
+
+// cc得实现监听方法
+/**
+ * 当监听到object的keyPath属性发生了改变
+ */
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    NSLog(@"监听到%@对象的%@属性发生了改变， %@", object, keyPath, change);
+}
+</code></pre>
 
     
 
@@ -649,6 +715,8 @@
             </a>
         </li>
         
+            <li class="divider"></li>
+        
     
 
     <!-- Archives  -->
@@ -670,6 +738,21 @@
     
 
     <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </ul>
+        </li>
+        
     
 
     <!-- Pages  -->
@@ -806,7 +889,7 @@ It will not impact the appearance and can give developers a lot of support :)
 
         <!--Copyright-->
         <div id="copyright">
-            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>神棍MAX的iOS杂货铺
+            Copyright&nbsp;©&nbsp;2015&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>神棍MAX的iOS杂货铺
         </div>
 
         <!-- Paradox Footer Right Section -->
