@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="123456789101112131415161718192021222324252627282930//点击屏幕开始动画- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event &amp;#123;    // 清空transform，以前的平移、缩放、旋转都会消失//    [UIView animateWithDuration:">
+<meta name="description" content="pch原理: pch里面的内容被项目中的所有文件共有  pch注意点: 1.pch需要提前编译   2.需要做一些判断,判断下当前有没有c文件,如果有c,就不导入OC的语法  1234567891011121314151617181920212223// __OBJC__每个OC文件都会自动定义这个宏#ifdef __OBJC__// pch作用:// 1.存放一些公用的宏#define ABC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="transform动画">
-<meta property="og:url" content="http://yoursite.com/2017/08/13/transform动画/index.html">
+<meta property="og:title" content="pch自定义日志输出">
+<meta property="og:url" content="http://yoursite.com/2017/08/15/pch自定义日志输出/index.html">
 <meta property="og:site_name" content="神棍MAX的iOS杂货铺">
-<meta property="og:description" content="123456789101112131415161718192021222324252627282930//点击屏幕开始动画- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event &amp;#123;    // 清空transform，以前的平移、缩放、旋转都会消失//    [UIView animateWithDuration:">
+<meta property="og:description" content="pch原理: pch里面的内容被项目中的所有文件共有  pch注意点: 1.pch需要提前编译   2.需要做一些判断,判断下当前有没有c文件,如果有c,就不导入OC的语法  1234567891011121314151617181920212223// __OBJC__每个OC文件都会自动定义这个宏#ifdef __OBJC__// pch作用:// 1.存放一些公用的宏#define ABC">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-15T05:12:00.000Z">
+<meta property="og:updated_time" content="2017-08-15T05:12:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="transform动画">
-<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930//点击屏幕开始动画- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event &amp;#123;    // 清空transform，以前的平移、缩放、旋转都会消失//    [UIView animateWithDuration:">
+<meta name="twitter:title" content="pch自定义日志输出">
+<meta name="twitter:description" content="pch原理: pch里面的内容被项目中的所有文件共有  pch注意点: 1.pch需要提前编译   2.需要做一些判断,判断下当前有没有c文件,如果有c,就不导入OC的语法  1234567891011121314151617181920212223// __OBJC__每个OC文件都会自动定义这个宏#ifdef __OBJC__// pch作用:// 1.存放一些公用的宏#define ABC">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/13/transform动画/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/15/pch自定义日志输出/"/>
 
 
 
 
 
-  <title>transform动画 | 神棍MAX的iOS杂货铺</title>
+  <title>pch自定义日志输出 | 神棍MAX的iOS杂货铺</title>
   
 
 
@@ -256,7 +256,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/13/transform动画/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/15/pch自定义日志输出/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TAMAX">
@@ -273,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">transform动画</h1>
+          <h1 class="post-title" itemprop="name headline">pch自定义日志输出</h1>
         
 
         <div class="post-meta">
@@ -285,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-13T15:29:33+08:00">
-                2017-08-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-15T10:32:47+08:00">
+                2017-08-15
               </time>
             
 
@@ -323,7 +323,14 @@
       
 
       
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//点击屏幕开始动画</span></div><div class="line">- (<span class="keyword">void</span>)touchesBegan:(<span class="built_in">NSSet</span> *)touches withEvent:(<span class="built_in">UIEvent</span> *)event &#123;</div><div class="line">    <span class="comment">// 清空transform，以前的平移、缩放、旋转都会消失</span></div><div class="line"><span class="comment">//    [UIView animateWithDuration:2.0 animations:^&#123;</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformIdentity;</span></div><div class="line"><span class="comment">//        </span></div><div class="line"><span class="comment">//    &#125;];</span></div><div class="line">    </div><div class="line"><span class="comment">//    self.angle += M_PI_4;</span></div><div class="line">    </div><div class="line"><span class="comment">//    [UIView animateWithDuration:1.0 animations:^&#123;</span></div><div class="line"><span class="comment">//       self.tempView.transform = CGAffineTransformScale(self.tempView.transform, 0.8, 0.8);</span></div><div class="line"><span class="comment">//       self.tempView.transform = CGAffineTransformRotate(self.tempView.transform, M_PI_4);</span></div><div class="line"><span class="comment">//    &#125;];</span></div><div class="line">    </div><div class="line">    <span class="comment">// transform:形变属性，能完成的功能：平移、缩放、旋转</span></div><div class="line">    [<span class="built_in">UIView</span> animateWithDuration:<span class="number">2.0</span> animations:^&#123;</div><div class="line"><span class="comment">//        // 缩放</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformMakeScale(0.5, 0.5);</span></div><div class="line"><span class="comment">//        // 平移</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformMakeTranslation(-100, 100);</span></div><div class="line">        <span class="comment">// 旋转</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformMakeRotation(-M_PI_4);</span></div><div class="line">    </div><div class="line">        <span class="built_in">CGAffineTransform</span> translation = <span class="built_in">CGAffineTransformMakeTranslation</span>(<span class="number">-100</span>, <span class="number">100</span>);</div><div class="line">        <span class="built_in">CGAffineTransform</span> scaleTranslation = <span class="built_in">CGAffineTransformScale</span>(translation, <span class="number">0.5</span>, <span class="number">0.5</span>);</div><div class="line">        <span class="built_in">CGAffineTransform</span> rotateScaleTranslation = <span class="built_in">CGAffineTransformRotate</span>(scaleTranslation, M_PI_2);</div><div class="line">        <span class="keyword">self</span>.tempView.transform = rotateScaleTranslation;</div><div class="line">    &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h3 id="pch原理"><a href="#pch原理" class="headerlink" title="pch原理:"></a>pch原理:</h3><ul>
+<li>pch里面的内容被项目中的所有文件共有</li>
+</ul>
+<h3 id="pch注意点"><a href="#pch注意点" class="headerlink" title="pch注意点:"></a>pch注意点:</h3><ul>
+<li>1.pch需要提前编译  </li>
+<li>2.需要做一些判断,判断下当前有没有c文件,如果有c,就不导入OC的语法</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// __OBJC__每个OC文件都会自动定义这个宏</span></div><div class="line"><span class="meta">#ifdef __OBJC__</span></div><div class="line"></div><div class="line"><span class="comment">// pch作用:</span></div><div class="line"><span class="comment">// 1.存放一些公用的宏</span></div><div class="line"><span class="meta">#define ABC 10</span></div><div class="line"></div><div class="line"><span class="comment">// 2.存放一些公用的头文件</span></div><div class="line"><span class="meta">#import <span class="meta-string">"UIImage+Image.h"</span></span></div><div class="line"></div><div class="line"><span class="comment">// 3.自定义Log(输出日志)</span></div><div class="line"><span class="comment">// ...标示在宏里面的可变参数</span></div><div class="line"><span class="comment">// __VA_ARGS__ 标示函数里面的可变参数</span></div><div class="line"></div><div class="line"><span class="meta">#ifdef DEBUG // 调试</span></div><div class="line"><span class="meta">#define TQLog(...)  NSLog(__VA_ARGS__)</span></div><div class="line"></div><div class="line"><span class="meta">#else // 发布</span></div><div class="line"><span class="meta">#define TQLog(...)</span></div><div class="line"></div><div class="line"><span class="meta">#endif</span></div><div class="line"></div><div class="line"><span class="meta">#endif</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -348,8 +355,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/12/代理 与 通知/" rel="next" title="代理 与 通知">
-                <i class="fa fa-chevron-left"></i> 代理 与 通知
+              <a href="/2017/08/14/统一设置所有 UITabBarItem 的文字属性/" rel="next" title="统一设置所有 UITabBarItem 的文字属性">
+                <i class="fa fa-chevron-left"></i> 统一设置所有 UITabBarItem 的文字属性
               </a>
             
           </div>
@@ -357,10 +364,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/13/键盘弹出/" rel="prev" title="解决键盘弹出挡住VIew">
-                解决键盘弹出挡住VIew <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -412,8 +415,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -457,6 +469,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#pch原理"><span class="nav-number">1.</span> <span class="nav-text">pch原理:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pch注意点"><span class="nav-number">2.</span> <span class="nav-text">pch注意点:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
