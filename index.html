@@ -41,7 +41,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -69,43 +69,26 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-pch自定义日志输出" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-滚动试图不滚动的问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/15/pch自定义日志输出/" class="article-date">
-  <time datetime="2017-08-15T02:32:47.000Z" itemprop="datePublished">2017-08-15</time>
+    <a href="/2017/11/18/滚动试图不滚动的问题/" class="article-date">
+  <time datetime="2017-11-18T02:53:38.110Z" itemprop="datePublished">2017-11-18</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/15/pch自定义日志输出/">pch自定义日志输出</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
         <!-- Table of Contents -->
         
-        <h3 id="pch原理"><a href="#pch原理" class="headerlink" title="pch原理:"></a>pch原理:</h3><ul>
-<li>pch里面的内容被项目中的所有文件共有</li>
-</ul>
-<h3 id="pch注意点"><a href="#pch注意点" class="headerlink" title="pch注意点:"></a>pch注意点:</h3><ul>
-<li>1.pch需要提前编译  </li>
-<li>2.需要做一些判断,判断下当前有没有c文件,如果有c,就不导入OC的语法</li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// __OBJC__每个OC文件都会自动定义这个宏</span></div><div class="line"><span class="meta">#ifdef __OBJC__</span></div><div class="line"></div><div class="line"><span class="comment">// pch作用:</span></div><div class="line"><span class="comment">// 1.存放一些公用的宏</span></div><div class="line"><span class="meta">#define ABC 10</span></div><div class="line"></div><div class="line"><span class="comment">// 2.存放一些公用的头文件</span></div><div class="line"><span class="meta">#import <span class="meta-string">"UIImage+Image.h"</span></span></div><div class="line"></div><div class="line"><span class="comment">// 3.自定义Log(输出日志)</span></div><div class="line"><span class="comment">// ...标示在宏里面的可变参数</span></div><div class="line"><span class="comment">// __VA_ARGS__ 标示函数里面的可变参数</span></div><div class="line"><span class="comment">//用printf代替NSLog</span></div><div class="line"></div><div class="line"><span class="meta">#ifdef DEBUG // 调试</span></div><div class="line"><span class="meta">#define TQLog(format, ...) printf(<span class="meta-string">"class: &lt;%p %s:(%d) &gt; method: %s \n%s\n"</span>, self, [[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, __PRETTY_FUNCTION__, [[NSString stringWithFormat:(format), ##__VA_ARGS__] UTF8String] )</span></div><div class="line"></div><div class="line"><span class="meta">#else // 发布</span></div><div class="line"><span class="meta">#define TQLog(format, ...)</span></div><div class="line"></div><div class="line"><span class="meta">#endif</span></div><div class="line"></div><div class="line"><span class="meta">#endif</span></div></pre></td></tr></table></figure>
-
+        <hr>
+<h2 id="title：-滚动试图不滚动的问题"><a href="#title：-滚动试图不滚动的问题" class="headerlink" title="title： 滚动试图不滚动的问题"></a>title： 滚动试图不滚动的问题</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)viewDidLayoutSubviews</div><div class="line">&#123;</div><div class="line">    _BaseScore.contentSize = <span class="built_in">CGSizeMake</span>(SCREEN_WIDTH, xxxx);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/15/pch自定义日志输出/" data-id="cja46ybl10000t9ipg50sqoa3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/18/滚动试图不滚动的问题/" data-id="cja4r2okk000g1gipit9fx9qb" class="article-share-link">分享</a>
       
       
       
@@ -117,10 +100,10 @@
 
 
   
-    <article id="post-统一设置所有 UITabBarItem 的文字属性" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-本地字典转JSON" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/14/统一设置所有 UITabBarItem 的文字属性/" class="article-date">
-  <time datetime="2017-08-14T12:38:48.000Z" itemprop="datePublished">2017-08-14</time>
+    <a href="/2017/11/18/本地字典转JSON/" class="article-date">
+  <time datetime="2017-11-18T02:52:44.020Z" itemprop="datePublished">2017-11-18</time>
 </a>
     
   </div>
@@ -131,7 +114,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/14/统一设置所有 UITabBarItem 的文字属性/">统一设置所有 UITabBarItem 的文字属性</a>
+      <a class="article-title" href="/2017/11/18/本地字典转JSON/">本地字典写成需要的JSON 本地文件</a>
     </h1>
   
 
@@ -141,12 +124,11 @@
       
         <!-- Table of Contents -->
         
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#pragma mark - 统一设置所有 UITabBarItem 的文字属性</span></div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>)initialize &#123;</div><div class="line">    <span class="built_in">NSMutableDictionary</span> *attrs = [<span class="built_in">NSMutableDictionary</span> dictionary];</div><div class="line">    attrs[<span class="built_in">NSFontAttributeName</span>] = [<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">12</span>];</div><div class="line">    attrs[<span class="built_in">NSForegroundColorAttributeName</span>] = [<span class="built_in">UIColor</span> grayColor];</div><div class="line">    </div><div class="line">    <span class="built_in">NSMutableDictionary</span> *selectedAttrs = [<span class="built_in">NSMutableDictionary</span> dictionary];</div><div class="line">    selectedAttrs[<span class="built_in">NSFontAttributeName</span>] = attrs[<span class="built_in">NSFontAttributeName</span>];</div><div class="line">    selectedAttrs[<span class="built_in">NSForegroundColorAttributeName</span>] = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">255</span>/<span class="number">255.0</span> green:<span class="number">125</span>/<span class="number">255.0</span> blue:<span class="number">0</span> alpha:<span class="number">1</span>];</div><div class="line">    </div><div class="line">    <span class="built_in">UITabBarItem</span> *items = [<span class="built_in">UITabBarItem</span> appearance];</div><div class="line">    [items setTitleTextAttributes:attrs forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    [items setTitleTextAttributes:selectedAttrs forState:<span class="built_in">UIControlStateSelected</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1.判断当前对象是否能够转换成JSON数据.</span></div><div class="line">  <span class="comment">// YES if obj can be converted to JSON data, otherwise NO</span></div><div class="line">  <span class="built_in">BOOL</span> isYes = [<span class="built_in">NSJSONSerialization</span> isValidJSONObject:dict];</div><div class="line">  </div><div class="line">  <span class="keyword">if</span> (isYes) &#123;</div><div class="line">      <span class="built_in">NSLog</span>(<span class="string">@"可以转换"</span>);</div><div class="line">      </div><div class="line">      <span class="comment">/* JSON data for obj, or nil if an internal error occurs. The resulting data is a encoded in UTF-8.</span></div><div class="line"><span class="comment">       */</span></div><div class="line">      <span class="built_in">NSData</span> *jsonData = [<span class="built_in">NSJSONSerialization</span> dataWithJSONObject:dict options:<span class="number">0</span> error:<span class="literal">NULL</span>];</div><div class="line">      </div><div class="line">      </div><div class="line">      <span class="comment">// 将JSON数据写成文件</span></div><div class="line">      <span class="comment">// 文件添加后缀名: 告诉别人当前文件的类型.</span></div><div class="line">      <span class="comment">// 注意: AFN是通过文件类型来确定数据类型的!如果不添加类型,有可能识别不了! 自己最好添加文件类型.</span></div><div class="line">      [jsonData writeToFile:<span class="string">@"/Users/ygkj/Desktop/shopCartTestData.json"</span> atomically:<span class="literal">YES</span>];</div><div class="line">      </div><div class="line">      <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, [[<span class="built_in">NSString</span> alloc] initWithData:jsonData encoding:<span class="built_in">NSUTF8StringEncoding</span>]);</div><div class="line">      </div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">      </div><div class="line">      <span class="built_in">NSLog</span>(<span class="string">@"JSON数据生成失败，请检查数据格式"</span>);</div><div class="line">      </div><div class="line">  &#125;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/14/统一设置所有 UITabBarItem 的文字属性/" data-id="cja46ybld0004t9ip9l73x29t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/18/本地字典转JSON/" data-id="cja4r2oki000e1gipovs8l4yt" class="article-share-link">分享</a>
       
       
       
@@ -158,10 +140,10 @@
 
 
   
-    <article id="post-键盘弹出" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-修改UIAlertView设置文字左对齐" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/13/键盘弹出/" class="article-date">
-  <time datetime="2017-08-13T08:17:02.000Z" itemprop="datePublished">2017-08-13</time>
+    <a href="/2017/11/18/修改UIAlertView设置文字左对齐/" class="article-date">
+  <time datetime="2017-11-18T02:50:33.073Z" itemprop="datePublished">2017-11-18</time>
 </a>
     
   </div>
@@ -172,7 +154,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/13/键盘弹出/">解决键盘弹出挡住VIew</a>
+      <a class="article-title" href="/2017/11/18/修改UIAlertView设置文字左对齐/">修改UIAlertView设置文字左对齐</a>
     </h1>
   
 
@@ -182,13 +164,17 @@
       
         <!-- Table of Contents -->
         
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 先监听键盘通知</span></div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(keyboardWillChangeFrame:) name:<span class="built_in">UIKeyboardWillChangeFrameNotification</span> object:<span class="literal">nil</span>];</div></pre></td></tr></table></figure>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#pragma mark - 键盘处理</span></div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)keyboardWillChangeFrame:(<span class="built_in">NSNotification</span> *)note &#123;</div><div class="line">    <span class="comment">// 取出键盘最终的frame</span></div><div class="line">    <span class="built_in">CGRect</span> rect = [note.userInfo[<span class="built_in">UIKeyboardFrameEndUserInfoKey</span>] <span class="built_in">CGRectValue</span>];</div><div class="line">    <span class="comment">// 取出键盘弹出需要花费的时间</span></div><div class="line">    <span class="keyword">double</span> duration = [note.userInfo[<span class="built_in">UIKeyboardAnimationDurationUserInfoKey</span>] doubleValue];</div><div class="line">    <span class="comment">// 修改transform</span></div><div class="line">    [<span class="built_in">UIView</span> animateWithDuration:duration animations:^&#123;</div><div class="line">        <span class="built_in">CGFloat</span> ty = [<span class="built_in">UIScreen</span> mainScreen].bounds.size.height - rect.origin.y;</div><div class="line">        <span class="keyword">self</span>.view.transform = <span class="built_in">CGAffineTransformMakeTranslation</span>(<span class="number">0</span>, - ty);</div><div class="line">    &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//最后清空通知</span></div><div class="line">- (<span class="keyword">void</span>)dealloc</div><div class="line">&#123;</div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] removeObserver:<span class="keyword">self</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>因为iphoneSDK默认是居中对齐的，而且没有提供方法设置文本对齐接口，在Delegate中:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)willPresentAlertView:(<span class="built_in">UIAlertView</span> *)alertView;</div></pre></td></tr></table></figure>
+<p>获取UIAlertView上面的Message控件，它其实也是一个UILable控件，然后设置其textAlignment的属性即可。</p>
+<p>代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)willPresentAlertView:(<span class="built_in">UIAlertView</span> *)alertView&#123;</div><div class="line">    <span class="built_in">UIView</span> * view = [alertView.subviews objectAtIndex:<span class="number">2</span>];</div><div class="line">    <span class="keyword">if</span>([view isKindOfClass:[<span class="built_in">UILabel</span> <span class="keyword">class</span>]])&#123;</div><div class="line">        <span class="built_in">UILabel</span>* label = (<span class="built_in">UILabel</span>*) view;</div><div class="line">        label.textAlignment = <span class="built_in">UITextAlignmentLeft</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里要注意的是，Message的UILable在alertView.subviews里面是第3个元素，第一个元素是一个UIImageView(背景),UILable(标题),UILable(Message),UIButton(Cancel)…(如果还有的话以此类推)。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/13/键盘弹出/" data-id="cja46yblh0005t9ipbilz13bp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/18/修改UIAlertView设置文字左对齐/" data-id="cja4r2okf000c1gippgjrlm0k" class="article-share-link">分享</a>
       
       
       
@@ -200,10 +186,10 @@
 
 
   
-    <article id="post-transform动画" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-oc中的泛型" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/13/transform动画/" class="article-date">
-  <time datetime="2017-08-13T07:29:33.000Z" itemprop="datePublished">2017-08-13</time>
+    <a href="/2017/11/18/oc中的泛型/" class="article-date">
+  <time datetime="2017-11-18T02:49:11.806Z" itemprop="datePublished">2017-11-18</time>
 </a>
     
   </div>
@@ -214,7 +200,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/13/transform动画/">transform动画</a>
+      <a class="article-title" href="/2017/11/18/oc中的泛型/">oc中的泛型</a>
     </h1>
   
 
@@ -224,12 +210,14 @@
       
         <!-- Table of Contents -->
         
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//点击屏幕开始动画</span></div><div class="line">- (<span class="keyword">void</span>)touchesBegan:(<span class="built_in">NSSet</span> *)touches withEvent:(<span class="built_in">UIEvent</span> *)event &#123;</div><div class="line">    <span class="comment">// 清空transform，以前的平移、缩放、旋转都会消失</span></div><div class="line"><span class="comment">//    [UIView animateWithDuration:2.0 animations:^&#123;</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformIdentity;</span></div><div class="line"><span class="comment">//        </span></div><div class="line"><span class="comment">//    &#125;];</span></div><div class="line">    </div><div class="line"><span class="comment">//    self.angle += M_PI_4;</span></div><div class="line">    </div><div class="line"><span class="comment">//    [UIView animateWithDuration:1.0 animations:^&#123;</span></div><div class="line"><span class="comment">//       self.tempView.transform = CGAffineTransformScale(self.tempView.transform, 0.8, 0.8);</span></div><div class="line"><span class="comment">//       self.tempView.transform = CGAffineTransformRotate(self.tempView.transform, M_PI_4);</span></div><div class="line"><span class="comment">//    &#125;];</span></div><div class="line">    </div><div class="line">    <span class="comment">// transform:形变属性，能完成的功能：平移、缩放、旋转</span></div><div class="line">    [<span class="built_in">UIView</span> animateWithDuration:<span class="number">2.0</span> animations:^&#123;</div><div class="line"><span class="comment">//        // 缩放</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformMakeScale(0.5, 0.5);</span></div><div class="line"><span class="comment">//        // 平移</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformMakeTranslation(-100, 100);</span></div><div class="line">        <span class="comment">// 旋转</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformMakeRotation(-M_PI_4);</span></div><div class="line">    </div><div class="line">        <span class="built_in">CGAffineTransform</span> translation = <span class="built_in">CGAffineTransformMakeTranslation</span>(<span class="number">-100</span>, <span class="number">100</span>);</div><div class="line">        <span class="built_in">CGAffineTransform</span> scaleTranslation = <span class="built_in">CGAffineTransformScale</span>(translation, <span class="number">0.5</span>, <span class="number">0.5</span>);</div><div class="line">        <span class="built_in">CGAffineTransform</span> rotateScaleTranslation = <span class="built_in">CGAffineTransformRotate</span>(scaleTranslation, M_PI_2);</div><div class="line">        <span class="keyword">self</span>.tempView.transform = rotateScaleTranslation;</div><div class="line">    &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+        <p>举例：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)test &#123;</div><div class="line">    <span class="built_in">NSMutableArray</span>&lt;<span class="built_in">NSString</span> *&gt; *strArray = [<span class="built_in">NSMutableArray</span> array];</div><div class="line">    [strArray addObject:<span class="string">@"aString"</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以在声明NSMutableArray时添加一个弱泛型约束，之所以是弱泛型，是因为编译器会帮你检查数据类型是否正确，如果不正确会有一个警告，但是不会强制报错，代码还是可以编译过的。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//传入的不是规定的类型 会报警告</span></div><div class="line">- (<span class="keyword">void</span>)test &#123;</div><div class="line">    <span class="built_in">NSMutableArray</span>&lt;<span class="built_in">NSString</span> *&gt; *strArray = [<span class="built_in">NSMutableArray</span> array];</div><div class="line">    [strArray addObject:[<span class="built_in">NSNumber</span> numberWithFloat:<span class="number">15.0</span>]];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/13/transform动画/" data-id="cja46ybla0002t9ipa1vvwa1t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/18/oc中的泛型/" data-id="cja4r2ok400061gipashduqlp" class="article-share-link">分享</a>
       
       
       
@@ -241,10 +229,10 @@
 
 
   
-    <article id="post-UITableView" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-键盘输入框限制输入等处理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/12/UITableView/" class="article-date">
-  <time datetime="2017-08-12T10:06:44.000Z" itemprop="datePublished">2017-08-12</time>
+    <a href="/2017/11/18/键盘输入框限制输入等处理/" class="article-date">
+  <time datetime="2017-11-18T02:47:31.085Z" itemprop="datePublished">2017-11-18</time>
 </a>
     
   </div>
@@ -255,7 +243,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/12/UITableView/">UITableView</a>
+      <a class="article-title" href="/2017/11/18/键盘输入框限制输入等处理/">键盘输入框限制输入等处理</a>
     </h1>
   
 
@@ -265,142 +253,14 @@
       
         <!-- Table of Contents -->
         
-        <h2 id="tableView性能优化-cell的循环利用方式1"><a href="#tableView性能优化-cell的循环利用方式1" class="headerlink" title="tableView性能优化 - cell的循环利用方式1"></a>tableView性能优化 - cell的循环利用方式1</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> *  什么时候调用：每当有一个cell进入视野范围内就会调用</span></div><div class="line"><span class="comment"> */</span></div><div class="line">- (<span class="built_in">UITableViewCell</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView cellForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</div><div class="line">&#123;</div><div class="line">    <span class="comment">// 0.重用标识</span></div><div class="line">    <span class="comment">// 被static修饰的局部变量：只会初始化一次，在整个程序运行过程中，只有一份内存</span></div><div class="line">    <span class="keyword">static</span> <span class="built_in">NSString</span> *ID = <span class="string">@"cell"</span>;</div><div class="line"></div><div class="line">    <span class="comment">// 1.先根据cell的标识去缓存池中查找可循环利用的cell</span></div><div class="line">    <span class="built_in">UITableViewCell</span> *cell = [tableView dequeueReusableCellWithIdentifier:ID];</div><div class="line"></div><div class="line">    <span class="comment">// 2.如果cell为nil（缓存池找不到对应的cell）</span></div><div class="line">    <span class="keyword">if</span> (cell == <span class="literal">nil</span>) &#123;</div><div class="line">        cell = [[<span class="built_in">UITableViewCell</span> alloc] initWithStyle:<span class="built_in">UITableViewCellStyleDefault</span> reuseIdentifier:ID];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 3.覆盖数据</span></div><div class="line">    cell.textLabel.text = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"testdata - %zd"</span>, indexPath.row];</div><div class="line"></div><div class="line">    <span class="keyword">return</span> cell;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="tableView性能优化-cell的循环利用方式2"><a href="#tableView性能优化-cell的循环利用方式2" class="headerlink" title="tableView性能优化 - cell的循环利用方式2"></a>tableView性能优化 - cell的循环利用方式2</h2><ul>
-<li>定义一个全局变量</li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义重用标识</span></div><div class="line"><span class="built_in">NSString</span> *ID = <span class="string">@"cell"</span>;</div></pre></td></tr></table></figure>
-<ul>
-<li>注册某个标识对应的cell类型</li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在这个方法中注册cell</span></div><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line"></div><div class="line">    <span class="comment">// 注册某个标识对应的cell类型</span></div><div class="line">    [<span class="keyword">self</span>.tableView registerClass:[<span class="built_in">UITableViewCell</span> <span class="keyword">class</span>] forCellReuseIdentifier:ID];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>在数据源方法中返回cell</li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">UITableViewCell</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView cellForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</div><div class="line">&#123;</div><div class="line">    <span class="comment">// 1.去缓存池中查找cell</span></div><div class="line">    <span class="built_in">UITableViewCell</span> *cell = [tableView dequeueReusableCellWithIdentifier:ID];</div><div class="line"></div><div class="line">    <span class="comment">// 2.覆盖数据</span></div><div class="line">    cell.textLabel.text = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"testdata - %zd"</span>, indexPath.row];</div><div class="line"></div><div class="line">    <span class="keyword">return</span> cell;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="tableView性能优化-cell的循环利用方式3"><a href="#tableView性能优化-cell的循环利用方式3" class="headerlink" title="tableView性能优化 - cell的循环利用方式3"></a>tableView性能优化 - cell的循环利用方式3</h2><ul>
-<li><p>在storyboard中设置UITableView的Dynamic Prototypes Cell<br><img src="images/Snip20150602_152.png" alt=""></p>
-</li>
-<li><p>设置cell的重用标识<br><img src="images/Snip20150602_153.png" alt=""></p>
-</li>
-<li><p>在代码中利用重用标识获取cell</p>
-</li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 0.重用标识</span></div><div class="line"><span class="comment">// 被static修饰的局部变量：只会初始化一次，在整个程序运行过程中，只有一份内存</span></div><div class="line"><span class="keyword">static</span> <span class="built_in">NSString</span> *ID = <span class="string">@"cell"</span>;</div><div class="line"></div><div class="line"><span class="comment">// 1.先根据cell的标识去缓存池中查找可循环利用的cell</span></div><div class="line"><span class="built_in">UITableViewCell</span> *cell = [tableView dequeueReusableCellWithIdentifier:ID];</div><div class="line"></div><div class="line"><span class="comment">// 2.覆盖数据</span></div><div class="line">cell.textLabel.text = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"cell - %zd"</span>, indexPath.row];</div><div class="line"></div><div class="line"><span class="keyword">return</span> cell;</div></pre></td></tr></table></figure>
-<h2 id="错误将UIViewController当做UITableViewController来用"><a href="#错误将UIViewController当做UITableViewController来用" class="headerlink" title="错误将UIViewController当做UITableViewController来用"></a>错误将UIViewController当做UITableViewController来用</h2><p><img src="images/Snip20150602_110.png" alt=""></p>
-<h2 id="UITableView的常见设置"><a href="#UITableView的常见设置" class="headerlink" title="UITableView的常见设置"></a>UITableView的常见设置</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 分割线颜色</span></div><div class="line"><span class="keyword">self</span>.tableView.separatorColor = [<span class="built_in">UIColor</span> redColor];</div><div class="line"></div><div class="line"><span class="comment">// 隐藏分割线</span></div><div class="line"><span class="keyword">self</span>.tableView.separatorStyle = <span class="built_in">UITableViewCellSeparatorStyleNone</span>;</div></pre></td></tr></table></figure>
-<h2 id="UITableViewCell的常见设置"><a href="#UITableViewCell的常见设置" class="headerlink" title="UITableViewCell的常见设置"></a>UITableViewCell的常见设置</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 取消选中的样式</span></div><div class="line">cell.selectionStyle = <span class="built_in">UITableViewCellSelectionStyleNone</span>;</div><div class="line"><span class="comment">// 设置选中的背景色</span></div><div class="line"><span class="built_in">UIView</span> *selectedBackgroundView = [[<span class="built_in">UIView</span> alloc] init];</div><div class="line">selectedBackgroundView.backgroundColor = [<span class="built_in">UIColor</span> redColor];</div><div class="line">cell.selectedBackgroundView = selectedBackgroundView;</div><div class="line"></div><div class="line"><span class="comment">// 设置默认的背景色</span></div><div class="line">cell.backgroundColor = [<span class="built_in">UIColor</span> blueColor];</div><div class="line"></div><div class="line"><span class="comment">// 设置默认的背景色</span></div><div class="line"><span class="built_in">UIView</span> *backgroundView = [[<span class="built_in">UIView</span> alloc] init];</div><div class="line">backgroundView.backgroundColor = [<span class="built_in">UIColor</span> greenColor];</div><div class="line">cell.backgroundView = backgroundView;</div><div class="line"></div><div class="line"><span class="comment">// backgroundView的优先级 &gt; backgroundColor</span></div><div class="line"><span class="comment">// 设置指示器</span></div><div class="line"><span class="comment">//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;</span></div><div class="line">cell.accessoryView = [[<span class="built_in">UISwitch</span> alloc] init];</div></pre></td></tr></table></figure>
-<h2 id="自定义cell"><a href="#自定义cell" class="headerlink" title="自定义cell"></a>自定义cell</h2><ul>
-<li><p><code>等高的cell</code></p>
-<ul>
-<li><p><code>storyboard自定义cell</code></p>
-<ul>
-<li>1.创建一个继承自UITableViewCell的子类，比如XMGDealCell<br><br><img src="images/Snip20150602_305.png" alt=""></li>
-<li>2.在storyboard中<ul>
-<li>往cell里面增加需要用到的子控件<br><br><img src="images/Snip20150602_302.png" alt=""></li>
-<li>设置cell的重用标识<br><br><img src="images/Snip20150602_303.png" alt=""></li>
-<li>设置cell的class为XMGDealCell<br><br><img src="images/Snip20150602_304.png" alt=""></li>
-</ul>
-</li>
-<li>3.在控制器中<ul>
-<li>利用重用标识找到cell</li>
-<li>给cell传递模型数据<br><br><img src="images/Snip20150602_301.png" alt=""></li>
-</ul>
-</li>
-<li>4.在XMGDealCell中<ul>
-<li>将storyboard中的子控件连线到类扩展中<br><br><img src="images/Snip20150602_299.png" alt=""></li>
-<li>需要提供一个模型属性，重写模型的set方法，在这个方法中设置模型数据到子控件上<br><br><img src="images/Snip20150602_298.png" alt=""><br><img src="images/Snip20150602_300.png" alt=""></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>xib自定义cell</code></p>
-<ul>
-<li>1.创建一个继承自UITableViewCell的子类，比如XMGDealCell<br></li>
-<li>2.创建一个xib文件（文件名建议跟cell的类名一样），比如XMGDealCell.xib<ul>
-<li>拖拽一个UITableViewCell出来</li>
-<li>修改cell的class为XMGDealCell</li>
-<li>设置cell的重用标识</li>
-<li>往cell中添加需要用到的子控件</li>
-</ul>
-</li>
-<li>3.在控制器中<ul>
-<li>利用registerNib…方法注册xib文件</li>
-<li>利用重用标识找到cell（如果没有注册xib文件，就需要手动去加载xib文件）</li>
-<li>给cell传递模型数据<br></li>
-</ul>
-</li>
-<li>4.在XMGDealCell中<ul>
-<li>将xib中的子控件连线到类扩展中</li>
-<li>需要提供一个模型属性，重写模型的set方法，在这个方法中设置模型数据到子控件上</li>
-<li>也可以将创建获得cell的代码封装起来（比如cellWithTableView:方法）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>代码自定义cell(使用frame)</code></p>
-<ul>
-<li>1.创建一个继承自UITableViewCell的子类，比如XMGDealCell<ul>
-<li>在initWithStyle:reuseIdentifier:方法中<ul>
-<li>添加子控件</li>
-<li>设置子控件的初始化属性（比如文字颜色、字体）</li>
-</ul>
-</li>
-<li>在layoutSubviews方法中设置子控件的frame</li>
-<li>需要提供一个模型属性，重写模型的set方法，在这个方法中设置模型数据到子控件</li>
-</ul>
-</li>
-<li>2.在控制器中<ul>
-<li>利用registerClass…方法注册XMGDealCell类</li>
-<li>利用重用标识找到cell（如果没有注册类，就需要手动创建cell）</li>
-<li>给cell传递模型数据</li>
-<li>也可以将创建获得cell的代码封装起来（比如cellWithTableView:方法）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>代码自定义cell(使用autolayout)</code></p>
-<ul>
-<li>1.创建一个继承自UITableViewCell的子类，比如XMGDealCell<ul>
-<li>在initWithStyle:reuseIdentifier:方法中<ul>
-<li>添加子控件</li>
-<li>添加子控件的约束（建议使用<code>Masonry</code>）</li>
-<li>设置子控件的初始化属性（比如文字颜色、字体）</li>
-</ul>
-</li>
-<li>需要提供一个模型属性，重写模型的set方法，在这个方法中设置模型数据到子控件</li>
-</ul>
-</li>
-<li>2.在控制器中<ul>
-<li>利用registerClass…方法注册XMGDealCell类</li>
-<li>利用重用标识找到cell（如果没有注册类，就需要手动创建cell）</li>
-<li>给cell传递模型数据</li>
-<li>也可以将创建获得cell的代码封装起来（比如cellWithTableView:方法）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>非等高的cell<ul>
-<li>xib自定义cell(重点)<ul>
-<li>在模型中增加一个cellHeight属性，用来存放对应cell的高度</li>
-<li>在cell的模型属性set方法中调用[self layoutIfNeed]方法强制布局，然后计算出模型的cellheight属性值</li>
-<li>在控制器中实现tableView:estimatedHeightForRowAtIndexPath:方法，返回一个估计高度，比如200</li>
-<li>在控制器中实现tableView:heightForRowAtIndexPath:方法，返回cell的真实高度（模型中的cellHeight属性）</li>
-</ul>
-</li>
-<li>storyboard自定义cell</li>
-<li>代码自定义cell（frame）</li>
-<li>代码自定义cell（Autolayout）</li>
-</ul>
-</li>
-</ul>
-
+        <p>1.先加入事件</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[_phoneTextField addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(textFieldDidChange:) forControlEvents:<span class="built_in">UIControlEventEditingChanged</span>];</div></pre></td></tr></table></figure>
+<p>2.处理方法</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)textFieldDidChange:(<span class="built_in">UITextField</span> *)textField&#123;</div><div class="line">    <span class="built_in">UITextRange</span> *selectedRange = textField.markedTextRange;</div><div class="line">    <span class="built_in">UITextPosition</span> *position = [textField positionFromPosition:selectedRange.start offset:<span class="number">0</span>];</div><div class="line">    <span class="keyword">if</span> (!position) &#123;</div><div class="line">        <span class="comment">// 没有高亮选择的字</span></div><div class="line">        <span class="comment">// 1. 过滤非汉字、字母、数字字符</span></div><div class="line">        <span class="keyword">self</span>.phoneTextField.text = [<span class="keyword">self</span> filterCharactor:textField.text withRegex:<span class="string">@"[^0-9]"</span>];</div><div class="line">        <span class="comment">// 2. 截取</span></div><div class="line">        <span class="keyword">if</span> (<span class="keyword">self</span>.phoneTextField.text.length &gt;= <span class="number">12</span>) &#123;</div><div class="line">            <span class="keyword">self</span>.phoneTextField.text = [<span class="keyword">self</span>.phoneTextField.text substringToIndex:<span class="number">11</span>];</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="comment">// 有高亮选择的字 不做任何操作</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 过滤字符串中的非汉字、字母、数字</span></div><div class="line">- (<span class="built_in">NSString</span> *)filterCharactor:(<span class="built_in">NSString</span> *)string withRegex:(<span class="built_in">NSString</span> *)regexStr&#123;</div><div class="line">    <span class="built_in">NSString</span> *filterText = string;</div><div class="line">    <span class="built_in">NSError</span> *error = <span class="literal">NULL</span>;</div><div class="line">    <span class="built_in">NSRegularExpression</span> *regex = [<span class="built_in">NSRegularExpression</span> regularExpressionWithPattern:regexStr options:<span class="built_in">NSRegularExpressionCaseInsensitive</span> error:&amp;error];</div><div class="line">    <span class="built_in">NSString</span> *result = [regex stringByReplacingMatchesInString:filterText options:<span class="built_in">NSMatchingReportCompletion</span> range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, filterText.length) withTemplate:<span class="string">@""</span>];</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/12/UITableView/" data-id="cja46ybl60001t9ip0aj8es42" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/18/键盘输入框限制输入等处理/" data-id="cja4r2ol4000l1gipk2hglfiq" class="article-share-link">分享</a>
       
       
       
@@ -412,10 +272,10 @@
 
 
   
-    <article id="post-代理 与 通知" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-键盘遮挡问题 手势冲突" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/12/代理 与 通知/" class="article-date">
-  <time datetime="2017-08-12T10:06:44.000Z" itemprop="datePublished">2017-08-12</time>
+    <a href="/2017/11/18/键盘遮挡问题 手势冲突/" class="article-date">
+  <time datetime="2017-11-18T02:45:45.402Z" itemprop="datePublished">2017-11-18</time>
 </a>
     
   </div>
@@ -426,7 +286,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/12/代理 与 通知/">代理 与 通知</a>
+      <a class="article-title" href="/2017/11/18/键盘遮挡问题 手势冲突/">键盘遮挡问题 手势冲突</a>
     </h1>
   
 
@@ -436,70 +296,184 @@
       
         <!-- Table of Contents -->
         
-        <h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><ul>
-<li><p>代理设计模式的作用:</p>
-<ul>
-<li>A对象监听B对象的一些行为，A成为B的代理</li>
-<li>B对象想告诉A对象一些事情，A成为B的代理</li>
-</ul>
-</li>
-<li><p>代理设计模式的总结：</p>
-<ul>
-<li>如果你想监听别人的一些行为，那么你就要成为别人的代理</li>
-<li>如果你想告诉别人一些事情，那么就让别人成为你的代理</li>
-</ul>
-</li>
-<li><p>代理设计模式的开发步骤</p>
-<ul>
-<li>拟一份协议（协议名字的格式：控件名 + Delegate），在协议里面声明一些代理方法（一般代理方法都是@optional）</li>
-<li>声明一个代理属性：@property (nonatomic, weak) id&lt;代理协议&gt; delegate;</li>
-<li>在内部发生某些行为时，调用代理对应的代理方法，通知代理内部发生什么事</li>
-<li>设置代理：xxx.delegate = yyy;</li>
-<li>yyy对象遵守协议，实现代理方法</li>
-</ul>
-</li>
-</ul>
-<h2 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h2><ul>
-<li><p>通知设计模式的作用：</p>
-<ul>
-<li>每一个应用程序都有一个通知中心(NSNotificationCenter)实例，专门负责协助不同对象之间的消息通信</li>
-<li>任何一个对象都可以向通知中心发布通知(NSNotification)，描述自己在做什么。其他感兴趣的对象(Observer)可以申请在某个特定通知发布时(或在某个特定的对象发布通知时)收到这个通知</li>
-</ul>
-</li>
-<li><p>通知设计模式的总结</p>
-<ul>
-<li>如果你想告诉别人一些事情，那么你就要发布通知<ul>
-<li>如果你想监听别人的一些行为，那么你就要注册监听通知</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>通知设计模式的开发步骤<ul>
-<li>A文件中发布通知</li>
-<li>B文件注册监听通知</li>
-<li>B文件取消注册通知 <ul>
-<li>通知中心不会保留(retain)监听器对象，在通知中心注册过的对象，必须在该对象释放前取消注册。否则，当相应的通知再次出现时，通知中心仍然会向该监听器发送消息。因为相应的监听器对象已经被释放了，所以可能会导致应用崩溃</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)postNotification:(<span class="built_in">NSNotification</span> *)notification;<span class="comment">//发布一个notification通知，可在notification对象中设置通知的名称、通知发布者、额外信息等</span></div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)postNotificationName:(<span class="built_in">NSString</span> *)aName object:(<span class="keyword">id</span>)anObject;<span class="comment">//发布一个名称为aName的通知，anObject为这个通知的发布者</span></div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)postNotificationName:(<span class="built_in">NSString</span> *)aName object:(<span class="keyword">id</span>)anObject userInfo:(<span class="built_in">NSDictionary</span> *)aUserInfo;<span class="comment">//发布一个名称为aName的通知，anObject为这个通知的发布者，aUserInfo为额外信息</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)addObserver:(<span class="keyword">id</span>)observer selector:(SEL)aSelector name:(<span class="built_in">NSString</span> *)aName object:(<span class="keyword">id</span>)anObject;</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">observer：监听器，即谁要接收这个通知</span></div><div class="line"><span class="comment">aSelector：收到通知后，回调监听器的这个方法，并且把通知对象当做参数传入</span></div><div class="line"><span class="comment">aName：通知的名称。如果为nil，那么无论通知的名称是什么，监听器都能收到这个通知</span></div><div class="line"><span class="comment">anObject：通知发布者。如果为anObject和aName都为nil，监听器都收到所有的通知</span></div><div class="line"><span class="comment">*/</span></div><div class="line"></div><div class="line">- (<span class="keyword">id</span>)addObserverForName:(<span class="built_in">NSString</span> *)name object:(<span class="keyword">id</span>)obj queue:(<span class="built_in">NSOperationQueue</span> *)queue usingBlock:(<span class="keyword">void</span> (^)(<span class="built_in">NSNotification</span> *note))block;</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">name：通知的名称</span></div><div class="line"><span class="comment">obj：通知发布者</span></div><div class="line"><span class="comment">block：收到对应的通知时，会回调这个block</span></div><div class="line"><span class="comment">queue：决定了block在哪个操作队列中执行，如果传nil，默认在当前操作队列中同步执行</span></div><div class="line"><span class="comment">*/</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//通知中心提供了相应的方法来取消注册监听器</span>- (<span class="keyword">void</span>)removeObserver:(<span class="keyword">id</span>)observer;- (<span class="keyword">void</span>)removeObserver:(<span class="keyword">id</span>)observer name:(<span class="built_in">NSString</span> *)aName object:(<span class="keyword">id</span>)anObject;<span class="comment">//一般在监听器销毁之前取消注册（如在监听器中加入下列代码）：</span>- (<span class="keyword">void</span>)dealloc &#123;	<span class="comment">//[super dealloc];  非ARC中需要调用此句</span>    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] removeObserver:<span class="keyword">self</span>];&#125;</div></pre></td></tr></table></figure>
-<h2 id="代理和通知的区别"><a href="#代理和通知的区别" class="headerlink" title="代理和通知的区别"></a>代理和通知的区别</h2><ul>
-<li>代理：1个对象只能告诉另1个对象发生了什么事</li>
-<li>通知：1个对象可以告诉N个对象发生了什么事</li>
-</ul>
-<h2 id="KVC-KVO"><a href="#KVC-KVO" class="headerlink" title="KVC\KVO"></a>KVC\KVO</h2><ul>
-<li>KVC(Key Value Coding)常见作用：给模型属性赋值</li>
-<li>KVO(Key Value Observing)常用作用：监听模型属性值的改变</li>
-<li>KVO的使用步骤<br></li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// cc监听了aa的name属性的改变</span></div><div class="line">[aa addObserver:cc forKeyPath:<span class="string">@"name"</span> options: <span class="built_in">NSKeyValueObservingOptionOld</span> context:<span class="literal">nil</span>];</div><div class="line"></div><div class="line"><span class="comment">// cc得实现监听方法</span></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 当监听到object的keyPath属性发生了改变</span></div><div class="line"><span class="comment"> */</span></div><div class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath ofObject:(<span class="keyword">id</span>)object change:(<span class="built_in">NSDictionary</span> *)change context:(<span class="keyword">void</span> *)context</div><div class="line">&#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"监听到%@对象的%@属性发生了改变， %@"</span>, object, keyPath, change);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//解决手势冲突 网格点击</span></div><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldReceiveTouch:(<span class="built_in">UITouch</span> *)touch</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (touch.view != <span class="keyword">self</span>.customCollectionView) &#123;</div><div class="line">        [<span class="keyword">self</span>.view endEditing:<span class="literal">YES</span>];</div><div class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/18/键盘遮挡问题 手势冲突/" data-id="cja4r2ol5000m1gipx343vepm" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-富文本的修改" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/18/富文本的修改/" class="article-date">
+  <time datetime="2017-11-18T02:44:17.934Z" itemprop="datePublished">2017-11-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/18/富文本的修改/">富文本的修改</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <pre><code class="objc"><span class="built_in">NSString</span> *string2 =  [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"朋友价 ￥%@"</span>,model.boss_sell_price];
+    <span class="built_in">NSMutableAttributedString</span> *string1 = [[<span class="built_in">NSMutableAttributedString</span> alloc] initWithString:string2];
+    [string1 addAttribute:<span class="built_in">NSFontAttributeName</span>
+                    value:[<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">8</span>]
+                    range:<span class="built_in">NSMakeRange</span>(<span class="number">4</span>, <span class="number">1</span>)];
+    [string1 addAttribute:<span class="built_in">NSForegroundColorAttributeName</span>
+                    value:<span class="built_in">UIColorFromRGB</span>(<span class="number">0x999999</span>)
+                    range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, <span class="number">4</span>)];
+    <span class="keyword">self</span>.sell.attributedText = string1;
+</code></pre>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/12/代理 与 通知/" data-id="cja46yblb0003t9ip7n4luhki" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/18/富文本的修改/" data-id="cja4r2okj000f1gipg64lzv5v" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-跨多级页面跳转" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/18/跨多级页面跳转/" class="article-date">
+  <time datetime="2017-11-18T02:40:14.348Z" itemprop="datePublished">2017-11-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/18/跨多级页面跳转/">跨多级页面跳转</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[[_app_ getTabBar] selectTableBarIndex:<span class="number">2</span>];</div><div class="line">  [<span class="keyword">self</span>.navigationController popToRootViewControllerAnimated:<span class="literal">NO</span>];</div><div class="line">  <span class="built_in">UINavigationController</span> *selectedNavi = [_app_ getTabBar].selectedViewController;</div><div class="line">  </div><div class="line">  <span class="keyword">if</span> (selectedNavi.viewControllers.count &gt;<span class="number">0</span>) &#123;</div><div class="line">      </div><div class="line">      <span class="keyword">if</span> ([[selectedNavi.viewControllers firstObject] <span class="keyword">class</span>] == [ProfileViewController <span class="keyword">class</span>]) &#123;</div><div class="line">          </div><div class="line">          PropertyDetailViewController *propertyDetailVC =[[PropertyDetailViewController alloc]initWithPropertyType:<span class="number">6</span>];</div><div class="line"></div><div class="line">          </div><div class="line">          ProfileViewController *ProfileViewController = [selectedNavi.viewControllers firstObject];</div><div class="line">          [ProfileViewController.navigationController pushViewController:propertyDetailVC animated:<span class="literal">NO</span>];</div><div class="line">      &#125;</div><div class="line">      </div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/18/跨多级页面跳转/" data-id="cja4r2oko000j1gip2xje2wau" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-Mansonry不用弱引用 为什么不会循环引用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/18/Mansonry不用弱引用 为什么不会循环引用/" class="article-date">
+  <time datetime="2017-11-18T02:35:35.927Z" itemprop="datePublished">2017-11-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/18/Mansonry不用弱引用 为什么不会循环引用/">Mansonry不用弱引用 为什么不会循环引用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">NSArray</span> )mas_makeConstraints:(<span class="keyword">void</span>(^)(MASConstraintMaker ))block&#123;</div><div class="line">	<span class="keyword">self</span>.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</div><div class="line">	MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:<span class="keyword">self</span>];</div><div class="line">	block(constraintMaker);</div><div class="line">	<span class="keyword">return</span> [constraintMaker install];</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>这个就和网络请求里面使用self道理是一样的。因为UIView未强持有block，所以这个block只是个栈block，而且构不成循环引用的条件。栈block有个特性就是它执行完毕之后就出栈，出栈了就会被释放掉。看mas_makexxx的方法实现会发现这个block很快就被调用了，完事儿就出栈销毁，构不成循环引用，所以可以直接放心的使用self。</p>
+<p>masonry里面没有额外引用起来，block执行完之后就随着方法执行完之后就销毁了，不存在一直被引用释放不了的问题，所以无需weak。weak也无所谓。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/18/Mansonry不用弱引用 为什么不会循环引用/" data-id="cja4r2ojs00011gip0gfp6wgs" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-label中划线设置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/18/label中划线设置/" class="article-date">
+  <time datetime="2017-11-18T02:33:04.275Z" itemprop="datePublished">2017-11-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <hr>
+<h2 id="title：label中划线设置"><a href="#title：label中划线设置" class="headerlink" title="title：label中划线设置"></a>title：label中划线设置</h2><pre><code class="objc"><span class="comment">//中划线</span>
+ <span class="built_in">NSMutableAttributedString</span> *attribtStr_origin = [[<span class="built_in">NSMutableAttributedString</span> alloc]initWithString:originalMoney attributes:attribtDic];
+
+ [attribtStr_origin setAttributes:@{<span class="built_in">NSStrikethroughStyleAttributeName</span>: [<span class="built_in">NSNumber</span> numberWithInteger:<span class="built_in">NSUnderlineStyleSingle</span>], <span class="built_in">NSBaselineOffsetAttributeName</span> : @(<span class="built_in">NSUnderlineStyleSingle</span>),<span class="built_in">NSForegroundColorAttributeName</span>:[Toolkit getColor:hex_aaaaaa]} range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>,attribtStr_origin.length)];
+
+ [attribtStr_origin addAttribute:<span class="built_in">NSFontAttributeName</span> value:[<span class="built_in">UIFont</span> fontWithName:<span class="string">@"GillSans"</span> size:<span class="number">12.0</span>] range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>,attribtStr_origin.length)];
+
+ [attribtStr appendAttributedString:attribtStr_origin];
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/18/label中划线设置/" data-id="cja4r2ok200051gipwz3oy1z9" class="article-share-link">分享</a>
       
       
       
@@ -512,6 +486,10 @@
 
   
 
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页&raquo;</a>
+  </nav>
 </section>
            
     <aside id="sidebar">
@@ -548,28 +526,28 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title recent-posts">Recent Posts</h3>
+    <h3 class="widget-title recent-posts">最新文章</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2017/08/15/pch自定义日志输出/">pch自定义日志输出</a>
+            <a href="/2017/11/18/滚动试图不滚动的问题/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/08/14/统一设置所有 UITabBarItem 的文字属性/">统一设置所有 UITabBarItem 的文字属性</a>
+            <a href="/2017/11/18/本地字典转JSON/">本地字典写成需要的JSON 本地文件</a>
           </li>
         
           <li>
-            <a href="/2017/08/13/键盘弹出/">解决键盘弹出挡住VIew</a>
+            <a href="/2017/11/18/修改UIAlertView设置文字左对齐/">修改UIAlertView设置文字左对齐</a>
           </li>
         
           <li>
-            <a href="/2017/08/13/transform动画/">transform动画</a>
+            <a href="/2017/11/18/oc中的泛型/">oc中的泛型</a>
           </li>
         
           <li>
-            <a href="/2017/08/12/UITableView/">UITableView</a>
+            <a href="/2017/11/18/键盘输入框限制输入等处理/">键盘输入框限制输入等处理</a>
           </li>
         
       </ul>
@@ -579,9 +557,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title archive">Archives</h3>
+    <h3 class="widget-title archive">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -625,10 +603,10 @@
   <div class="outer">
     <div id="footer-left">
       &copy; 2014 - 2017 TQMAX&nbsp;|&nbsp;
-      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">
-      Contact&nbsp;|&nbsp;youemail@outlook.com
+      联系方式&nbsp;|&nbsp;youemail@outlook.com
     </div>
   </div>
 </footer>

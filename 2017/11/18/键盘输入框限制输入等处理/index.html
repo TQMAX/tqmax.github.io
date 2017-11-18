@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>统一设置所有 UITabBarItem 的文字属性 | 神棍MAX的iOS杂货铺</title>
+  <title>键盘输入框限制输入等处理 | 神棍MAX的iOS杂货铺</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="123456789101112131415#pragma mark - 统一设置所有 UITabBarItem 的文字属性+ (void)initialize &amp;#123;    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];    attrs[NSFontAttributeName] = [UIFont systemF">
+  <meta name="description" content="1.先加入事件 1[_phoneTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged]; 2.处理方法 123456789101112131415161718192021222324- (void)textFieldDidChange:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="统一设置所有 UITabBarItem 的文字属性">
-<meta property="og:url" content="http://yoursite.com/2017/08/14/统一设置所有 UITabBarItem 的文字属性/index.html">
+<meta property="og:title" content="键盘输入框限制输入等处理">
+<meta property="og:url" content="http://yoursite.com/2017/11/18/键盘输入框限制输入等处理/index.html">
 <meta property="og:site_name" content="神棍MAX的iOS杂货铺">
-<meta property="og:description" content="123456789101112131415#pragma mark - 统一设置所有 UITabBarItem 的文字属性+ (void)initialize &amp;#123;    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];    attrs[NSFontAttributeName] = [UIFont systemF">
+<meta property="og:description" content="1.先加入事件 1[_phoneTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged]; 2.处理方法 123456789101112131415161718192021222324- (void)textFieldDidChange:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-15T05:13:20.000Z">
+<meta property="og:updated_time" content="2017-11-18T02:47:31.085Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="统一设置所有 UITabBarItem 的文字属性">
-<meta name="twitter:description" content="123456789101112131415#pragma mark - 统一设置所有 UITabBarItem 的文字属性+ (void)initialize &amp;#123;    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];    attrs[NSFontAttributeName] = [UIFont systemF">
+<meta name="twitter:title" content="键盘输入框限制输入等处理">
+<meta name="twitter:description" content="1.先加入事件 1[_phoneTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged]; 2.处理方法 123456789101112131415161718192021222324- (void)textFieldDidChange:">
   
     <link rel="alternate" href="/atom.xml" title="神棍MAX的iOS杂货铺" type="application/atom+xml">
   
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-统一设置所有 UITabBarItem 的文字属性" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-键盘输入框限制输入等处理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/14/统一设置所有 UITabBarItem 的文字属性/" class="article-date">
-  <time datetime="2017-08-14T12:38:48.000Z" itemprop="datePublished">2017-08-14</time>
+    <a href="/2017/11/18/键盘输入框限制输入等处理/" class="article-date">
+  <time datetime="2017-11-18T02:47:31.085Z" itemprop="datePublished">2017-11-18</time>
 </a>
     
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      统一设置所有 UITabBarItem 的文字属性
+      键盘输入框限制输入等处理
     </h1>
   
 
@@ -92,12 +92,14 @@
       
         <!-- Table of Contents -->
         
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#pragma mark - 统一设置所有 UITabBarItem 的文字属性</span></div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>)initialize &#123;</div><div class="line">    <span class="built_in">NSMutableDictionary</span> *attrs = [<span class="built_in">NSMutableDictionary</span> dictionary];</div><div class="line">    attrs[<span class="built_in">NSFontAttributeName</span>] = [<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">12</span>];</div><div class="line">    attrs[<span class="built_in">NSForegroundColorAttributeName</span>] = [<span class="built_in">UIColor</span> grayColor];</div><div class="line">    </div><div class="line">    <span class="built_in">NSMutableDictionary</span> *selectedAttrs = [<span class="built_in">NSMutableDictionary</span> dictionary];</div><div class="line">    selectedAttrs[<span class="built_in">NSFontAttributeName</span>] = attrs[<span class="built_in">NSFontAttributeName</span>];</div><div class="line">    selectedAttrs[<span class="built_in">NSForegroundColorAttributeName</span>] = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">255</span>/<span class="number">255.0</span> green:<span class="number">125</span>/<span class="number">255.0</span> blue:<span class="number">0</span> alpha:<span class="number">1</span>];</div><div class="line">    </div><div class="line">    <span class="built_in">UITabBarItem</span> *items = [<span class="built_in">UITabBarItem</span> appearance];</div><div class="line">    [items setTitleTextAttributes:attrs forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    [items setTitleTextAttributes:selectedAttrs forState:<span class="built_in">UIControlStateSelected</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+        <p>1.先加入事件</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[_phoneTextField addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(textFieldDidChange:) forControlEvents:<span class="built_in">UIControlEventEditingChanged</span>];</div></pre></td></tr></table></figure>
+<p>2.处理方法</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)textFieldDidChange:(<span class="built_in">UITextField</span> *)textField&#123;</div><div class="line">    <span class="built_in">UITextRange</span> *selectedRange = textField.markedTextRange;</div><div class="line">    <span class="built_in">UITextPosition</span> *position = [textField positionFromPosition:selectedRange.start offset:<span class="number">0</span>];</div><div class="line">    <span class="keyword">if</span> (!position) &#123;</div><div class="line">        <span class="comment">// 没有高亮选择的字</span></div><div class="line">        <span class="comment">// 1. 过滤非汉字、字母、数字字符</span></div><div class="line">        <span class="keyword">self</span>.phoneTextField.text = [<span class="keyword">self</span> filterCharactor:textField.text withRegex:<span class="string">@"[^0-9]"</span>];</div><div class="line">        <span class="comment">// 2. 截取</span></div><div class="line">        <span class="keyword">if</span> (<span class="keyword">self</span>.phoneTextField.text.length &gt;= <span class="number">12</span>) &#123;</div><div class="line">            <span class="keyword">self</span>.phoneTextField.text = [<span class="keyword">self</span>.phoneTextField.text substringToIndex:<span class="number">11</span>];</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="comment">// 有高亮选择的字 不做任何操作</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 过滤字符串中的非汉字、字母、数字</span></div><div class="line">- (<span class="built_in">NSString</span> *)filterCharactor:(<span class="built_in">NSString</span> *)string withRegex:(<span class="built_in">NSString</span> *)regexStr&#123;</div><div class="line">    <span class="built_in">NSString</span> *filterText = string;</div><div class="line">    <span class="built_in">NSError</span> *error = <span class="literal">NULL</span>;</div><div class="line">    <span class="built_in">NSRegularExpression</span> *regex = [<span class="built_in">NSRegularExpression</span> regularExpressionWithPattern:regexStr options:<span class="built_in">NSRegularExpressionCaseInsensitive</span> error:&amp;error];</div><div class="line">    <span class="built_in">NSString</span> *result = [regex stringByReplacingMatchesInString:filterText options:<span class="built_in">NSMatchingReportCompletion</span> range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, filterText.length) withTemplate:<span class="string">@""</span>];</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/14/统一设置所有 UITabBarItem 的文字属性/" data-id="cja4r2okm000i1giptasc9zer" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/11/18/键盘输入框限制输入等处理/" data-id="cja4r2ol4000l1gipk2hglfiq" class="article-share-link">分享</a>
       
       
       
@@ -149,19 +151,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/08/15/pch自定义日志输出/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/11/18/oc中的泛型/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
-          pch自定义日志输出
+          oc中的泛型
         
       </div>
     </a>
   
   
-    <a href="/2017/08/13/键盘弹出/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/11/18/键盘遮挡问题 手势冲突/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">解决键盘弹出挡住VIew</div>
+      <div class="article-nav-title">键盘遮挡问题 手势冲突</div>
     </a>
   
 </nav>
