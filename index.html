@@ -69,10 +69,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-滚动试图不滚动的问题" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-iOS 11地图不提示是否允许定位" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/18/滚动试图不滚动的问题/" class="article-date">
-  <time datetime="2017-11-18T02:53:38.110Z" itemprop="datePublished">2017-11-18</time>
+    <a href="/2017/11/09/iOS 11地图不提示是否允许定位/" class="article-date">
+  <time datetime="2017-11-09T13:36:23.000Z" itemprop="datePublished">2017-11-09</time>
 </a>
     
   </div>
@@ -83,7 +83,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/滚动试图不滚动的问题/">滚动试图不滚动的问题</a>
+      <a class="article-title" href="/2017/11/09/iOS 11地图不提示是否允许定位/">iOS 11地图不提示是否允许定位</a>
     </h1>
   
 
@@ -93,15 +93,17 @@
       
         <!-- Table of Contents -->
         
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)viewDidLayoutSubviews</div><div class="line">&#123;</div><div class="line">    _BaseScore.contentSize = <span class="built_in">CGSizeMake</span>(SCREEN_WIDTH, xxxx);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Privacy - Location Always Usage Description   <span class="comment">//删掉这个iOS11可提示</span></div><div class="line">Privacy - Location When In Use Usage Description</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/滚动试图不滚动的问题/" data-id="cja53suir000ikhip8lvik3hp" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/11/09/iOS 11地图不提示是否允许定位/" data-id="cja54uoqd0004oxipt6lg197k" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS-11/">iOS 11</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/地图/">地图</a></li></ul>
+
     </footer>
   </div>
   
@@ -110,10 +112,10 @@
 
 
   
-    <article id="post-本地字典转JSON" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-iOS11数字精度问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/18/本地字典转JSON/" class="article-date">
-  <time datetime="2017-11-18T02:52:44.020Z" itemprop="datePublished">2017-11-18</time>
+    <a href="/2017/10/27/iOS11数字精度问题/" class="article-date">
+  <time datetime="2017-10-27T13:22:58.000Z" itemprop="datePublished">2017-10-27</time>
 </a>
     
   </div>
@@ -124,7 +126,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/本地字典转JSON/">本地字典写成需要的JSON 本地文件</a>
+      <a class="article-title" href="/2017/10/27/iOS11数字精度问题/">iOS11数字精度问题</a>
     </h1>
   
 
@@ -134,14 +136,17 @@
       
         <!-- Table of Contents -->
         
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1.判断当前对象是否能够转换成JSON数据.</span></div><div class="line">  <span class="comment">// YES if obj can be converted to JSON data, otherwise NO</span></div><div class="line">  <span class="built_in">BOOL</span> isYes = [<span class="built_in">NSJSONSerialization</span> isValidJSONObject:dict];</div><div class="line">  </div><div class="line">  <span class="keyword">if</span> (isYes) &#123;</div><div class="line">      <span class="built_in">NSLog</span>(<span class="string">@"可以转换"</span>);</div><div class="line">      </div><div class="line">      <span class="comment">/* JSON data for obj, or nil if an internal error occurs. The resulting data is a encoded in UTF-8.</span></div><div class="line"><span class="comment">       */</span></div><div class="line">      <span class="built_in">NSData</span> *jsonData = [<span class="built_in">NSJSONSerialization</span> dataWithJSONObject:dict options:<span class="number">0</span> error:<span class="literal">NULL</span>];</div><div class="line">      </div><div class="line">      </div><div class="line">      <span class="comment">// 将JSON数据写成文件</span></div><div class="line">      <span class="comment">// 文件添加后缀名: 告诉别人当前文件的类型.</span></div><div class="line">      <span class="comment">// 注意: AFN是通过文件类型来确定数据类型的!如果不添加类型,有可能识别不了! 自己最好添加文件类型.</span></div><div class="line">      [jsonData writeToFile:<span class="string">@"/Users/ygkj/Desktop/shopCartTestData.json"</span> atomically:<span class="literal">YES</span>];</div><div class="line">      </div><div class="line">      <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, [[<span class="built_in">NSString</span> alloc] initWithData:jsonData encoding:<span class="built_in">NSUTF8StringEncoding</span>]);</div><div class="line">      </div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">      </div><div class="line">      <span class="built_in">NSLog</span>(<span class="string">@"JSON数据生成失败，请检查数据格式"</span>);</div><div class="line">      </div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/*!</span></div><div class="line"><span class="comment"> @brief 修正浮点型精度丢失</span></div><div class="line"><span class="comment"> @param str 传入接口取到的数据</span></div><div class="line"><span class="comment"> @return 修正精度后的数据</span></div><div class="line"><span class="comment"> */</span></div><div class="line">+(<span class="built_in">NSString</span> *)reviseString:(<span class="built_in">NSString</span> *)str</div><div class="line">&#123;</div><div class="line">    <span class="comment">//直接传入精度丢失有问题的Double类型</span></div><div class="line">    <span class="keyword">double</span> conversionValue = [str doubleValue];</div><div class="line">    <span class="built_in">NSString</span> *doubleString = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%lf"</span>, conversionValue];</div><div class="line">    <span class="built_in">NSDecimalNumber</span> *decNumber = [<span class="built_in">NSDecimalNumber</span> decimalNumberWithString:doubleString];</div><div class="line">    <span class="keyword">return</span> [decNumber stringValue];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/本地字典转JSON/" data-id="cja53suip000gkhip4hz5frpj" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/10/27/iOS11数字精度问题/" data-id="cja54uoqn0005oxip7k5rjpr3" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS-11/">iOS 11</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/精度/">精度</a></li></ul>
+
     </footer>
   </div>
   
@@ -150,10 +155,10 @@
 
 
   
-    <article id="post-修改UIAlertView设置文字左对齐" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post- iOS 11 tableview适配" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/18/修改UIAlertView设置文字左对齐/" class="article-date">
-  <time datetime="2017-11-18T02:50:33.073Z" itemprop="datePublished">2017-11-18</time>
+    <a href="/2017/10/11/ iOS 11 tableview适配/" class="article-date">
+  <time datetime="2017-10-11T13:18:17.000Z" itemprop="datePublished">2017-10-11</time>
 </a>
     
   </div>
@@ -164,7 +169,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/修改UIAlertView设置文字左对齐/">修改UIAlertView设置文字左对齐</a>
+      <a class="article-title" href="/2017/10/11/ iOS 11 tableview适配/">iOS 11 tableview适配</a>
     </h1>
   
 
@@ -174,20 +179,17 @@
       
         <!-- Table of Contents -->
         
-        <p>因为iphoneSDK默认是居中对齐的，而且没有提供方法设置文本对齐接口，在Delegate中:</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)willPresentAlertView:(<span class="built_in">UIAlertView</span> *)alertView;</div></pre></td></tr></table></figure>
-<p>获取UIAlertView上面的Message控件，它其实也是一个UILable控件，然后设置其textAlignment的属性即可。</p>
-<p>代码如下：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)willPresentAlertView:(<span class="built_in">UIAlertView</span> *)alertView&#123;</div><div class="line">    <span class="built_in">UIView</span> * view = [alertView.subviews objectAtIndex:<span class="number">2</span>];</div><div class="line">    <span class="keyword">if</span>([view isKindOfClass:[<span class="built_in">UILabel</span> <span class="keyword">class</span>]])&#123;</div><div class="line">        <span class="built_in">UILabel</span>* label = (<span class="built_in">UILabel</span>*) view;</div><div class="line">        label.textAlignment = <span class="built_in">UITextAlignmentLeft</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这里要注意的是，Message的UILable在alertView.subviews里面是第3个元素，第一个元素是一个UIImageView(背景),UILable(标题),UILable(Message),UIButton(Cancel)…(如果还有的话以此类推)。</p>
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// tableView 偏移20/64适配</span></div><div class="line"><span class="keyword">if</span> (@available(iOS <span class="number">11.0</span>, *)) &#123;</div><div class="line">    <span class="keyword">self</span>.tableView.contentInsetAdjustmentBehavior = <span class="built_in">UIScrollViewContentInsetAdjustmentNever</span>;</div><div class="line">    <span class="comment">//UIScrollView也适用</span></div><div class="line">&#125;<span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">self</span>.automaticallyAdjustsScrollViewInsets = <span class="literal">NO</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/修改UIAlertView设置文字左对齐/" data-id="cja53suie000ckhipquv7ifqz" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/10/11/ iOS 11 tableview适配/" data-id="cja54uopv0000oxip9t56e49e" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS-11/">iOS 11</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tableview/">tableview</a></li></ul>
+
     </footer>
   </div>
   
@@ -196,10 +198,10 @@
 
 
   
-    <article id="post-oc中的泛型" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-高德地图点击手势添加标记 进行POI检索" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/18/oc中的泛型/" class="article-date">
-  <time datetime="2017-11-18T02:49:11.806Z" itemprop="datePublished">2017-11-18</time>
+    <a href="/2017/10/02/高德地图点击手势添加标记 进行POI检索/" class="article-date">
+  <time datetime="2017-10-02T13:18:45.000Z" itemprop="datePublished">2017-10-02</time>
 </a>
     
   </div>
@@ -210,7 +212,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/oc中的泛型/">oc中的泛型</a>
+      <a class="article-title" href="/2017/10/02/高德地图点击手势添加标记 进行POI检索/">高德地图点击手势添加标记 进行POI检索</a>
     </h1>
   
 
@@ -220,233 +222,21 @@
       
         <!-- Table of Contents -->
         
-        <p>举例：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)test &#123;</div><div class="line">    <span class="built_in">NSMutableArray</span>&lt;<span class="built_in">NSString</span> *&gt; *strArray = [<span class="built_in">NSMutableArray</span> array];</div><div class="line">    [strArray addObject:<span class="string">@"aString"</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>可以在声明NSMutableArray时添加一个弱泛型约束，之所以是弱泛型，是因为编译器会帮你检查数据类型是否正确，如果不正确会有一个警告，但是不会强制报错，代码还是可以编译过的。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//传入的不是规定的类型 会报警告</span></div><div class="line">- (<span class="keyword">void</span>)test &#123;</div><div class="line">    <span class="built_in">NSMutableArray</span>&lt;<span class="built_in">NSString</span> *&gt; *strArray = [<span class="built_in">NSMutableArray</span> array];</div><div class="line">    [strArray addObject:[<span class="built_in">NSNumber</span> numberWithFloat:<span class="number">15.0</span>]];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/oc中的泛型/" data-id="cja53sui20006khip28fmi3z1" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-键盘输入框限制输入等处理" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/18/键盘输入框限制输入等处理/" class="article-date">
-  <time datetime="2017-11-18T02:47:31.085Z" itemprop="datePublished">2017-11-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/键盘输入框限制输入等处理/">键盘输入框限制输入等处理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>1.先加入事件</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[_phoneTextField addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(textFieldDidChange:) forControlEvents:<span class="built_in">UIControlEventEditingChanged</span>];</div></pre></td></tr></table></figure>
-<p>2.处理方法</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)textFieldDidChange:(<span class="built_in">UITextField</span> *)textField&#123;</div><div class="line">    <span class="built_in">UITextRange</span> *selectedRange = textField.markedTextRange;</div><div class="line">    <span class="built_in">UITextPosition</span> *position = [textField positionFromPosition:selectedRange.start offset:<span class="number">0</span>];</div><div class="line">    <span class="keyword">if</span> (!position) &#123;</div><div class="line">        <span class="comment">// 没有高亮选择的字</span></div><div class="line">        <span class="comment">// 1. 过滤非汉字、字母、数字字符</span></div><div class="line">        <span class="keyword">self</span>.phoneTextField.text = [<span class="keyword">self</span> filterCharactor:textField.text withRegex:<span class="string">@"[^0-9]"</span>];</div><div class="line">        <span class="comment">// 2. 截取</span></div><div class="line">        <span class="keyword">if</span> (<span class="keyword">self</span>.phoneTextField.text.length &gt;= <span class="number">12</span>) &#123;</div><div class="line">            <span class="keyword">self</span>.phoneTextField.text = [<span class="keyword">self</span>.phoneTextField.text substringToIndex:<span class="number">11</span>];</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="comment">// 有高亮选择的字 不做任何操作</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 过滤字符串中的非汉字、字母、数字</span></div><div class="line">- (<span class="built_in">NSString</span> *)filterCharactor:(<span class="built_in">NSString</span> *)string withRegex:(<span class="built_in">NSString</span> *)regexStr&#123;</div><div class="line">    <span class="built_in">NSString</span> *filterText = string;</div><div class="line">    <span class="built_in">NSError</span> *error = <span class="literal">NULL</span>;</div><div class="line">    <span class="built_in">NSRegularExpression</span> *regex = [<span class="built_in">NSRegularExpression</span> regularExpressionWithPattern:regexStr options:<span class="built_in">NSRegularExpressionCaseInsensitive</span> error:&amp;error];</div><div class="line">    <span class="built_in">NSString</span> *result = [regex stringByReplacingMatchesInString:filterText options:<span class="built_in">NSMatchingReportCompletion</span> range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, filterText.length) withTemplate:<span class="string">@""</span>];</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/键盘输入框限制输入等处理/" data-id="cja53suj0000pkhipxxvq6a6w" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-键盘遮挡问题 手势冲突" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/18/键盘遮挡问题 手势冲突/" class="article-date">
-  <time datetime="2017-11-18T02:45:45.402Z" itemprop="datePublished">2017-11-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/键盘遮挡问题 手势冲突/">键盘遮挡问题 手势冲突</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//解决手势冲突 网格点击</span></div><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldReceiveTouch:(<span class="built_in">UITouch</span> *)touch</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (touch.view != <span class="keyword">self</span>.customCollectionView) &#123;</div><div class="line">        [<span class="keyword">self</span>.view endEditing:<span class="literal">YES</span>];</div><div class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/键盘遮挡问题 手势冲突/" data-id="cja53suj1000qkhipigc3g75f" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-富文本的修改" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/18/富文本的修改/" class="article-date">
-  <time datetime="2017-11-18T02:44:17.934Z" itemprop="datePublished">2017-11-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/富文本的修改/">富文本的修改</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <pre><code class="objc"><span class="built_in">NSString</span> *string2 =  [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"朋友价 ￥%@"</span>,model.boss_sell_price];
-    <span class="built_in">NSMutableAttributedString</span> *string1 = [[<span class="built_in">NSMutableAttributedString</span> alloc] initWithString:string2];
-    [string1 addAttribute:<span class="built_in">NSFontAttributeName</span>
-                    value:[<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">8</span>]
-                    range:<span class="built_in">NSMakeRange</span>(<span class="number">4</span>, <span class="number">1</span>)];
-    [string1 addAttribute:<span class="built_in">NSForegroundColorAttributeName</span>
-                    value:<span class="built_in">UIColorFromRGB</span>(<span class="number">0x999999</span>)
-                    range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, <span class="number">4</span>)];
-    <span class="keyword">self</span>.sell.attributedText = string1;
-</code></pre>
+        <p>点击屏幕上地图  获取手势点击点经纬度并进行POI检索的方法</p>
+<p>1.添加手势</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UITapGestureRecognizer</span> *mTap = [[<span class="built_in">UITapGestureRecognizer</span> alloc] initWithTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(tapPress:)];</div><div class="line">mTap.delegate = <span class="keyword">self</span>;</div><div class="line">[<span class="keyword">self</span>.mapView addGestureRecognizer:mTap];</div></pre></td></tr></table></figure>
+<p>2.手势对应的方法</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)otherGestureRecognizer &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">void</span>)tapPress:(<span class="built_in">UIGestureRecognizer</span>*)gestureRecognizer &#123;</div><div class="line">    </div><div class="line">    <span class="built_in">CGPoint</span> touchPoint = [gestureRecognizer locationInView:<span class="keyword">self</span>.mapView];<span class="comment">//这里touchPoint是点击的某点在地图控件中的位置</span></div><div class="line">    <span class="built_in">CLLocationCoordinate2D</span> touchMapCoordinate =</div><div class="line">    [<span class="keyword">self</span>.mapView convertPoint:touchPoint toCoordinateFromView:<span class="keyword">self</span>.mapView];<span class="comment">//这里touchMapCoordinate就是该点的经纬度了</span></div><div class="line">    </div><div class="line">    AMapPOIAroundSearchRequest *request = [[AMapPOIAroundSearchRequest alloc] init];</div><div class="line">    </div><div class="line">    request.location            = [AMapGeoPoint locationWithLatitude:touchMapCoordinate.latitude longitude:touchMapCoordinate.longitude];</div><div class="line">    <span class="comment">/* 按照距离排序. */</span></div><div class="line">    request.sortrule            = <span class="number">0</span>;</div><div class="line">    request.requireExtension    = <span class="literal">YES</span>;</div><div class="line">    [<span class="keyword">self</span>.search AMapPOIAroundSearch:request];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/富文本的修改/" data-id="cja53suio000fkhipykjl16th" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/10/02/高德地图点击手势添加标记 进行POI检索/" data-id="cja54uos50017oxip6kkznxt8" class="article-share-link">分享</a>
       
       
       
-    </footer>
-  </div>
-  
-</article>
- 
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/POI/">POI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/地图/">地图</a></li></ul>
 
-
-  
-    <article id="post-跨多级页面跳转" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/18/跨多级页面跳转/" class="article-date">
-  <time datetime="2017-11-18T02:40:14.348Z" itemprop="datePublished">2017-11-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/跨多级页面跳转/">跨多级页面跳转</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[[_app_ getTabBar] selectTableBarIndex:<span class="number">2</span>];</div><div class="line">  [<span class="keyword">self</span>.navigationController popToRootViewControllerAnimated:<span class="literal">NO</span>];</div><div class="line">  <span class="built_in">UINavigationController</span> *selectedNavi = [_app_ getTabBar].selectedViewController;</div><div class="line">  </div><div class="line">  <span class="keyword">if</span> (selectedNavi.viewControllers.count &gt;<span class="number">0</span>) &#123;</div><div class="line">      </div><div class="line">      <span class="keyword">if</span> ([[selectedNavi.viewControllers firstObject] <span class="keyword">class</span>] == [ProfileViewController <span class="keyword">class</span>]) &#123;</div><div class="line">          </div><div class="line">          PropertyDetailViewController *propertyDetailVC =[[PropertyDetailViewController alloc]initWithPropertyType:<span class="number">6</span>];</div><div class="line"></div><div class="line">          </div><div class="line">          ProfileViewController *ProfileViewController = [selectedNavi.viewControllers firstObject];</div><div class="line">          [ProfileViewController.navigationController pushViewController:propertyDetailVC animated:<span class="literal">NO</span>];</div><div class="line">      &#125;</div><div class="line">      </div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/跨多级页面跳转/" data-id="cja53suiw000mkhipr3rb09bj" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-Mansonry不用弱引用 为什么不会循环引用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/18/Mansonry不用弱引用 为什么不会循环引用/" class="article-date">
-  <time datetime="2017-11-18T02:35:35.927Z" itemprop="datePublished">2017-11-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/Mansonry不用弱引用 为什么不会循环引用/">Mansonry不用弱引用 为什么不会循环引用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">NSArray</span> )mas_makeConstraints:(<span class="keyword">void</span>(^)(MASConstraintMaker ))block&#123;</div><div class="line">	<span class="keyword">self</span>.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</div><div class="line">	MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:<span class="keyword">self</span>];</div><div class="line">	block(constraintMaker);</div><div class="line">	<span class="keyword">return</span> [constraintMaker install];</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<p>这个就和网络请求里面使用self道理是一样的。因为UIView未强持有block，所以这个block只是个栈block，而且构不成循环引用的条件。栈block有个特性就是它执行完毕之后就出栈，出栈了就会被释放掉。看mas_makexxx的方法实现会发现这个block很快就被调用了，完事儿就出栈销毁，构不成循环引用，所以可以直接放心的使用self。</p>
-<p>masonry里面没有额外引用起来，block执行完之后就随着方法执行完之后就销毁了，不存在一直被引用释放不了的问题，所以无需weak。weak也无所谓。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/Mansonry不用弱引用 为什么不会循环引用/" data-id="cja53suhp0001khip9s94vwbe" class="article-share-link">分享</a>
-      
-      
-      
     </footer>
   </div>
   
@@ -457,8 +247,8 @@
   
     <article id="post-label中划线设置" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/18/label中划线设置/" class="article-date">
-  <time datetime="2017-11-18T02:33:04.275Z" itemprop="datePublished">2017-11-18</time>
+    <a href="/2017/09/16/label中划线设置/" class="article-date">
+  <time datetime="2017-09-16T13:45:23.000Z" itemprop="datePublished">2017-09-16</time>
 </a>
     
   </div>
@@ -469,7 +259,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/label中划线设置/">label中划线设置</a>
+      <a class="article-title" href="/2017/09/16/label中划线设置/">label中划线设置</a>
     </h1>
   
 
@@ -492,10 +282,232 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/label中划线设置/" data-id="cja53suhz0005khipx3g1qkk1" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/09/16/label中划线设置/" data-id="cja54uoqp0007oxipewrihmoa" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/label/">label</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/富文本/">富文本</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-多层wkwebview返回" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/16/多层wkwebview返回/" class="article-date">
+  <time datetime="2017-09-16T13:09:56.000Z" itemprop="datePublished">2017-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/16/多层wkwebview返回/">多层wkwebview返回</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ([<span class="keyword">self</span>.localWebView canGoBack]) &#123;</div><div class="line">    [<span class="keyword">self</span>.localWebView goBack];</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    [<span class="keyword">self</span>.navigationController popToRootViewControllerAnimated:<span class="literal">YES</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/16/多层wkwebview返回/" data-id="cja54uori000noxipofvdizmb" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wkwebview/">wkwebview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/返回/">返回</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-禁止屏幕滑动返回" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/01/禁止屏幕滑动返回/" class="article-date">
+  <time datetime="2017-09-01T13:56:23.000Z" itemprop="datePublished">2017-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/01/禁止屏幕滑动返回/">禁止屏幕滑动返回</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)viewWillAppear:(<span class="built_in">BOOL</span>)animated</div><div class="line">&#123;</div><div class="line">    [<span class="keyword">super</span> viewWillAppear:animated];</div><div class="line">    <span class="comment">// 禁用返回手势</span></div><div class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span>.navigationController respondsToSelector:<span class="keyword">@selector</span>(interactivePopGestureRecognizer)])</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">self</span>.navigationController.interactivePopGestureRecognizer.enabled = <span class="literal">NO</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">void</span>)viewWillDisappear:(<span class="built_in">BOOL</span>)animated</div><div class="line">&#123;</div><div class="line">    [<span class="keyword">super</span> viewWillDisappear:animated];</div><div class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span>.navigationController respondsToSelector:<span class="keyword">@selector</span>(interactivePopGestureRecognizer)])</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">self</span>.navigationController.interactivePopGestureRecognizer.enabled = <span class="literal">YES</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/01/禁止屏幕滑动返回/" data-id="cja54uorq000uoxipz3cukj4y" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/手势/">手势</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/滑动/">滑动</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-滚动试图不滚动的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/滚动试图不滚动的问题/" class="article-date">
+  <time datetime="2017-08-16T13:34:26.000Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/16/滚动试图不滚动的问题/">滚动视图不滚动的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)viewDidLayoutSubviews</div><div class="line">&#123;</div><div class="line">    _BaseScore.contentSize = <span class="built_in">CGSizeMake</span>(SCREEN_WIDTH, xxxx);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/滚动试图不滚动的问题/" data-id="cja54uoro000soxip26vl2dk2" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/滚动/">滚动</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/滚动视图/">滚动视图</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-tableview数组越界" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/03/tableview数组越界/" class="article-date">
+  <time datetime="2017-08-03T13:25:56.000Z" itemprop="datePublished">2017-08-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/03/tableview数组越界/">tableview数组越界</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>使用懒加载的数组只创建一次刷新数据的时候要记得移除所有的数组元素</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.dataArray removeAllObjects];</div></pre></td></tr></table></figure>
+<p>判断数组为空时候的越界问题当首次数据没有请求完毕的时候[tableVIew reloadData];就会导致crash这个时候需要做一次判断：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="keyword">self</span>.dataArray.count != <span class="number">0</span>)&#123;</div><div class="line"> MOdel * model = <span class="keyword">self</span>.dataArray[indexPath.row];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>有时候会出现上拉加载更多后点击下拉出现crash 这个时候提示数组越界但是并不是真的越界 因为这个时候的indexpath.row &gt; 数组的元素个数的。所以需要以下处理</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(!(indexPath.row &gt; rewardArray.count))&#123;</div><div class="line"> Model* model = slef.dataArray[indexpath.row];</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/03/tableview数组越界/" data-id="cja54uoqy000coxipcwm542bn" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tableview/">tableview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组/">数组</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-键盘遮挡问题 手势冲突" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/29/键盘遮挡问题 手势冲突/" class="article-date">
+  <time datetime="2017-07-29T13:08:09.000Z" itemprop="datePublished">2017-07-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/29/键盘遮挡问题 手势冲突/">键盘遮挡问题 手势冲突</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//解决手势冲突 网格点击</span></div><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldReceiveTouch:(<span class="built_in">UITouch</span> *)touch</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (touch.view != <span class="keyword">self</span>.customCollectionView) &#123;</div><div class="line">        [<span class="keyword">self</span>.view endEditing:<span class="literal">YES</span>];</div><div class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/29/键盘遮挡问题 手势冲突/" data-id="cja54uos20016oxipamxxjx22" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/手势/">手势</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/键盘/">键盘</a></li></ul>
+
     </footer>
   </div>
   
@@ -543,7 +555,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title tagcloud">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/代理/" style="font-size: 14px; color: #00f">代理</a> <a href="/tags/通知/" style="font-size: 14px; color: #00f">通知</a>
+      <a href="/tags/AlertView/" style="font-size: 14px; color: #00f">AlertView</a> <a href="/tags/JSON/" style="font-size: 14px; color: #00f">JSON</a> <a href="/tags/Mansonry/" style="font-size: 14px; color: #00f">Mansonry</a> <a href="/tags/POI/" style="font-size: 14px; color: #00f">POI</a> <a href="/tags/iOS-11/" style="font-size: 25px; color: #ee82ee">iOS 11</a> <a href="/tags/label/" style="font-size: 19.5px; color: #7741f7">label</a> <a href="/tags/pch/" style="font-size: 14px; color: #00f">pch</a> <a href="/tags/tabBarItem/" style="font-size: 14px; color: #00f">tabBarItem</a> <a href="/tags/tableview/" style="font-size: 25px; color: #ee82ee">tableview</a> <a href="/tags/textfiled/" style="font-size: 14px; color: #00f">textfiled</a> <a href="/tags/trandform/" style="font-size: 14px; color: #00f">trandform</a> <a href="/tags/wkwebview/" style="font-size: 14px; color: #00f">wkwebview</a> <a href="/tags/代理/" style="font-size: 14px; color: #00f">代理</a> <a href="/tags/动画/" style="font-size: 14px; color: #00f">动画</a> <a href="/tags/占位语/" style="font-size: 14px; color: #00f">占位语</a> <a href="/tags/地图/" style="font-size: 19.5px; color: #7741f7">地图</a> <a href="/tags/字典/" style="font-size: 14px; color: #00f">字典</a> <a href="/tags/富文本/" style="font-size: 19.5px; color: #7741f7">富文本</a> <a href="/tags/对齐/" style="font-size: 14px; color: #00f">对齐</a> <a href="/tags/引用/" style="font-size: 14px; color: #00f">引用</a> <a href="/tags/手势/" style="font-size: 19.5px; color: #7741f7">手势</a> <a href="/tags/数组/" style="font-size: 14px; color: #00f">数组</a> <a href="/tags/泛型/" style="font-size: 14px; color: #00f">泛型</a> <a href="/tags/滑动/" style="font-size: 14px; color: #00f">滑动</a> <a href="/tags/滚动/" style="font-size: 14px; color: #00f">滚动</a> <a href="/tags/滚动视图/" style="font-size: 14px; color: #00f">滚动视图</a> <a href="/tags/笔记/" style="font-size: 19.5px; color: #7741f7">笔记</a> <a href="/tags/精度/" style="font-size: 14px; color: #00f">精度</a> <a href="/tags/设置/" style="font-size: 14px; color: #00f">设置</a> <a href="/tags/跨页面/" style="font-size: 14px; color: #00f">跨页面</a> <a href="/tags/跳转/" style="font-size: 14px; color: #00f">跳转</a> <a href="/tags/输入/" style="font-size: 14px; color: #00f">输入</a> <a href="/tags/返回/" style="font-size: 14px; color: #00f">返回</a> <a href="/tags/通知/" style="font-size: 14px; color: #00f">通知</a> <a href="/tags/键盘/" style="font-size: 25px; color: #ee82ee">键盘</a> <a href="/tags/限制输入/" style="font-size: 14px; color: #00f">限制输入</a>
     </div>
   </div>
 
@@ -555,23 +567,23 @@
       <ul>
         
           <li>
-            <a href="/2017/11/18/滚动试图不滚动的问题/">滚动试图不滚动的问题</a>
+            <a href="/2017/11/09/iOS 11地图不提示是否允许定位/">iOS 11地图不提示是否允许定位</a>
           </li>
         
           <li>
-            <a href="/2017/11/18/本地字典转JSON/">本地字典写成需要的JSON 本地文件</a>
+            <a href="/2017/10/27/iOS11数字精度问题/">iOS11数字精度问题</a>
           </li>
         
           <li>
-            <a href="/2017/11/18/修改UIAlertView设置文字左对齐/">修改UIAlertView设置文字左对齐</a>
+            <a href="/2017/10/11/ iOS 11 tableview适配/">iOS 11 tableview适配</a>
           </li>
         
           <li>
-            <a href="/2017/11/18/oc中的泛型/">oc中的泛型</a>
+            <a href="/2017/10/02/高德地图点击手势添加标记 进行POI检索/">高德地图点击手势添加标记 进行POI检索</a>
           </li>
         
           <li>
-            <a href="/2017/11/18/键盘输入框限制输入等处理/">键盘输入框限制输入等处理</a>
+            <a href="/2017/09/16/label中划线设置/">label中划线设置</a>
           </li>
         
       </ul>
@@ -583,7 +595,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title archive">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

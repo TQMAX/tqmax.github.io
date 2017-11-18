@@ -69,10 +69,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-禁止屏幕滑动返回" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Mansonry不用弱引用 为什么不会循环引用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/18/禁止屏幕滑动返回/" class="article-date">
-  <time datetime="2017-11-18T02:31:38.629Z" itemprop="datePublished">2017-11-18</time>
+    <a href="/2017/06/12/Mansonry不用弱引用 为什么不会循环引用/" class="article-date">
+  <time datetime="2017-06-12T13:26:18.000Z" itemprop="datePublished">2017-06-12</time>
 </a>
     
   </div>
@@ -83,7 +83,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/禁止屏幕滑动返回/">禁止屏幕滑动返回</a>
+      <a class="article-title" href="/2017/06/12/Mansonry不用弱引用 为什么不会循环引用/">Mansonry不用弱引用 为什么不会循环引用</a>
     </h1>
   
 
@@ -93,14 +93,19 @@
       
         <!-- Table of Contents -->
         
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)viewWillAppear:(<span class="built_in">BOOL</span>)animated</div><div class="line">&#123;</div><div class="line">    [<span class="keyword">super</span> viewWillAppear:animated];</div><div class="line">    <span class="comment">// 禁用返回手势</span></div><div class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span>.navigationController respondsToSelector:<span class="keyword">@selector</span>(interactivePopGestureRecognizer)])</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">self</span>.navigationController.interactivePopGestureRecognizer.enabled = <span class="literal">NO</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">void</span>)viewWillDisappear:(<span class="built_in">BOOL</span>)animated</div><div class="line">&#123;</div><div class="line">    [<span class="keyword">super</span> viewWillDisappear:animated];</div><div class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span>.navigationController respondsToSelector:<span class="keyword">@selector</span>(interactivePopGestureRecognizer)])</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">self</span>.navigationController.interactivePopGestureRecognizer.enabled = <span class="literal">YES</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">NSArray</span> )mas_makeConstraints:(<span class="keyword">void</span>(^)(MASConstraintMaker ))block&#123;</div><div class="line">	<span class="keyword">self</span>.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</div><div class="line">	MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:<span class="keyword">self</span>];</div><div class="line">	block(constraintMaker);</div><div class="line">	<span class="keyword">return</span> [constraintMaker install];</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>这个就和网络请求里面使用self道理是一样的。因为UIView未强持有block，所以这个block只是个栈block，而且构不成循环引用的条件。栈block有个特性就是它执行完毕之后就出栈，出栈了就会被释放掉。看mas_makexxx的方法实现会发现这个block很快就被调用了，完事儿就出栈销毁，构不成循环引用，所以可以直接放心的使用self。</p>
+<p>masonry里面没有额外引用起来，block执行完之后就随着方法执行完之后就销毁了，不存在一直被引用释放不了的问题，所以无需weak。weak也无所谓。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/禁止屏幕滑动返回/" data-id="cja53suis000jkhipzieuspd0" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/06/12/Mansonry不用弱引用 为什么不会循环引用/" data-id="cja54uoq10001oxipl6wupq93" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mansonry/">Mansonry</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/引用/">引用</a></li></ul>
+
     </footer>
   </div>
   
@@ -109,10 +114,10 @@
 
 
   
-    <article id="post-textfiled占位语的设置" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-键盘输入框限制输入等处理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/18/textfiled占位语的设置/" class="article-date">
-  <time datetime="2017-11-18T02:30:05.265Z" itemprop="datePublished">2017-11-18</time>
+    <a href="/2017/06/06/键盘输入框限制输入等处理/" class="article-date">
+  <time datetime="2017-06-06T13:18:09.000Z" itemprop="datePublished">2017-06-06</time>
 </a>
     
   </div>
@@ -123,7 +128,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/textfiled占位语的设置/">textfiled占位语的设置</a>
+      <a class="article-title" href="/2017/06/06/键盘输入框限制输入等处理/">键盘输入框限制输入等处理</a>
     </h1>
   
 
@@ -133,14 +138,20 @@
       
         <!-- Table of Contents -->
         
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSMutableDictionary</span> *attrs = [<span class="built_in">NSMutableDictionary</span> dictionary];</div><div class="line">attrs[<span class="built_in">NSForegroundColorAttributeName</span>] = [Toolkit getColor:<span class="string">@"ff5600"</span>];</div><div class="line"><span class="built_in">NSMutableAttributedString</span> *placeHolder = [[<span class="built_in">NSMutableAttributedString</span> alloc]initWithString:<span class="string">@"   请输入支付密码"</span> attributes:attrs];</div><div class="line">_zhifuTextField.attributedPlaceholder = placeHolder;</div></pre></td></tr></table></figure>
+        <p>1.先加入事件</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[_phoneTextField addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(textFieldDidChange:) forControlEvents:<span class="built_in">UIControlEventEditingChanged</span>];</div></pre></td></tr></table></figure>
+<p>2.处理方法</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)textFieldDidChange:(<span class="built_in">UITextField</span> *)textField&#123;</div><div class="line">    <span class="built_in">UITextRange</span> *selectedRange = textField.markedTextRange;</div><div class="line">    <span class="built_in">UITextPosition</span> *position = [textField positionFromPosition:selectedRange.start offset:<span class="number">0</span>];</div><div class="line">    <span class="keyword">if</span> (!position) &#123;</div><div class="line">        <span class="comment">// 没有高亮选择的字</span></div><div class="line">        <span class="comment">// 1. 过滤非汉字、字母、数字字符</span></div><div class="line">        <span class="keyword">self</span>.phoneTextField.text = [<span class="keyword">self</span> filterCharactor:textField.text withRegex:<span class="string">@"[^0-9]"</span>];</div><div class="line">        <span class="comment">// 2. 截取</span></div><div class="line">        <span class="keyword">if</span> (<span class="keyword">self</span>.phoneTextField.text.length &gt;= <span class="number">12</span>) &#123;</div><div class="line">            <span class="keyword">self</span>.phoneTextField.text = [<span class="keyword">self</span>.phoneTextField.text substringToIndex:<span class="number">11</span>];</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="comment">// 有高亮选择的字 不做任何操作</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 过滤字符串中的非汉字、字母、数字</span></div><div class="line">- (<span class="built_in">NSString</span> *)filterCharactor:(<span class="built_in">NSString</span> *)string withRegex:(<span class="built_in">NSString</span> *)regexStr&#123;</div><div class="line">    <span class="built_in">NSString</span> *filterText = string;</div><div class="line">    <span class="built_in">NSError</span> *error = <span class="literal">NULL</span>;</div><div class="line">    <span class="built_in">NSRegularExpression</span> *regex = [<span class="built_in">NSRegularExpression</span> regularExpressionWithPattern:regexStr options:<span class="built_in">NSRegularExpressionCaseInsensitive</span> error:&amp;error];</div><div class="line">    <span class="built_in">NSString</span> *result = [regex stringByReplacingMatchesInString:filterText options:<span class="built_in">NSMatchingReportCompletion</span> range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, filterText.length) withTemplate:<span class="string">@""</span>];</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/textfiled占位语的设置/" data-id="cja53sui90009khipl22r65jo" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/06/06/键盘输入框限制输入等处理/" data-id="cja54uorw0011oxip2g8edt7t" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/键盘/">键盘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/限制输入/">限制输入</a></li></ul>
+
     </footer>
   </div>
   
@@ -149,10 +160,10 @@
 
 
   
-    <article id="post-tableview数组越界" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-跨多级页面跳转" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/18/tableview数组越界/" class="article-date">
-  <time datetime="2017-11-18T02:27:25.414Z" itemprop="datePublished">2017-11-18</time>
+    <a href="/2017/05/23/跨多级页面跳转/" class="article-date">
+  <time datetime="2017-05-23T14:19:29.000Z" itemprop="datePublished">2017-05-23</time>
 </a>
     
   </div>
@@ -163,7 +174,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/tableview数组越界/">tableview数组越界</a>
+      <a class="article-title" href="/2017/05/23/跨多级页面跳转/">跨多级页面跳转</a>
     </h1>
   
 
@@ -173,19 +184,17 @@
       
         <!-- Table of Contents -->
         
-        <p>使用懒加载的数组只创建一次刷新数据的时候要记得移除所有的数组元素</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.dataArray removeAllObjects];</div></pre></td></tr></table></figure>
-<p>判断数组为空时候的越界问题当首次数据没有请求完毕的时候[tableVIew reloadData];就会导致crash这个时候需要做一次判断：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="keyword">self</span>.dataArray.count != <span class="number">0</span>)&#123;</div><div class="line"> MOdel * model = <span class="keyword">self</span>.dataArray[indexPath.row];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>有时候会出现上拉加载更多后点击下拉出现crash 这个时候提示数组越界但是并不是真的越界 因为这个时候的indexpath.row &gt; 数组的元素个数的。所以需要以下处理</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(!(indexPath.row &gt; rewardArray.count))&#123;</div><div class="line"> Model* model = slef.dataArray[indexpath.row];</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[[_app_ getTabBar] selectTableBarIndex:<span class="number">2</span>];</div><div class="line">  [<span class="keyword">self</span>.navigationController popToRootViewControllerAnimated:<span class="literal">NO</span>];</div><div class="line">  <span class="built_in">UINavigationController</span> *selectedNavi = [_app_ getTabBar].selectedViewController;</div><div class="line">  </div><div class="line">  <span class="keyword">if</span> (selectedNavi.viewControllers.count &gt;<span class="number">0</span>) &#123;</div><div class="line">      </div><div class="line">      <span class="keyword">if</span> ([[selectedNavi.viewControllers firstObject] <span class="keyword">class</span>] == [ProfileViewController <span class="keyword">class</span>]) &#123;</div><div class="line">          </div><div class="line">          PropertyDetailViewController *propertyDetailVC =[[PropertyDetailViewController alloc]initWithPropertyType:<span class="number">6</span>];</div><div class="line"></div><div class="line">          </div><div class="line">          ProfileViewController *ProfileViewController = [selectedNavi.viewControllers firstObject];</div><div class="line">          [ProfileViewController.navigationController pushViewController:propertyDetailVC animated:<span class="literal">NO</span>];</div><div class="line">      &#125;</div><div class="line">      </div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/tableview数组越界/" data-id="cja53sui30007khipx4862vsl" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/05/23/跨多级页面跳转/" data-id="cja54uoru000yoxiphug87b62" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨页面/">跨页面</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跳转/">跳转</a></li></ul>
+
     </footer>
   </div>
   
@@ -194,10 +203,10 @@
 
 
   
-    <article id="post-多层wkwebview返回" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-键盘弹出" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/18/多层wkwebview返回/" class="article-date">
-  <time datetime="2017-11-18T02:24:27.358Z" itemprop="datePublished">2017-11-18</time>
+    <a href="/2017/05/18/键盘弹出/" class="article-date">
+  <time datetime="2017-05-18T13:36:48.000Z" itemprop="datePublished">2017-05-18</time>
 </a>
     
   </div>
@@ -208,7 +217,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/多层wkwebview返回/">多层wkwebview返回</a>
+      <a class="article-title" href="/2017/05/18/键盘弹出/">解决键盘弹出挡住VIew</a>
     </h1>
   
 
@@ -218,15 +227,23 @@
       
         <!-- Table of Contents -->
         
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ([<span class="keyword">self</span>.localWebView canGoBack]) &#123;</div><div class="line">    [<span class="keyword">self</span>.localWebView goBack];</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    [<span class="keyword">self</span>.navigationController popToRootViewControllerAnimated:<span class="literal">YES</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+        <p>###1、通常情况下可以解决</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 先监听键盘通知</span></div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(keyboardWillChangeFrame:) name:<span class="built_in">UIKeyboardWillChangeFrameNotification</span> object:<span class="literal">nil</span>];</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#pragma mark - 键盘处理</span></div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)keyboardWillChangeFrame:(<span class="built_in">NSNotification</span> *)note &#123;</div><div class="line">    <span class="comment">// 取出键盘最终的frame</span></div><div class="line">    <span class="built_in">CGRect</span> rect = [note.userInfo[<span class="built_in">UIKeyboardFrameEndUserInfoKey</span>] <span class="built_in">CGRectValue</span>];</div><div class="line">    <span class="comment">// 取出键盘弹出需要花费的时间</span></div><div class="line">    <span class="keyword">double</span> duration = [note.userInfo[<span class="built_in">UIKeyboardAnimationDurationUserInfoKey</span>] doubleValue];</div><div class="line">    <span class="comment">// 修改transform</span></div><div class="line">    [<span class="built_in">UIView</span> animateWithDuration:duration animations:^&#123;</div><div class="line">        <span class="built_in">CGFloat</span> ty = [<span class="built_in">UIScreen</span> mainScreen].bounds.size.height - rect.origin.y;</div><div class="line">        <span class="keyword">self</span>.view.transform = <span class="built_in">CGAffineTransformMakeTranslation</span>(<span class="number">0</span>, - ty);</div><div class="line">    &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//最后清空通知</span></div><div class="line">- (<span class="keyword">void</span>)dealloc</div><div class="line">&#123;</div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] removeObserver:<span class="keyword">self</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>###2、另一种解决方案、没第一种逼格高但周全</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//注册键盘出现的通知</span></div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span></div><div class="line">                                             selector:<span class="keyword">@selector</span>(keyboardWillShow:)</div><div class="line">                                                 name:<span class="built_in">UIKeyboardWillShowNotification</span> object:<span class="literal">nil</span>];</div><div class="line">    <span class="comment">//注册键盘消失的通知</span></div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span></div><div class="line">                                             selector:<span class="keyword">@selector</span>(keyboardWillHide:)</div><div class="line">                                                 name:<span class="built_in">UIKeyboardWillHideNotification</span> object:<span class="literal">nil</span>];</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//点击空白收起键盘</span></div><div class="line">- (<span class="keyword">void</span>)touchesBegan:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UITouch</span> *&gt; *)touches withEvent:(<span class="built_in">UIEvent</span> *)event&#123;</div><div class="line">    [<span class="keyword">self</span> resignFirstresponder];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)resignFirstresponder&#123;</div><div class="line">    [<span class="keyword">self</span>.phone resignFirstResponder];</div><div class="line">    [<span class="keyword">self</span>.bossPhone resignFirstResponder];</div><div class="line">    [<span class="keyword">self</span>.code resignFirstResponder];</div><div class="line">    [<span class="keyword">self</span>.name resignFirstResponder];</div><div class="line">    [<span class="keyword">self</span>.idNumber resignFirstResponder];</div><div class="line">    [<span class="keyword">self</span>.AliAccount resignFirstResponder];</div><div class="line">&#125;</div><div class="line"><span class="meta">#pragma mark - 键盘处理</span></div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)keyboardWillShow:(<span class="built_in">NSNotification</span> *)note &#123;</div><div class="line">    <span class="comment">// 取出键盘最终的frame</span></div><div class="line">    <span class="built_in">CGRect</span> rect = [note.userInfo[<span class="built_in">UIKeyboardFrameEndUserInfoKey</span>] <span class="built_in">CGRectValue</span>];</div><div class="line">    <span class="comment">// 取出键盘弹出需要花费的时间</span></div><div class="line">    <span class="keyword">double</span> duration = [note.userInfo[<span class="built_in">UIKeyboardAnimationDurationUserInfoKey</span>] doubleValue];</div><div class="line">    <span class="built_in">CGFloat</span> ty = rect.size.height + textHeightY_zm + <span class="number">180</span> - <span class="keyword">self</span>.view.size.height + <span class="number">64</span>;</div><div class="line">    <span class="keyword">if</span> (ty&gt;<span class="number">0</span>) &#123;</div><div class="line">        <span class="comment">// 修改transform</span></div><div class="line">        [<span class="built_in">UIView</span> animateWithDuration:duration animations:^&#123;</div><div class="line">            <span class="keyword">self</span>.view.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, -ty, <span class="keyword">self</span>.view.frame.size.width, <span class="keyword">self</span>.view.frame.size.height);</div><div class="line">        &#125;];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">///键盘消失事件</span></div><div class="line">- (<span class="keyword">void</span>) keyboardWillHide:(<span class="built_in">NSNotification</span> *)notify &#123;</div><div class="line">    <span class="comment">// 键盘动画时间</span></div><div class="line">    <span class="keyword">double</span> duration = [[notify.userInfo objectForKey:<span class="built_in">UIKeyboardAnimationDurationUserInfoKey</span>] doubleValue];</div><div class="line">    </div><div class="line">    <span class="comment">//视图下沉恢复原状</span></div><div class="line">    [<span class="built_in">UIView</span> animateWithDuration:duration animations:^&#123;</div><div class="line">        <span class="keyword">self</span>.view.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">64</span>, <span class="keyword">self</span>.view.frame.size.width, <span class="keyword">self</span>.view.frame.size.height);</div><div class="line">    &#125;];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="built_in">BOOL</span>)textFieldShouldReturn:(<span class="built_in">UITextField</span> *)textField</div><div class="line">&#123;</div><div class="line">    [textField resignFirstResponder];</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="built_in">BOOL</span>)textFieldShouldBeginEditing:(<span class="built_in">UITextField</span> *)textField&#123;</div><div class="line">    textHeightY_zm = textField.frame.origin.y;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)tapAction:(<span class="built_in">UITapGestureRecognizer</span> *)tap&#123;</div><div class="line">    [<span class="keyword">self</span> resignFirstresponder];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//最后清空通知</span></div><div class="line">- (<span class="keyword">void</span>)dealloc&#123;</div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter]removeObserver:<span class="keyword">self</span> name:<span class="built_in">UIKeyboardWillShowNotification</span> object:<span class="literal">nil</span>];</div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter]removeObserver:<span class="keyword">self</span> name:<span class="built_in">UIKeyboardWillHideNotification</span> object:<span class="literal">nil</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/多层wkwebview返回/" data-id="cja53suim000ekhipzr3587ip" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/05/18/键盘弹出/" data-id="cja54uory0013oxip8b3fxcrn" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/键盘/">键盘</a></li></ul>
+
     </footer>
   </div>
   
@@ -235,10 +252,10 @@
 
 
   
-    <article id="post-高德地图点击手势添加标记 进行POI检索" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-修改UIAlertView设置文字左对齐" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/18/高德地图点击手势添加标记 进行POI检索/" class="article-date">
-  <time datetime="2017-11-18T02:23:11.389Z" itemprop="datePublished">2017-11-18</time>
+    <a href="/2017/04/15/修改UIAlertView设置文字左对齐/" class="article-date">
+  <time datetime="2017-04-15T14:04:56.000Z" itemprop="datePublished">2017-04-15</time>
 </a>
     
   </div>
@@ -249,7 +266,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/高德地图点击手势添加标记 进行POI检索/">高德地图点击手势添加标记 进行POI检索</a>
+      <a class="article-title" href="/2017/04/15/修改UIAlertView设置文字左对齐/">修改UIAlertView设置文字左对齐</a>
     </h1>
   
 
@@ -259,18 +276,22 @@
       
         <!-- Table of Contents -->
         
-        <p>点击屏幕上地图  获取手势点击点经纬度并进行POI检索的方法</p>
-<p>1.添加手势</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UITapGestureRecognizer</span> *mTap = [[<span class="built_in">UITapGestureRecognizer</span> alloc] initWithTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(tapPress:)];</div><div class="line">mTap.delegate = <span class="keyword">self</span>;</div><div class="line">[<span class="keyword">self</span>.mapView addGestureRecognizer:mTap];</div></pre></td></tr></table></figure>
-<p>2.手势对应的方法</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)otherGestureRecognizer &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">void</span>)tapPress:(<span class="built_in">UIGestureRecognizer</span>*)gestureRecognizer &#123;</div><div class="line">    </div><div class="line">    <span class="built_in">CGPoint</span> touchPoint = [gestureRecognizer locationInView:<span class="keyword">self</span>.mapView];<span class="comment">//这里touchPoint是点击的某点在地图控件中的位置</span></div><div class="line">    <span class="built_in">CLLocationCoordinate2D</span> touchMapCoordinate =</div><div class="line">    [<span class="keyword">self</span>.mapView convertPoint:touchPoint toCoordinateFromView:<span class="keyword">self</span>.mapView];<span class="comment">//这里touchMapCoordinate就是该点的经纬度了</span></div><div class="line">    </div><div class="line">    AMapPOIAroundSearchRequest *request = [[AMapPOIAroundSearchRequest alloc] init];</div><div class="line">    </div><div class="line">    request.location            = [AMapGeoPoint locationWithLatitude:touchMapCoordinate.latitude longitude:touchMapCoordinate.longitude];</div><div class="line">    <span class="comment">/* 按照距离排序. */</span></div><div class="line">    request.sortrule            = <span class="number">0</span>;</div><div class="line">    request.requireExtension    = <span class="literal">YES</span>;</div><div class="line">    [<span class="keyword">self</span>.search AMapPOIAroundSearch:request];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>因为iphoneSDK默认是居中对齐的，而且没有提供方法设置文本对齐接口，在Delegate中:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)willPresentAlertView:(<span class="built_in">UIAlertView</span> *)alertView;</div></pre></td></tr></table></figure>
+<p>获取UIAlertView上面的Message控件，它其实也是一个UILable控件，然后设置其textAlignment的属性即可。</p>
+<p>代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)willPresentAlertView:(<span class="built_in">UIAlertView</span> *)alertView&#123;</div><div class="line">    <span class="built_in">UIView</span> * view = [alertView.subviews objectAtIndex:<span class="number">2</span>];</div><div class="line">    <span class="keyword">if</span>([view isKindOfClass:[<span class="built_in">UILabel</span> <span class="keyword">class</span>]])&#123;</div><div class="line">        <span class="built_in">UILabel</span>* label = (<span class="built_in">UILabel</span>*) view;</div><div class="line">        label.textAlignment = <span class="built_in">UITextAlignmentLeft</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里要注意的是，Message的UILable在alertView.subviews里面是第3个元素，第一个元素是一个UIImageView(背景),UILable(标题),UILable(Message),UIButton(Cancel)…(如果还有的话以此类推)。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/高德地图点击手势添加标记 进行POI检索/" data-id="cja53suj4000rkhipvw7pgkou" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/04/15/修改UIAlertView设置文字左对齐/" data-id="cja54uord000koxiptwzhk8s4" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AlertView/">AlertView</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对齐/">对齐</a></li></ul>
+
     </footer>
   </div>
   
@@ -279,10 +300,10 @@
 
 
   
-    <article id="post-iOS 11地图不提示是否允许定位" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-富文本的修改" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/18/iOS 11地图不提示是否允许定位/" class="article-date">
-  <time datetime="2017-11-18T02:17:23.645Z" itemprop="datePublished">2017-11-18</time>
+    <a href="/2017/03/22/富文本的修改/" class="article-date">
+  <time datetime="2017-03-22T14:54:23.000Z" itemprop="datePublished">2017-03-22</time>
 </a>
     
   </div>
@@ -293,7 +314,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/iOS 11地图不提示是否允许定位/">iOS 11地图不提示是否允许定位</a>
+      <a class="article-title" href="/2017/03/22/富文本的修改/">富文本的修改</a>
     </h1>
   
 
@@ -303,14 +324,26 @@
       
         <!-- Table of Contents -->
         
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Privacy - Location Always Usage Description   <span class="comment">//删掉这个iOS11可提示</span></div><div class="line">Privacy - Location When In Use Usage Description</div></pre></td></tr></table></figure>
+        <pre><code class="objc"><span class="built_in">NSString</span> *string2 =  [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"朋友价 ￥%@"</span>,model.boss_sell_price];
+    <span class="built_in">NSMutableAttributedString</span> *string1 = [[<span class="built_in">NSMutableAttributedString</span> alloc] initWithString:string2];
+    [string1 addAttribute:<span class="built_in">NSFontAttributeName</span>
+                    value:[<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">8</span>]
+                    range:<span class="built_in">NSMakeRange</span>(<span class="number">4</span>, <span class="number">1</span>)];
+    [string1 addAttribute:<span class="built_in">NSForegroundColorAttributeName</span>
+                    value:<span class="built_in">UIColorFromRGB</span>(<span class="number">0x999999</span>)
+                    range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, <span class="number">4</span>)];
+    <span class="keyword">self</span>.sell.attributedText = string1;
+</code></pre>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/iOS 11地图不提示是否允许定位/" data-id="cja53suhu0003khip610m05mt" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/03/22/富文本的修改/" data-id="cja54uork000ooxip0puativs" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/label/">label</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/富文本/">富文本</a></li></ul>
+
     </footer>
   </div>
   
@@ -319,10 +352,10 @@
 
 
   
-    <article id="post- iOS 11 tableview适配" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-oc中的泛型" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/18/ iOS 11 tableview适配/" class="article-date">
-  <time datetime="2017-11-18T02:15:49.986Z" itemprop="datePublished">2017-11-18</time>
+    <a href="/2017/03/09/oc中的泛型/" class="article-date">
+  <time datetime="2017-03-09T13:18:43.000Z" itemprop="datePublished">2017-03-09</time>
 </a>
     
   </div>
@@ -333,7 +366,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/ iOS 11 tableview适配/">iOS 11 tableview适配</a>
+      <a class="article-title" href="/2017/03/09/oc中的泛型/">oc中的泛型</a>
     </h1>
   
 
@@ -343,54 +376,20 @@
       
         <!-- Table of Contents -->
         
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// tableView 偏移20/64适配</span></div><div class="line"><span class="keyword">if</span> (@available(iOS <span class="number">11.0</span>, *)) &#123;</div><div class="line">    <span class="keyword">self</span>.tableView.contentInsetAdjustmentBehavior = <span class="built_in">UIScrollViewContentInsetAdjustmentNever</span>;</div><div class="line">    <span class="comment">//UIScrollView也适用</span></div><div class="line">&#125;<span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">self</span>.automaticallyAdjustsScrollViewInsets = <span class="literal">NO</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>举例：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)test &#123;</div><div class="line">    <span class="built_in">NSMutableArray</span>&lt;<span class="built_in">NSString</span> *&gt; *strArray = [<span class="built_in">NSMutableArray</span> array];</div><div class="line">    [strArray addObject:<span class="string">@"aString"</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以在声明NSMutableArray时添加一个弱泛型约束，之所以是弱泛型，是因为编译器会帮你检查数据类型是否正确，如果不正确会有一个警告，但是不会强制报错，代码还是可以编译过的。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//传入的不是规定的类型 会报警告</span></div><div class="line">- (<span class="keyword">void</span>)test &#123;</div><div class="line">    <span class="built_in">NSMutableArray</span>&lt;<span class="built_in">NSString</span> *&gt; *strArray = [<span class="built_in">NSMutableArray</span> array];</div><div class="line">    [strArray addObject:[<span class="built_in">NSNumber</span> numberWithFloat:<span class="number">15.0</span>]];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/ iOS 11 tableview适配/" data-id="cja53suhl0000khip6giynrow" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/03/09/oc中的泛型/" data-id="cja54uoqs0008oxipw3h5psww" class="article-share-link">分享</a>
       
       
       
-    </footer>
-  </div>
-  
-</article>
- 
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/泛型/">泛型</a></li></ul>
 
-
-  
-    <article id="post-iOS11数字精度问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/18/iOS11数字精度问题/" class="article-date">
-  <time datetime="2017-11-18T02:13:40.341Z" itemprop="datePublished">2017-11-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/iOS11数字精度问题/">iOS11数字精度问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/*!</span></div><div class="line"><span class="comment"> @brief 修正浮点型精度丢失</span></div><div class="line"><span class="comment"> @param str 传入接口取到的数据</span></div><div class="line"><span class="comment"> @return 修正精度后的数据</span></div><div class="line"><span class="comment"> */</span></div><div class="line">+(<span class="built_in">NSString</span> *)reviseString:(<span class="built_in">NSString</span> *)str</div><div class="line">&#123;</div><div class="line">    <span class="comment">//直接传入精度丢失有问题的Double类型</span></div><div class="line">    <span class="keyword">double</span> conversionValue = [str doubleValue];</div><div class="line">    <span class="built_in">NSString</span> *doubleString = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%lf"</span>, conversionValue];</div><div class="line">    <span class="built_in">NSDecimalNumber</span> *decNumber = [<span class="built_in">NSDecimalNumber</span> decimalNumberWithString:doubleString];</div><div class="line">    <span class="keyword">return</span> [decNumber stringValue];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/iOS11数字精度问题/" data-id="cja53suhv0004khipqdaffh82" class="article-share-link">分享</a>
-      
-      
-      
     </footer>
   </div>
   
@@ -401,8 +400,8 @@
   
     <article id="post-pch自定义日志输出" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/15/pch自定义日志输出/" class="article-date">
-  <time datetime="2017-08-15T02:32:47.000Z" itemprop="datePublished">2017-08-15</time>
+    <a href="/2017/02/28/pch自定义日志输出/" class="article-date">
+  <time datetime="2017-02-28T13:06:19.000Z" itemprop="datePublished">2017-02-28</time>
 </a>
     
   </div>
@@ -413,7 +412,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/15/pch自定义日志输出/">pch自定义日志输出</a>
+      <a class="article-title" href="/2017/02/28/pch自定义日志输出/">pch自定义日志输出</a>
     </h1>
   
 
@@ -435,10 +434,12 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/15/pch自定义日志输出/" data-id="cja53sui70008khippikc3w3f" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/02/28/pch自定义日志输出/" data-id="cja54uoqw000aoxip5iisnmul" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pch/">pch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/输入/">输入</a></li></ul>
+
     </footer>
   </div>
   
@@ -447,10 +448,10 @@
 
 
   
-    <article id="post-统一设置所有 UITabBarItem 的文字属性" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-transform动画" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/14/统一设置所有 UITabBarItem 的文字属性/" class="article-date">
-  <time datetime="2017-08-14T12:38:48.000Z" itemprop="datePublished">2017-08-14</time>
+    <a href="/2017/01/21/transform动画/" class="article-date">
+  <time datetime="2017-01-21T13:28:46.000Z" itemprop="datePublished">2017-01-21</time>
 </a>
     
   </div>
@@ -461,7 +462,50 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/14/统一设置所有 UITabBarItem 的文字属性/">统一设置所有 UITabBarItem 的文字属性</a>
+      <a class="article-title" href="/2017/01/21/transform动画/">transform动画</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//点击屏幕开始动画</span></div><div class="line">- (<span class="keyword">void</span>)touchesBegan:(<span class="built_in">NSSet</span> *)touches withEvent:(<span class="built_in">UIEvent</span> *)event &#123;</div><div class="line">    <span class="comment">// 清空transform，以前的平移、缩放、旋转都会消失</span></div><div class="line"><span class="comment">//    [UIView animateWithDuration:2.0 animations:^&#123;</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformIdentity;</span></div><div class="line"><span class="comment">//        </span></div><div class="line"><span class="comment">//    &#125;];</span></div><div class="line">    </div><div class="line"><span class="comment">//    self.angle += M_PI_4;</span></div><div class="line">    </div><div class="line"><span class="comment">//    [UIView animateWithDuration:1.0 animations:^&#123;</span></div><div class="line"><span class="comment">//       self.tempView.transform = CGAffineTransformScale(self.tempView.transform, 0.8, 0.8);</span></div><div class="line"><span class="comment">//       self.tempView.transform = CGAffineTransformRotate(self.tempView.transform, M_PI_4);</span></div><div class="line"><span class="comment">//    &#125;];</span></div><div class="line">    </div><div class="line">    <span class="comment">// transform:形变属性，能完成的功能：平移、缩放、旋转</span></div><div class="line">    [<span class="built_in">UIView</span> animateWithDuration:<span class="number">2.0</span> animations:^&#123;</div><div class="line"><span class="comment">//        // 缩放</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformMakeScale(0.5, 0.5);</span></div><div class="line"><span class="comment">//        // 平移</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformMakeTranslation(-100, 100);</span></div><div class="line">        <span class="comment">// 旋转</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformMakeRotation(-M_PI_4);</span></div><div class="line">    </div><div class="line">        <span class="built_in">CGAffineTransform</span> translation = <span class="built_in">CGAffineTransformMakeTranslation</span>(<span class="number">-100</span>, <span class="number">100</span>);</div><div class="line">        <span class="built_in">CGAffineTransform</span> scaleTranslation = <span class="built_in">CGAffineTransformScale</span>(translation, <span class="number">0.5</span>, <span class="number">0.5</span>);</div><div class="line">        <span class="built_in">CGAffineTransform</span> rotateScaleTranslation = <span class="built_in">CGAffineTransformRotate</span>(scaleTranslation, M_PI_2);</div><div class="line">        <span class="keyword">self</span>.tempView.transform = rotateScaleTranslation;</div><div class="line">    &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/01/21/transform动画/" data-id="cja54uor5000goxipeddte16e" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/trandform/">trandform</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-统一设置所有 UITabBarItem 的文字属性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/08/统一设置所有 UITabBarItem 的文字属性/" class="article-date">
+  <time datetime="2017-01-08T13:19:05.000Z" itemprop="datePublished">2017-01-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/08/统一设置所有 UITabBarItem 的文字属性/">统一设置所有 UITabBarItem 的文字属性</a>
     </h1>
   
 
@@ -476,10 +520,12 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/14/统一设置所有 UITabBarItem 的文字属性/" data-id="cja53suiu000kkhip14w2tz3h" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/01/08/统一设置所有 UITabBarItem 的文字属性/" data-id="cja54uorr000woxip958yetdo" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tabBarItem/">tabBarItem</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设置/">设置</a></li></ul>
+
     </footer>
   </div>
   
@@ -514,23 +560,23 @@
       <ul>
         
           <li>
-            <a href="/2017/11/18/滚动试图不滚动的问题/">滚动试图不滚动的问题</a>
+            <a href="/2017/11/09/iOS 11地图不提示是否允许定位/">iOS 11地图不提示是否允许定位</a>
           </li>
         
           <li>
-            <a href="/2017/11/18/本地字典转JSON/">本地字典写成需要的JSON 本地文件</a>
+            <a href="/2017/10/27/iOS11数字精度问题/">iOS11数字精度问题</a>
           </li>
         
           <li>
-            <a href="/2017/11/18/修改UIAlertView设置文字左对齐/">修改UIAlertView设置文字左对齐</a>
+            <a href="/2017/10/11/ iOS 11 tableview适配/">iOS 11 tableview适配</a>
           </li>
         
           <li>
-            <a href="/2017/11/18/oc中的泛型/">oc中的泛型</a>
+            <a href="/2017/10/02/高德地图点击手势添加标记 进行POI检索/">高德地图点击手势添加标记 进行POI检索</a>
           </li>
         
           <li>
-            <a href="/2017/11/18/键盘输入框限制输入等处理/">键盘输入框限制输入等处理</a>
+            <a href="/2017/09/16/label中划线设置/">label中划线设置</a>
           </li>
         
       </ul>
