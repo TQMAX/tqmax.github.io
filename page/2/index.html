@@ -41,7 +41,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -68,6 +68,135 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-多层wkwebview返回" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/16/多层wkwebview返回/" class="article-date">
+  <time datetime="2017-09-16T13:09:56.000Z" itemprop="datePublished">2017-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/16/多层wkwebview返回/">多层wkwebview返回</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ([<span class="keyword">self</span>.localWebView canGoBack]) &#123;</div><div class="line">    [<span class="keyword">self</span>.localWebView goBack];</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    [<span class="keyword">self</span>.navigationController popToRootViewControllerAnimated:<span class="literal">YES</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/16/多层wkwebview返回/" data-id="cjaghuv4y000mdwipjbnuct50" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wkwebview/">wkwebview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/返回/">返回</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-禁止屏幕滑动返回" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/01/禁止屏幕滑动返回/" class="article-date">
+  <time datetime="2017-09-01T13:56:23.000Z" itemprop="datePublished">2017-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/01/禁止屏幕滑动返回/">禁止屏幕滑动返回</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)viewWillAppear:(<span class="built_in">BOOL</span>)animated</div><div class="line">&#123;</div><div class="line">    [<span class="keyword">super</span> viewWillAppear:animated];</div><div class="line">    <span class="comment">// 禁用返回手势</span></div><div class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span>.navigationController respondsToSelector:<span class="keyword">@selector</span>(interactivePopGestureRecognizer)])</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">self</span>.navigationController.interactivePopGestureRecognizer.enabled = <span class="literal">NO</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">void</span>)viewWillDisappear:(<span class="built_in">BOOL</span>)animated</div><div class="line">&#123;</div><div class="line">    [<span class="keyword">super</span> viewWillDisappear:animated];</div><div class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span>.navigationController respondsToSelector:<span class="keyword">@selector</span>(interactivePopGestureRecognizer)])</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">self</span>.navigationController.interactivePopGestureRecognizer.enabled = <span class="literal">YES</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/01/禁止屏幕滑动返回/" data-id="cjaghuv59000wdwipzf0vrwnd" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/手势/">手势</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/滑动/">滑动</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-滚动试图不滚动的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/滚动试图不滚动的问题/" class="article-date">
+  <time datetime="2017-08-16T13:34:26.000Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/16/滚动试图不滚动的问题/">滚动视图不滚动的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)viewDidLayoutSubviews</div><div class="line">&#123;</div><div class="line">    _BaseScore.contentSize = <span class="built_in">CGSizeMake</span>(SCREEN_WIDTH, xxxx);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/16/滚动试图不滚动的问题/" data-id="cjaghuv54000rdwipcp95nkeo" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/滚动/">滚动</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/滚动视图/">滚动视图</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
   
     <article id="post-tableview数组越界" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -103,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/03/tableview数组越界/" data-id="cjaggs41b000fbnip65ymlbda" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/08/03/tableview数组越界/" data-id="cjaghuv4p000gdwip0ujonq6i" class="article-share-link">Share</a>
       
       
       
@@ -146,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/29/键盘遮挡问题 手势冲突/" data-id="cjaggs4210017bnipxor4eh59" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/07/29/键盘遮挡问题 手势冲突/" data-id="cjaghuv5q001ddwipzr1qtvmg" class="article-share-link">Share</a>
       
       
       
@@ -191,7 +320,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/12/Mansonry不用弱引用 为什么不会循环引用/" data-id="cjaggs40n0001bnip2i6857lx" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/06/12/Mansonry不用弱引用 为什么不会循环引用/" data-id="cjaghuv3l0000dwip3k71endz" class="article-share-link">Share</a>
       
       
       
@@ -237,7 +366,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/06/键盘输入框限制输入等处理/" data-id="cjaggs4220018bnip4htg9e5q" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/06/06/键盘输入框限制输入等处理/" data-id="cjaghuv5n001bdwipo8zn73xl" class="article-share-link">Share</a>
       
       
       
@@ -280,7 +409,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/23/跨多级页面跳转/" data-id="cjaggs41x0013bnip66bp5tzh" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/05/23/跨多级页面跳转/" data-id="cjaghuv5j0015dwipphfj6zqt" class="article-share-link">Share</a>
       
       
       
@@ -329,7 +458,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/18/键盘弹出/" data-id="cjaggs41z0015bnip1eqsuq2d" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/05/18/键盘弹出/" data-id="cjaghuv5n0019dwiplsfs5n6v" class="article-share-link">Share</a>
       
       
       
@@ -377,7 +506,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/15/修改UIAlertView设置文字左对齐/" data-id="cjaggs41k000mbnipntw4cscb" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/04/15/修改UIAlertView设置文字左对齐/" data-id="cjaghuv4s000idwiph80p77hg" class="article-share-link">Share</a>
       
       
       
@@ -391,158 +520,10 @@
 
 
   
-    <article id="post-富文本的修改" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/22/富文本的修改/" class="article-date">
-  <time datetime="2017-03-22T14:54:23.000Z" itemprop="datePublished">2017-03-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/富文本的修改/">富文本的修改</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <pre><code class="objc"><span class="built_in">NSString</span> *string2 =  [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"朋友价 ￥%@"</span>,model.boss_sell_price];
-    <span class="built_in">NSMutableAttributedString</span> *string1 = [[<span class="built_in">NSMutableAttributedString</span> alloc] initWithString:string2];
-    [string1 addAttribute:<span class="built_in">NSFontAttributeName</span>
-                    value:[<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">8</span>]
-                    range:<span class="built_in">NSMakeRange</span>(<span class="number">4</span>, <span class="number">1</span>)];
-    [string1 addAttribute:<span class="built_in">NSForegroundColorAttributeName</span>
-                    value:<span class="built_in">UIColorFromRGB</span>(<span class="number">0x999999</span>)
-                    range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, <span class="number">4</span>)];
-    <span class="keyword">self</span>.sell.attributedText = string1;
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/22/富文本的修改/" data-id="cjaggs41n000pbnipvm2wv0kt" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/label/">label</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/富文本/">富文本</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-oc中的泛型" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/09/oc中的泛型/" class="article-date">
-  <time datetime="2017-03-09T13:18:43.000Z" itemprop="datePublished">2017-03-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/09/oc中的泛型/">oc中的泛型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>举例：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)test &#123;</div><div class="line">    <span class="built_in">NSMutableArray</span>&lt;<span class="built_in">NSString</span> *&gt; *strArray = [<span class="built_in">NSMutableArray</span> array];</div><div class="line">    [strArray addObject:<span class="string">@"aString"</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>可以在声明NSMutableArray时添加一个弱泛型约束，之所以是弱泛型，是因为编译器会帮你检查数据类型是否正确，如果不正确会有一个警告，但是不会强制报错，代码还是可以编译过的。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//传入的不是规定的类型 会报警告</span></div><div class="line">- (<span class="keyword">void</span>)test &#123;</div><div class="line">    <span class="built_in">NSMutableArray</span>&lt;<span class="built_in">NSString</span> *&gt; *strArray = [<span class="built_in">NSMutableArray</span> array];</div><div class="line">    [strArray addObject:[<span class="built_in">NSNumber</span> numberWithFloat:<span class="number">15.0</span>]];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/09/oc中的泛型/" data-id="cjaggs4150008bnip6sol83px" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/泛型/">泛型</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-pch自定义日志输出" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/28/pch自定义日志输出/" class="article-date">
-  <time datetime="2017-02-28T13:06:19.000Z" itemprop="datePublished">2017-02-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/28/pch自定义日志输出/">pch自定义日志输出</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h3 id="pch原理"><a href="#pch原理" class="headerlink" title="pch原理:"></a>pch原理:</h3><ul>
-<li>pch里面的内容被项目中的所有文件共有</li>
-</ul>
-<h3 id="pch注意点"><a href="#pch注意点" class="headerlink" title="pch注意点:"></a>pch注意点:</h3><ul>
-<li>1.pch需要提前编译  </li>
-<li>2.需要做一些判断,判断下当前有没有c文件,如果有c,就不导入OC的语法</li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// __OBJC__每个OC文件都会自动定义这个宏</span></div><div class="line"><span class="meta">#ifdef __OBJC__</span></div><div class="line"></div><div class="line"><span class="comment">// pch作用:</span></div><div class="line"><span class="comment">// 1.存放一些公用的宏</span></div><div class="line"><span class="meta">#define ABC 10</span></div><div class="line"></div><div class="line"><span class="comment">// 2.存放一些公用的头文件</span></div><div class="line"><span class="meta">#import <span class="meta-string">"UIImage+Image.h"</span></span></div><div class="line"></div><div class="line"><span class="comment">// 3.自定义Log(输出日志)</span></div><div class="line"><span class="comment">// ...标示在宏里面的可变参数</span></div><div class="line"><span class="comment">// __VA_ARGS__ 标示函数里面的可变参数</span></div><div class="line"><span class="comment">//用printf代替NSLog</span></div><div class="line"></div><div class="line"><span class="meta">#ifdef DEBUG // 调试</span></div><div class="line"><span class="meta">#define TQLog(format, ...) printf(<span class="meta-string">"class: &lt;%p %s:(%d) &gt; method: %s \n%s\n"</span>, self, [[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, __PRETTY_FUNCTION__, [[NSString stringWithFormat:(format), ##__VA_ARGS__] UTF8String] )</span></div><div class="line"></div><div class="line"><span class="meta">#else // 发布</span></div><div class="line"><span class="meta">#define TQLog(format, ...)</span></div><div class="line"></div><div class="line"><span class="meta">#endif</span></div><div class="line"></div><div class="line"><span class="meta">#endif</span></div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/28/pch自定义日志输出/" data-id="cjaggs419000abnip4t5zkx5p" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pch/">pch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/输入/">输入</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next&raquo;</a>
   </nav>
 </section>
            
@@ -560,9 +541,17 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title recent-posts">最新文章</h3>
+    <h3 class="widget-title recent-posts">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/11/26/常见手势(敲击:旋转:捏合:长按:轻扫:混合等)/">常见手势(敲击/旋转/捏合/长按/轻扫/混合等)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/26/确保代码在程序生命周期运行中只执行一遍/">确保代码在程序生命周期运行中只执行一遍</a>
+          </li>
         
           <li>
             <a href="/2017/11/26/UICollectionView格式示例模板/">UICollectionView格式示例模板</a>
@@ -573,15 +562,7 @@
           </li>
         
           <li>
-            <a href="/2017/11/09/iOS 11地图不提示是否允许定位/">iOS 11地图不提示是否允许定位</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/27/iOS11数字精度问题/">iOS11数字精度问题</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/11/ iOS 11 tableview适配/">iOS 11 tableview适配</a>
+            <a href="/2017/11/18/屏幕获取不准的原因/">屏幕获取不准的原因</a>
           </li>
         
       </ul>
@@ -600,10 +581,10 @@
   <div class="outer">
     <div id="footer-left">
       &copy; 2014 - 2017 TQMAX&nbsp;|&nbsp;
-      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
     </div>
      <div id="footer-right">
-      联系方式&nbsp;|&nbsp;q452316q@163.com
+      Contact&nbsp;|&nbsp;q452316q@163.com
     </div>
   </div>
 </footer>
