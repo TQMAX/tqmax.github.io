@@ -69,6 +69,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-tableview数组越界" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/03/tableview数组越界/" class="article-date">
+  <time datetime="2017-08-03T13:25:56.000Z" itemprop="datePublished">2017-08-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/03/tableview数组越界/">tableview数组越界</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>使用懒加载的数组只创建一次刷新数据的时候要记得移除所有的数组元素</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.dataArray removeAllObjects];</div></pre></td></tr></table></figure>
+<p>判断数组为空时候的越界问题当首次数据没有请求完毕的时候[tableVIew reloadData];就会导致crash这个时候需要做一次判断：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="keyword">self</span>.dataArray.count != <span class="number">0</span>)&#123;</div><div class="line"> MOdel * model = <span class="keyword">self</span>.dataArray[indexPath.row];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>有时候会出现上拉加载更多后点击下拉出现crash 这个时候提示数组越界但是并不是真的越界 因为这个时候的indexpath.row &gt; 数组的元素个数的。所以需要以下处理</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(!(indexPath.row &gt; rewardArray.count))&#123;</div><div class="line"> Model* model = slef.dataArray[indexpath.row];</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/03/tableview数组越界/" data-id="cjaggs41b000fbnip65ymlbda" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tableview/">tableview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组/">数组</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-键盘遮挡问题 手势冲突" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/07/29/键盘遮挡问题 手势冲突/" class="article-date">
@@ -98,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/29/键盘遮挡问题 手势冲突/" data-id="cjageparc001686ip4hlvkgqv" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/07/29/键盘遮挡问题 手势冲突/" data-id="cjaggs4210017bnipxor4eh59" class="article-share-link">分享</a>
       
       
       
@@ -143,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/12/Mansonry不用弱引用 为什么不会循环引用/" data-id="cjagepapy000186ip5tq6rkwk" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/06/12/Mansonry不用弱引用 为什么不会循环引用/" data-id="cjaggs40n0001bnip2i6857lx" class="article-share-link">分享</a>
       
       
       
@@ -189,7 +237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/06/键盘输入框限制输入等处理/" data-id="cjagepara001486ipvjl495e9" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/06/06/键盘输入框限制输入等处理/" data-id="cjaggs4220018bnip4htg9e5q" class="article-share-link">分享</a>
       
       
       
@@ -232,7 +280,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/23/跨多级页面跳转/" data-id="cjagepar6000z86iprv4cjfal" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/05/23/跨多级页面跳转/" data-id="cjaggs41x0013bnip66bp5tzh" class="article-share-link">分享</a>
       
       
       
@@ -281,7 +329,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/18/键盘弹出/" data-id="cjagepar8001186ipf177cq8p" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/05/18/键盘弹出/" data-id="cjaggs41z0015bnip1eqsuq2d" class="article-share-link">分享</a>
       
       
       
@@ -329,7 +377,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/15/修改UIAlertView设置文字左对齐/" data-id="cjagepaqs000k86ip2gzlpg2s" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/04/15/修改UIAlertView设置文字左对齐/" data-id="cjaggs41k000mbnipntw4cscb" class="article-share-link">分享</a>
       
       
       
@@ -381,7 +429,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/22/富文本的修改/" data-id="cjagepaqx000o86ippce9eovm" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/03/22/富文本的修改/" data-id="cjaggs41n000pbnipvm2wv0kt" class="article-share-link">分享</a>
       
       
       
@@ -427,7 +475,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/09/oc中的泛型/" data-id="cjagepaqc000786ipdqe1wryz" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/03/09/oc中的泛型/" data-id="cjaggs4150008bnip6sol83px" class="article-share-link">分享</a>
       
       
       
@@ -477,54 +525,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/28/pch自定义日志输出/" data-id="cjagepaqe000886ipveb2vg48" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/02/28/pch自定义日志输出/" data-id="cjaggs419000abnip4t5zkx5p" class="article-share-link">分享</a>
       
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pch/">pch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/输入/">输入</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-transform动画" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/21/transform动画/" class="article-date">
-  <time datetime="2017-01-21T13:28:46.000Z" itemprop="datePublished">2017-01-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/21/transform动画/">transform动画</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//点击屏幕开始动画</span></div><div class="line">- (<span class="keyword">void</span>)touchesBegan:(<span class="built_in">NSSet</span> *)touches withEvent:(<span class="built_in">UIEvent</span> *)event &#123;</div><div class="line">    <span class="comment">// 清空transform，以前的平移、缩放、旋转都会消失</span></div><div class="line"><span class="comment">//    [UIView animateWithDuration:2.0 animations:^&#123;</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformIdentity;</span></div><div class="line"><span class="comment">//        </span></div><div class="line"><span class="comment">//    &#125;];</span></div><div class="line">    </div><div class="line"><span class="comment">//    self.angle += M_PI_4;</span></div><div class="line">    </div><div class="line"><span class="comment">//    [UIView animateWithDuration:1.0 animations:^&#123;</span></div><div class="line"><span class="comment">//       self.tempView.transform = CGAffineTransformScale(self.tempView.transform, 0.8, 0.8);</span></div><div class="line"><span class="comment">//       self.tempView.transform = CGAffineTransformRotate(self.tempView.transform, M_PI_4);</span></div><div class="line"><span class="comment">//    &#125;];</span></div><div class="line">    </div><div class="line">    <span class="comment">// transform:形变属性，能完成的功能：平移、缩放、旋转</span></div><div class="line">    [<span class="built_in">UIView</span> animateWithDuration:<span class="number">2.0</span> animations:^&#123;</div><div class="line"><span class="comment">//        // 缩放</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformMakeScale(0.5, 0.5);</span></div><div class="line"><span class="comment">//        // 平移</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformMakeTranslation(-100, 100);</span></div><div class="line">        <span class="comment">// 旋转</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformMakeRotation(-M_PI_4);</span></div><div class="line">    </div><div class="line">        <span class="built_in">CGAffineTransform</span> translation = <span class="built_in">CGAffineTransformMakeTranslation</span>(<span class="number">-100</span>, <span class="number">100</span>);</div><div class="line">        <span class="built_in">CGAffineTransform</span> scaleTranslation = <span class="built_in">CGAffineTransformScale</span>(translation, <span class="number">0.5</span>, <span class="number">0.5</span>);</div><div class="line">        <span class="built_in">CGAffineTransform</span> rotateScaleTranslation = <span class="built_in">CGAffineTransformRotate</span>(scaleTranslation, M_PI_2);</div><div class="line">        <span class="keyword">self</span>.tempView.transform = rotateScaleTranslation;</div><div class="line">    &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/21/transform动画/" data-id="cjagepaqo000g86ipzddqy46o" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/trandform/">trandform</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li></ul>
 
     </footer>
   </div>
@@ -560,6 +565,10 @@
       <ul>
         
           <li>
+            <a href="/2017/11/26/UICollectionView格式示例模板/">UICollectionView格式示例模板</a>
+          </li>
+        
+          <li>
             <a href="/2017/11/26/tableView的常用MVC框架模板 /">tableView的常用MVC框架模板</a>
           </li>
         
@@ -573,10 +582,6 @@
         
           <li>
             <a href="/2017/10/11/ iOS 11 tableview适配/">iOS 11 tableview适配</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/02/高德地图点击手势添加标记 进行POI检索/">高德地图点击手势添加标记 进行POI检索</a>
           </li>
         
       </ul>
