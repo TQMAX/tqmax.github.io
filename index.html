@@ -69,6 +69,167 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-iOS计算一段代码执行时间" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/10/iOS计算一段代码执行时间/" class="article-date">
+  <time datetime="2017-12-10T04:45:51.745Z" itemprop="datePublished">2017-12-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/10/iOS计算一段代码执行时间/">iOS计算一段代码执行时间</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>不啰嗦，直接上代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">CFAbsoluteTime startTime =CFAbsoluteTimeGetCurrent();</div><div class="line"></div><div class="line">//在这写入要计算时间的代码</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">CFAbsoluteTime linkTime = (CFAbsoluteTimeGetCurrent() - startTime);</div><div class="line"></div><div class="line">NSLog(@&quot;Linked in %f ms&quot;, linkTime *1000.0);</div><div class="line"></div><div class="line">//打印出来为代码执行时间 单位ms</div></pre></td></tr></table></figure>
+<p>OpenGL ES 里面的一段代码</p>
+<p>ep:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">//START:link</div><div class="line">- (BOOL)link</div><div class="line">&#123;</div><div class="line">	CFAbsoluteTime startTime =CFAbsoluteTimeGetCurrent();</div><div class="line">	GLintstatus;</div><div class="line">	glLinkProgram(program);</div><div class="line">	glGetProgramiv(program,GL_LINK_STATUS, &amp;status);</div><div class="line">	if(status ==GL_FALSE)</div><div class="line">	returnNO;</div><div class="line">	if(vertShader)&#123;</div><div class="line">		glDeleteShader(vertShader);</div><div class="line">		vertShader=0;</div><div class="line">	&#125;</div><div class="line">	if(fragShader)&#123;</div><div class="line">		glDeleteShader(fragShader);</div><div class="line">		fragShader=0;</div><div class="line">	&#125;</div><div class="line">	CFAbsoluteTime linkTime = (CFAbsoluteTimeGetCurrent() - startTime);</div><div class="line">	NSLog(@&quot;Linked in %f ms&quot;, linkTime *1000.0);</div><div class="line">	returnYES;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/10/iOS计算一段代码执行时间/" data-id="cjb0akspo000avhipti0ziy27" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/调试/">调试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-高效开发之KVC干货小技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/10/高效开发之KVC干货小技巧/" class="article-date">
+  <time datetime="2017-12-10T04:39:42.670Z" itemprop="datePublished">2017-12-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/10/高效开发之KVC干货小技巧/">高效开发之KVC干货小技巧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="获取数组里的-求和、平均、最大、最小"><a href="#获取数组里的-求和、平均、最大、最小" class="headerlink" title="获取数组里的, 求和、平均、最大、最小"></a>获取数组里的, 求和、平均、最大、最小</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSArray</span> *array = @[<span class="string">@"1"</span>,<span class="string">@"3"</span>,@<span class="number">2</span>,@<span class="number">9.5</span>,<span class="string">@"1.2"</span>]; </div><div class="line"><span class="built_in">NSNumber</span> *sum = [array valueForKeyPath:<span class="string">@"@sum.floatValue"</span>]; </div><div class="line"><span class="built_in">NSNumber</span> *avg = [array valueForKeyPath:<span class="string">@"@avg.floatValue"</span>]; </div><div class="line"><span class="built_in">NSNumber</span> *max = [array valueForKeyPath:<span class="string">@"@max.floatValue"</span>]; </div><div class="line"><span class="built_in">NSNumber</span> *min = [array valueForKeyPath:<span class="string">@"@min.floatValue"</span>];  </div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"sum:%@"</span>,sum); </div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"avg:%@"</span>,avg);</div><div class="line"> <span class="built_in">NSLog</span>(<span class="string">@"max:%@"</span>,max); </div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"min:%@"</span>,min);</div></pre></td></tr></table></figure>
+<h3 id="删除重复数据"><a href="#删除重复数据" class="headerlink" title="删除重复数据"></a>删除重复数据</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSArray</span> *array = @[<span class="string">@"name"</span>, <span class="string">@"w"</span>, <span class="string">@"aa"</span>, <span class="string">@"zxp"</span>, <span class="string">@"aa"</span>]; <span class="comment">//返回的是一个新的数组</span></div><div class="line"> <span class="built_in">NSArray</span> *newArray = [array valueForKeyPath:<span class="string">@"@distinctUnionOfObjects.self"</span>]; </div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, newArray);</div></pre></td></tr></table></figure>
+<h3 id="同样可以嵌套使用，先剔除name对应值的重复数据再取值"><a href="#同样可以嵌套使用，先剔除name对应值的重复数据再取值" class="headerlink" title="同样可以嵌套使用，先剔除name对应值的重复数据再取值"></a>同样可以嵌套使用，先剔除name对应值的重复数据再取值</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSArray</span> *array = @[ @&#123;<span class="string">@"title"</span>:<span class="string">@"zxp"</span>,<span class="string">@"name"</span>:<span class="string">@"zhangxiaoping"</span>&#125;, @&#123;<span class="string">@"title"</span>:<span class="string">@"zxp2"</span>,<span class="string">@"name"</span>:<span class="string">@"zhangxiaoping2"</span>&#125;, @&#123;<span class="string">@"title"</span>:<span class="string">@"zxp"</span>,<span class="string">@"name"</span>:<span class="string">@"zhangxiaoping3"</span>&#125;, @&#123;<span class="string">@"title"</span>:<span class="string">@"zxp"</span>,<span class="string">@"name"</span>:<span class="string">@"zhangxiaoping"</span>&#125;];</div><div class="line"><span class="comment">//根据name字段，来进行重复删除。</span></div><div class="line"><span class="built_in">NSArray</span> *newArray = [array valueForKeyPath:<span class="string">@"@distinctUnionOfObjects.name"</span>];</div><div class="line"><span class="comment">//如果要根据title字段来删除重名的写法为`@distinctUnionOfObjects.title` </span></div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, newArray);</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">print:( zhangxiaoping3, zhangxiaoping2, zhangxiaoping)是一个字符串数组*/</span></div></pre></td></tr></table></figure>
+<h3 id="进行实例方法的调用"><a href="#进行实例方法的调用" class="headerlink" title="进行实例方法的调用"></a>进行实例方法的调用</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSArray</span> *array = @[<span class="string">@"name"</span>, <span class="string">@"w"</span>, <span class="string">@"aa"</span>, <span class="string">@"ZXPing"</span>]; </div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, [array valueForKeyPath:<span class="string">@"uppercaseString"</span>]);</div></pre></td></tr></table></figure>
+<p>相当于数组中的每个成员执行了uppercaseString方法，然后把返回的对象组成一个新数组返回。既然可以用uppercaseString方法，那么NSString的其他方法也可以，比如[array valueForKeyPath:@”length”]。当然，其他对象的实例方法也可以以此类推来进行调用~！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/10/高效开发之KVC干货小技巧/" data-id="cjb0aksr7001pvhipxb9ksn1h" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KVC/">KVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高效/">高效</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-iOS 常用组件-高效切圆角方法总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/10/iOS 常用组件-高效切圆角方法总结/" class="article-date">
+  <time datetime="2017-12-10T04:20:01.262Z" itemprop="datePublished">2017-12-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/10/iOS 常用组件-高效切圆角方法总结/">iOS 常用组件-高效切圆角方法总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>iOS 客户端开发中，经常碰到圆角视图的需求，本文简单总结一下 UIView 及其子类的一些切圆角方法，并且保证避免出现离屏渲染。</p>
+<h4 id="UIView（不包括其子类）"><a href="#UIView（不包括其子类）" class="headerlink" title="UIView（不包括其子类）"></a>UIView（不包括其子类）</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIView</span> *view = [[<span class="built_in">UIView</span> alloc] init];</div><div class="line">view.backgroundColor = [<span class="built_in">UIColor</span> blackColor];</div><div class="line">view.layer.cornerRadius = <span class="number">3.</span>f;</div><div class="line"><span class="comment">// 以下两行，任写一行</span></div><div class="line">view.layer.masksToBounds = <span class="literal">NO</span>;</div><div class="line">view.clipToBounds = <span class="literal">NO</span>;</div><div class="line"><span class="comment">// 以下两行，千万不要加！</span></div><div class="line">view.layer.masksToBounds = <span class="literal">YES</span>;</div><div class="line">view.clipToBounds = <span class="literal">YES</span>;</div></pre></td></tr></table></figure>
+<p>注意点：UIView 只要设置图层的 cornerRadius 属性即可（不明白的话，可以看看官方文档里对 cornerRadius 的描述），如果设置 layer.masksToBounds = YES，会造成不必要的离屏渲染。</p>
+<h4 id="文本类视图"><a href="#文本类视图" class="headerlink" title="文本类视图"></a>文本类视图</h4><h4 id="1、UITextField"><a href="#1、UITextField" class="headerlink" title="1、UITextField"></a>1、UITextField</h4><p>UITextField有两种实现方法</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 天然支持设置圆角边框</span></div><div class="line"><span class="built_in">UITextField</span> *textField = [[<span class="built_in">UITextField</span> alloc] init];</div><div class="line">textField.borderStyle = <span class="built_in">UITextBorderStyleRoundedRect</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 与 UIView 类似</span></div><div class="line"><span class="built_in">UITextField</span> *textField = [[<span class="built_in">UITextField</span> alloc] init];</div><div class="line">textField.layer.cornerRadius = cornerRadius;</div></pre></td></tr></table></figure>
+<h4 id="2、UITextView"><a href="#2、UITextView" class="headerlink" title="2、UITextView"></a>2、UITextView</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 与 UIView 类似</span></div><div class="line"><span class="built_in">UITextView</span> *textView = [[<span class="built_in">UITextView</span> alloc] init];</div><div class="line">textView.layer.cornerRadius = cornerRadius;</div></pre></td></tr></table></figure>
+<h4 id="3、UILabel"><a href="#3、UILabel" class="headerlink" title="3、UILabel"></a>3、UILabel</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UILabel</span> *label = [[<span class="built_in">UILabel</span> alloc] init];</div><div class="line"><span class="comment">// 重点在此！！设置视图的图层背景色，千万不要直接设置 label.backgroundColor</span></div><div class="line">label.layer.backgroundColor = [<span class="built_in">UIColor</span> grayColor].CGColor;</div><div class="line">label.layer.cornerRadius = cornerRadius;</div></pre></td></tr></table></figure>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><h4 id="1、UIButton"><a href="#1、UIButton" class="headerlink" title="1、UIButton"></a>1、UIButton</h4><p>说明：UIButton 的背景图片，如果是复杂的图片，可以依靠 UI 切图来实现。如果是简单的纯色背景图片，可以利用代码绘制带圆角的图片。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIButton</span> *button = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</div><div class="line"><span class="comment">// 设置 UIButton 的背景图片。</span></div><div class="line">[button setBackgroundImage:image forState:<span class="built_in">UIControlStateNormal</span>];</div></pre></td></tr></table></figure>
+<p>背景图片绘制方法</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">UIImage</span> *)pureColorImageWithSize:(<span class="built_in">CGSize</span>)size color:(<span class="built_in">UIColor</span> *)color cornRadius:(<span class="built_in">CGFloat</span>)cornRadius &#123;</div><div class="line">  <span class="built_in">UIView</span> *view = [[<span class="built_in">UIView</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0.0</span>f, <span class="number">0.0</span>f, size.width, size.height)];</div><div class="line">  view.backgroundColor = color;</div><div class="line">  view.layer.cornerRadius = cornerRadius;</div><div class="line">  <span class="comment">// 下面方法，第一个参数表示区域大小。第二个参数表示是否是非透明的。如果需要显示半透明效果，需要传NO，否则传YES。第三个参数是屏幕密度</span></div><div class="line">  <span class="built_in">UIGraphicsBeginImageContextWithOptions</span>(view.bounds.size, <span class="literal">NO</span>, [<span class="built_in">UIScreen</span> mainScreen].scale);</div><div class="line">  [view.layer renderInContext:<span class="built_in">UIGraphicsGetCurrentContext</span>()];</div><div class="line">  <span class="built_in">UIImage</span> *image = <span class="built_in">UIGraphicsGetImageFromCurrentImageContext</span>();</div><div class="line">  <span class="built_in">UIGraphicsEndImageContext</span>();</div><div class="line">  <span class="keyword">return</span> image;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="2、UIImageView"><a href="#2、UIImageView" class="headerlink" title="2、UIImageView"></a>2、UIImageView</h4><p>UIImageView 有三种方式实现圆角：</p>
+<ul>
+<li>贝塞尔曲线切割圆角</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">UIImageView</span> *)roundedRectImageViewWithCornerRadius:(<span class="built_in">CGFloat</span>)cornerRadius &#123;</div><div class="line">    <span class="built_in">UIBezierPath</span> *bezierPath = [<span class="built_in">UIBezierPath</span> bezierPathWithRoundedRect:<span class="keyword">self</span>.bounds cornerRadius:cornerRadius];</div><div class="line">    <span class="built_in">CAShapeLayer</span> *layer = [<span class="built_in">CAShapeLayer</span> layer];</div><div class="line">    layer.path = bezierPath.CGPath;</div><div class="line">    <span class="keyword">self</span>.layer.mask = layer;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>绘制四个角的遮罩（使用场景受限）</li>
+</ul>
+<p>在 UIImageView 上添加一个四个角有内容，其它部分是透明的视图，只对 UIImageView 圆角部分进行遮挡。但要保证被遮挡的部分背景色要与周围背景相同，避免穿帮。所以当 UIImageView 处于一个复杂的背景时，是不适合使用这个方法的。</p>
+<ul>
+<li>最不推荐做法（当一个页面只有少量圆角图片时才推荐使用）</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIImageView</span> *imageView = [[<span class="built_in">UIImageView</span> alloc] init];</div><div class="line">imageView.layer.cornerRadius = <span class="number">5.</span>f;</div><div class="line">imageView.layer.masksToBounds = <span class="literal">YES</span>;</div></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上是开发过程常用组件的切圆角方法总结，如果有更好的方法或者文中有不对的地方，还请指正提出，谢谢。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/10/iOS 常用组件-高效切圆角方法总结/" data-id="cjb0akspj0007vhippitterld" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/圆角/">圆角</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-常见手势(敲击:旋转:捏合:长按:轻扫:混合等)" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/26/常见手势(敲击:旋转:捏合:长按:轻扫:混合等)/" class="article-date">
@@ -93,8 +254,7 @@
       
         <!-- Table of Contents -->
         
-        <p>###所有手势都要添加代理UIGestureRecognizerDelegate</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> *  多个手势同时存在的代理,不能忘记</div><div class="line"> */</div><div class="line">-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer&#123;</div><div class="line">    return YES;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h3 id="所有手势都要添加代理UIGestureRecognizerDelegate"><a href="#所有手势都要添加代理UIGestureRecognizerDelegate" class="headerlink" title="所有手势都要添加代理UIGestureRecognizerDelegate"></a>所有手势都要添加代理UIGestureRecognizerDelegate</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> *  多个手势同时存在的代理,不能忘记</div><div class="line"> */</div><div class="line">-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer&#123;</div><div class="line">    return YES;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>1、敲击手势（图片需允许交互）</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    <span class="comment">// Do any additional setup after loading the view.</span></div><div class="line">    [<span class="keyword">self</span>.view setBackgroundColor:[<span class="built_in">UIColor</span> whiteColor]];</div><div class="line">    <span class="keyword">self</span>.title = <span class="string">@"敲击手势"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">self</span>.imgView = [[<span class="built_in">UIImageView</span> alloc]initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">20</span>, <span class="number">100</span>, <span class="number">300</span>, <span class="number">200</span>)];</div><div class="line">    [<span class="keyword">self</span>.imgView setImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"img"</span>]];</div><div class="line">    [<span class="keyword">self</span>.view addSubview:<span class="keyword">self</span>.imgView];</div><div class="line"></div><div class="line">    <span class="comment">//图片允许交互,别忘记设置,否则手势没有反应</span></div><div class="line">    [<span class="keyword">self</span>.imgView setUserInteractionEnabled:<span class="literal">YES</span>];</div><div class="line"></div><div class="line">    <span class="comment">//1.创建一个"敲击手势"对象</span></div><div class="line">    <span class="built_in">UITapGestureRecognizer</span> *tapGest = [[<span class="built_in">UITapGestureRecognizer</span> alloc]init];</div><div class="line"></div><div class="line">    <span class="comment">//2.设置敲击次数</span></div><div class="line">    tapGest.numberOfTapsRequired = <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="comment">//3.手指头数量,默认不写</span></div><div class="line"><span class="comment">//    tapGest.numberOfTouchesRequired = 2;</span></div><div class="line"></div><div class="line">    <span class="comment">//4.代理</span></div><div class="line">    tapGest.delegate =<span class="keyword">self</span>;</div><div class="line"></div><div class="line">    <span class="comment">//5.手势添加到View</span></div><div class="line">    [<span class="keyword">self</span>.imgView addGestureRecognizer:tapGest];</div><div class="line"></div><div class="line">    <span class="comment">//6.手势监听方法</span></div><div class="line">    [tapGest addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(tapGestMethod:)];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> *  监听方法</span></div><div class="line"><span class="comment"> */</span></div><div class="line">-(<span class="keyword">void</span>)tapGestMethod:(<span class="built_in">UITapGestureRecognizer</span> *)tapGest&#123;</div><div class="line"></div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"可以点击了:%s"</span>,__func__);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> *  手势代理 (实现view只能左边点击,右边无效)</span></div><div class="line"><span class="comment"> */</span></div><div class="line">-(<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldReceiveTouch:(<span class="built_in">UITouch</span> *)touch&#123;</div><div class="line"></div><div class="line">    <span class="built_in">CGPoint</span> location = [touch locationInView:touch.view];</div><div class="line">    <span class="keyword">if</span> (location.x&lt;= touch.view.bounds.size.width/<span class="number">2</span>) &#123;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">NO</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>2、长按手势</p>
@@ -109,10 +269,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    [self.view setBackgroundColor:[UIColor whiteColor]];</div><div class="line">    self.title = @&quot;捏合手势&quot;;</div><div class="line"></div><div class="line">    self.imgView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 100, 300, 200)];</div><div class="line">    [self.imgView setImage:[UIImage imageNamed:@&quot;img&quot;]];</div><div class="line"></div><div class="line">    //图片允许交互,别忘记设置,否则手势没有反应</div><div class="line">    [self.imgView setUserInteractionEnabled:YES];</div><div class="line"></div><div class="line">    UIPinchGestureRecognizer *pinTap = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(pinView:)];</div><div class="line">    [self.imgView addGestureRecognizer:pinTap];</div><div class="line"></div><div class="line">    [self.view addSubview:self.imgView];</div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)pinView:(UIPinchGestureRecognizer *)pinGest&#123;</div><div class="line"></div><div class="line">    //缩放的比例是一个&quot;累加&quot;过程</div><div class="line">    NSLog(@&quot;%s----%f&quot;,__func__,pinGest.scale);</div><div class="line"></div><div class="line">#warning 放大图片后， 再次缩放的时候，马上回到原先的大小</div><div class="line">    //self.imageView.transform = CGAffineTransformMakeScale(pinGest.scale, pinGest.scale);</div><div class="line"></div><div class="line"></div><div class="line">    self.imgView.transform = CGAffineTransformScale(self.imgView.transform, pinGest.scale, pinGest.scale);</div><div class="line"></div><div class="line">    // 让比例还原，不要累加</div><div class="line">    // 解决办法，重新设置scale</div><div class="line">    pinGest.scale = 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>7、旋转+捏合+拖拽</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    [self.view setBackgroundColor:[UIColor whiteColor]];</div><div class="line">    self.title = @&quot;旋转+捏合+拖拽&quot;;</div><div class="line"></div><div class="line">    self.imgView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 100, 300, 200)];</div><div class="line">    [self.imgView setImage:[UIImage imageNamed:@&quot;img&quot;]];</div><div class="line">    [self.view addSubview:self.imgView];</div><div class="line">    //图片允许交互,别忘记设置,否则手势没有反应</div><div class="line">    [self.imgView setUserInteractionEnabled:YES];</div><div class="line"></div><div class="line"></div><div class="line">    //默认情况下,控件只能监听一种手势</div><div class="line">    //如果要监听到多个手势,设置代理方法,告知允许多个手势存在</div><div class="line"></div><div class="line">    //旋转</div><div class="line">    UIRotationGestureRecognizer *rotaitonGest = [[UIRotationGestureRecognizer alloc]initWithTarget:self action:@selector(rotationView:)];</div><div class="line">    rotaitonGest.delegate =self;</div><div class="line">    [self.imgView addGestureRecognizer:rotaitonGest];</div><div class="line"></div><div class="line">    //捏合</div><div class="line">    UIPinchGestureRecognizer *pinchGest = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(pinchView:)];</div><div class="line">    [self.imgView addGestureRecognizer:pinchGest];</div><div class="line"></div><div class="line">    //拖拽</div><div class="line">    UIPanGestureRecognizer *panGest = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panView:)];</div><div class="line">    [self.imgView addGestureRecognizer:panGest];</div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)rotationView:(UIRotationGestureRecognizer *)rotationGest&#123;</div><div class="line"></div><div class="line">    //旋转角度</div><div class="line">    //旋转的角度也一个累加的过程</div><div class="line">    NSLog(@&quot;旋转角度 %f&quot;,rotationGest.rotation);</div><div class="line"></div><div class="line">    // 设置图片的旋转</div><div class="line">    self.imgView.transform = CGAffineTransformRotate(self.imgView.transform, rotationGest.rotation);</div><div class="line"></div><div class="line">    // 清除 &quot;旋转角度&quot; 的累</div><div class="line">    rotationGest.rotation = 0;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)pinchView:(UIPinchGestureRecognizer *)pinchGest&#123;</div><div class="line">    //设置图片缩放</div><div class="line"></div><div class="line">    self.imgView.transform = CGAffineTransformScale(self.imgView.transform, pinchGest.scale, pinchGest.scale);</div><div class="line"></div><div class="line">    // 还源</div><div class="line">    pinchGest.scale = 1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)panView:(UIPanGestureRecognizer *)panGest&#123;</div><div class="line"></div><div class="line">    //拖拽的距离(距离是一个累加)</div><div class="line">    CGPoint trans = [panGest translationInView:panGest.view];</div><div class="line">    NSLog(@&quot;%@&quot;,NSStringFromCGPoint(trans));</div><div class="line"></div><div class="line">    //设置图片移动</div><div class="line">    CGPoint center =  self.imgView.center;</div><div class="line">    center.x += trans.x;</div><div class="line">    center.y += trans.y;</div><div class="line">    self.imgView.center = center;</div><div class="line"></div><div class="line">    //清除累加的距离</div><div class="line">    [panGest setTranslation:CGPointZero inView:panGest.view];</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> *  多个手势同时存在的代理,不能忘记</div><div class="line"> */</div><div class="line">-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer&#123;</div><div class="line"></div><div class="line">    return YES;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/26/常见手势(敲击:旋转:捏合:长按:轻扫:混合等)/" data-id="cjaghuv5d000zdwipvyu7r3q6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/26/常见手势(敲击:旋转:捏合:长按:轻扫:混合等)/" data-id="cjb0aksqg0011vhipdsaxn4k2" class="article-share-link">Share</a>
       
       
       
@@ -154,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/26/确保代码在程序生命周期运行中只执行一遍/" data-id="cjaghuv5k0017dwiptc9x6c4v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/26/确保代码在程序生命周期运行中只执行一遍/" data-id="cjb0aksqk0018vhipt3hqrmmo" class="article-share-link">Share</a>
       
       
       
@@ -198,7 +359,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/26/UICollectionView格式示例模板/" data-id="cjaghuv3v0003dwips1g0svxe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/26/UICollectionView格式示例模板/" data-id="cjb0aksp90003vhip46zaf8kz" class="article-share-link">Share</a>
       
       
       
@@ -251,7 +412,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/26/tableView的常用MVC框架模板 /" data-id="cjaghuv4v000kdwip3k7vw5ng" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/26/tableView的常用MVC框架模板 /" data-id="cjb0aksq8000rvhipf7tcmxnt" class="article-share-link">Share</a>
       
       
       
@@ -295,7 +456,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/屏幕获取不准的原因/" data-id="cjaghuv5a000xdwipkn1ucszo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/18/屏幕获取不准的原因/" data-id="cjb0aksqe000yvhipdxbg8dqx" class="article-share-link">Share</a>
       
       
       
@@ -338,7 +499,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/09/iOS 11地图不提示是否允许定位/" data-id="cjaghuv470005dwips95inm5f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/09/iOS 11地图不提示是否允许定位/" data-id="cjb0aksph0005vhipjzdk4pmc" class="article-share-link">Share</a>
       
       
       
@@ -381,7 +542,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/27/iOS11数字精度问题/" data-id="cjaghuv3z0004dwipvtphh19o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/27/iOS11数字精度问题/" data-id="cjb0akspk0008vhipo3r8m87j" class="article-share-link">Share</a>
       
       
       
@@ -395,151 +556,10 @@
 
 
   
-    <article id="post- iOS 11 tableview适配" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/11/ iOS 11 tableview适配/" class="article-date">
-  <time datetime="2017-10-11T13:18:17.000Z" itemprop="datePublished">2017-10-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/11/ iOS 11 tableview适配/">iOS 11 tableview适配</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// tableView 偏移20/64适配</span></div><div class="line"><span class="keyword">if</span> (@available(iOS <span class="number">11.0</span>, *)) &#123;</div><div class="line">    <span class="keyword">self</span>.tableView.contentInsetAdjustmentBehavior = <span class="built_in">UIScrollViewContentInsetAdjustmentNever</span>;</div><div class="line">    <span class="comment">//UIScrollView也适用</span></div><div class="line">&#125;<span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">self</span>.automaticallyAdjustsScrollViewInsets = <span class="literal">NO</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/11/ iOS 11 tableview适配/" data-id="cjaghuv3p0001dwipp3p47fue" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS-11/">iOS 11</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tableview/">tableview</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-高德地图点击手势添加标记 进行POI检索" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/02/高德地图点击手势添加标记 进行POI检索/" class="article-date">
-  <time datetime="2017-10-02T13:18:45.000Z" itemprop="datePublished">2017-10-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/02/高德地图点击手势添加标记 进行POI检索/">高德地图点击手势添加标记 进行POI检索</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>点击屏幕上地图  获取手势点击点经纬度并进行POI检索的方法</p>
-<p>1.添加手势</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UITapGestureRecognizer</span> *mTap = [[<span class="built_in">UITapGestureRecognizer</span> alloc] initWithTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(tapPress:)];</div><div class="line">mTap.delegate = <span class="keyword">self</span>;</div><div class="line">[<span class="keyword">self</span>.mapView addGestureRecognizer:mTap];</div></pre></td></tr></table></figure>
-<p>2.手势对应的方法</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)otherGestureRecognizer &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">void</span>)tapPress:(<span class="built_in">UIGestureRecognizer</span>*)gestureRecognizer &#123;</div><div class="line">    </div><div class="line">    <span class="built_in">CGPoint</span> touchPoint = [gestureRecognizer locationInView:<span class="keyword">self</span>.mapView];<span class="comment">//这里touchPoint是点击的某点在地图控件中的位置</span></div><div class="line">    <span class="built_in">CLLocationCoordinate2D</span> touchMapCoordinate =</div><div class="line">    [<span class="keyword">self</span>.mapView convertPoint:touchPoint toCoordinateFromView:<span class="keyword">self</span>.mapView];<span class="comment">//这里touchMapCoordinate就是该点的经纬度了</span></div><div class="line">    </div><div class="line">    AMapPOIAroundSearchRequest *request = [[AMapPOIAroundSearchRequest alloc] init];</div><div class="line">    </div><div class="line">    request.location            = [AMapGeoPoint locationWithLatitude:touchMapCoordinate.latitude longitude:touchMapCoordinate.longitude];</div><div class="line">    <span class="comment">/* 按照距离排序. */</span></div><div class="line">    request.sortrule            = <span class="number">0</span>;</div><div class="line">    request.requireExtension    = <span class="literal">YES</span>;</div><div class="line">    [<span class="keyword">self</span>.search AMapPOIAroundSearch:request];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/02/高德地图点击手势添加标记 进行POI检索/" data-id="cjaghuv5s001edwip1numxvzo" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/POI/">POI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/地图/">地图</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-label中划线设置" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/16/label中划线设置/" class="article-date">
-  <time datetime="2017-09-16T13:45:23.000Z" itemprop="datePublished">2017-09-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/16/label中划线设置/">label中划线设置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <pre><code class="objc"><span class="comment">//中划线</span>
- <span class="built_in">NSMutableAttributedString</span> *attribtStr_origin = [[<span class="built_in">NSMutableAttributedString</span> alloc]initWithString:originalMoney attributes:attribtDic];
-
- [attribtStr_origin setAttributes:@{<span class="built_in">NSStrikethroughStyleAttributeName</span>: [<span class="built_in">NSNumber</span> numberWithInteger:<span class="built_in">NSUnderlineStyleSingle</span>], <span class="built_in">NSBaselineOffsetAttributeName</span> : @(<span class="built_in">NSUnderlineStyleSingle</span>),<span class="built_in">NSForegroundColorAttributeName</span>:[Toolkit getColor:hex_aaaaaa]} range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>,attribtStr_origin.length)];
-
- [attribtStr_origin addAttribute:<span class="built_in">NSFontAttributeName</span> value:[<span class="built_in">UIFont</span> fontWithName:<span class="string">@"GillSans"</span> size:<span class="number">12.0</span>] range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>,attribtStr_origin.length)];
-
- [attribtStr appendAttributedString:attribtStr_origin];
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/16/label中划线设置/" data-id="cjaghuv490007dwipepkmxflc" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/label/">label</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/富文本/">富文本</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next&raquo;</a>
   </nav>
 </section>
            
@@ -575,7 +595,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title tagcloud">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AlertView/" style="font-size: 14px; color: #00f">AlertView</a> <a href="/tags/JSON/" style="font-size: 14px; color: #00f">JSON</a> <a href="/tags/Mansonry/" style="font-size: 14px; color: #00f">Mansonry</a> <a href="/tags/POI/" style="font-size: 14px; color: #00f">POI</a> <a href="/tags/collectionView/" style="font-size: 14px; color: #00f">collectionView</a> <a href="/tags/iOS-11/" style="font-size: 21.33px; color: #9f57f4">iOS 11</a> <a href="/tags/label/" style="font-size: 17.67px; color: #4f2bf9">label</a> <a href="/tags/pch/" style="font-size: 14px; color: #00f">pch</a> <a href="/tags/tabBarItem/" style="font-size: 14px; color: #00f">tabBarItem</a> <a href="/tags/tableview/" style="font-size: 25px; color: #ee82ee">tableview</a> <a href="/tags/textfiled/" style="font-size: 14px; color: #00f">textfiled</a> <a href="/tags/trandform/" style="font-size: 14px; color: #00f">trandform</a> <a href="/tags/wkwebview/" style="font-size: 14px; color: #00f">wkwebview</a> <a href="/tags/代理/" style="font-size: 14px; color: #00f">代理</a> <a href="/tags/动画/" style="font-size: 14px; color: #00f">动画</a> <a href="/tags/占位语/" style="font-size: 14px; color: #00f">占位语</a> <a href="/tags/只执行一遍/" style="font-size: 14px; color: #00f">只执行一遍</a> <a href="/tags/地图/" style="font-size: 17.67px; color: #4f2bf9">地图</a> <a href="/tags/字典/" style="font-size: 14px; color: #00f">字典</a> <a href="/tags/富文本/" style="font-size: 17.67px; color: #4f2bf9">富文本</a> <a href="/tags/对齐/" style="font-size: 14px; color: #00f">对齐</a> <a href="/tags/引用/" style="font-size: 14px; color: #00f">引用</a> <a href="/tags/手势/" style="font-size: 17.67px; color: #4f2bf9">手势</a> <a href="/tags/手势、只执行一遍/" style="font-size: 14px; color: #00f">手势、只执行一遍</a> <a href="/tags/数组/" style="font-size: 14px; color: #00f">数组</a> <a href="/tags/模板/" style="font-size: 17.67px; color: #4f2bf9">模板</a> <a href="/tags/泛型/" style="font-size: 14px; color: #00f">泛型</a> <a href="/tags/滑动/" style="font-size: 14px; color: #00f">滑动</a> <a href="/tags/滚动/" style="font-size: 14px; color: #00f">滚动</a> <a href="/tags/滚动视图/" style="font-size: 14px; color: #00f">滚动视图</a> <a href="/tags/笔记/" style="font-size: 17.67px; color: #4f2bf9">笔记</a> <a href="/tags/精度/" style="font-size: 14px; color: #00f">精度</a> <a href="/tags/获取屏幕/" style="font-size: 14px; color: #00f">获取屏幕</a> <a href="/tags/设置/" style="font-size: 14px; color: #00f">设置</a> <a href="/tags/跨页面/" style="font-size: 14px; color: #00f">跨页面</a> <a href="/tags/跳转/" style="font-size: 14px; color: #00f">跳转</a> <a href="/tags/输入/" style="font-size: 14px; color: #00f">输入</a> <a href="/tags/返回/" style="font-size: 14px; color: #00f">返回</a> <a href="/tags/通知/" style="font-size: 14px; color: #00f">通知</a> <a href="/tags/键盘/" style="font-size: 21.33px; color: #9f57f4">键盘</a> <a href="/tags/限制输入/" style="font-size: 14px; color: #00f">限制输入</a>
+      <a href="/tags/AlertView/" style="font-size: 14px; color: #00f">AlertView</a> <a href="/tags/JSON/" style="font-size: 14px; color: #00f">JSON</a> <a href="/tags/KVC/" style="font-size: 14px; color: #00f">KVC</a> <a href="/tags/Mansonry/" style="font-size: 14px; color: #00f">Mansonry</a> <a href="/tags/POI/" style="font-size: 14px; color: #00f">POI</a> <a href="/tags/collectionView/" style="font-size: 14px; color: #00f">collectionView</a> <a href="/tags/iOS-11/" style="font-size: 21.33px; color: #9f57f4">iOS 11</a> <a href="/tags/label/" style="font-size: 17.67px; color: #4f2bf9">label</a> <a href="/tags/pch/" style="font-size: 14px; color: #00f">pch</a> <a href="/tags/tabBarItem/" style="font-size: 14px; color: #00f">tabBarItem</a> <a href="/tags/tableview/" style="font-size: 25px; color: #ee82ee">tableview</a> <a href="/tags/textfiled/" style="font-size: 14px; color: #00f">textfiled</a> <a href="/tags/trandform/" style="font-size: 14px; color: #00f">trandform</a> <a href="/tags/wkwebview/" style="font-size: 14px; color: #00f">wkwebview</a> <a href="/tags/代理/" style="font-size: 14px; color: #00f">代理</a> <a href="/tags/动画/" style="font-size: 14px; color: #00f">动画</a> <a href="/tags/占位语/" style="font-size: 14px; color: #00f">占位语</a> <a href="/tags/只执行一遍/" style="font-size: 14px; color: #00f">只执行一遍</a> <a href="/tags/圆角/" style="font-size: 14px; color: #00f">圆角</a> <a href="/tags/地图/" style="font-size: 17.67px; color: #4f2bf9">地图</a> <a href="/tags/字典/" style="font-size: 14px; color: #00f">字典</a> <a href="/tags/富文本/" style="font-size: 17.67px; color: #4f2bf9">富文本</a> <a href="/tags/对齐/" style="font-size: 14px; color: #00f">对齐</a> <a href="/tags/引用/" style="font-size: 14px; color: #00f">引用</a> <a href="/tags/总结/" style="font-size: 14px; color: #00f">总结</a> <a href="/tags/手势/" style="font-size: 17.67px; color: #4f2bf9">手势</a> <a href="/tags/手势、只执行一遍/" style="font-size: 14px; color: #00f">手势、只执行一遍</a> <a href="/tags/数组/" style="font-size: 14px; color: #00f">数组</a> <a href="/tags/模板/" style="font-size: 17.67px; color: #4f2bf9">模板</a> <a href="/tags/泛型/" style="font-size: 14px; color: #00f">泛型</a> <a href="/tags/滑动/" style="font-size: 14px; color: #00f">滑动</a> <a href="/tags/滚动/" style="font-size: 14px; color: #00f">滚动</a> <a href="/tags/滚动视图/" style="font-size: 14px; color: #00f">滚动视图</a> <a href="/tags/笔记/" style="font-size: 17.67px; color: #4f2bf9">笔记</a> <a href="/tags/精度/" style="font-size: 14px; color: #00f">精度</a> <a href="/tags/获取屏幕/" style="font-size: 14px; color: #00f">获取屏幕</a> <a href="/tags/设置/" style="font-size: 14px; color: #00f">设置</a> <a href="/tags/调试/" style="font-size: 14px; color: #00f">调试</a> <a href="/tags/跨页面/" style="font-size: 14px; color: #00f">跨页面</a> <a href="/tags/跳转/" style="font-size: 14px; color: #00f">跳转</a> <a href="/tags/输入/" style="font-size: 14px; color: #00f">输入</a> <a href="/tags/返回/" style="font-size: 14px; color: #00f">返回</a> <a href="/tags/通知/" style="font-size: 14px; color: #00f">通知</a> <a href="/tags/键盘/" style="font-size: 21.33px; color: #9f57f4">键盘</a> <a href="/tags/限制输入/" style="font-size: 14px; color: #00f">限制输入</a> <a href="/tags/高效/" style="font-size: 14px; color: #00f">高效</a>
     </div>
   </div>
 
@@ -587,23 +607,23 @@
       <ul>
         
           <li>
+            <a href="/2017/12/10/iOS计算一段代码执行时间/">iOS计算一段代码执行时间</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/10/高效开发之KVC干货小技巧/">高效开发之KVC干货小技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/10/iOS 常用组件-高效切圆角方法总结/">iOS 常用组件-高效切圆角方法总结</a>
+          </li>
+        
+          <li>
             <a href="/2017/11/26/常见手势(敲击:旋转:捏合:长按:轻扫:混合等)/">常见手势(敲击/旋转/捏合/长按/轻扫/混合等)</a>
           </li>
         
           <li>
             <a href="/2017/11/26/确保代码在程序生命周期运行中只执行一遍/">确保代码在程序生命周期运行中只执行一遍</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/26/UICollectionView格式示例模板/">UICollectionView格式示例模板</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/26/tableView的常用MVC框架模板 /">tableView的常用MVC框架模板</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/18/屏幕获取不准的原因/">屏幕获取不准的原因</a>
           </li>
         
       </ul>
@@ -615,7 +635,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title archive">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

@@ -5,18 +5,18 @@
   
   <title>解决键盘弹出挡住VIew | 神棍MAX的iOS杂货铺</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="###1、通常情况下可以解决 12// 先监听键盘通知    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil]; 1234567891011">
+  <meta name="description" content="1、通常情况下可以解决12// 先监听键盘通知    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil]; 12345678910111213">
 <meta name="keywords" content="键盘">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决键盘弹出挡住VIew">
 <meta property="og:url" content="http://yoursite.com/2017/05/18/键盘弹出/index.html">
 <meta property="og:site_name" content="神棍MAX的iOS杂货铺">
-<meta property="og:description" content="###1、通常情况下可以解决 12// 先监听键盘通知    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil]; 1234567891011">
+<meta property="og:description" content="1、通常情况下可以解决12// 先监听键盘通知    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil]; 12345678910111213">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-18T09:13:19.345Z">
+<meta property="og:updated_time" content="2017-12-10T04:49:50.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决键盘弹出挡住VIew">
-<meta name="twitter:description" content="###1、通常情况下可以解决 12// 先监听键盘通知    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil]; 1234567891011">
+<meta name="twitter:description" content="1、通常情况下可以解决12// 先监听键盘通知    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil]; 12345678910111213">
   
     <link rel="alternate" href="/atom.xml" title="神棍MAX的iOS杂货铺" type="application/atom+xml">
   
@@ -93,18 +93,16 @@
       
         <!-- Table of Contents -->
         
-        <p>###1、通常情况下可以解决</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 先监听键盘通知</span></div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(keyboardWillChangeFrame:) name:<span class="built_in">UIKeyboardWillChangeFrameNotification</span> object:<span class="literal">nil</span>];</div></pre></td></tr></table></figure>
+        <h3 id="1、通常情况下可以解决"><a href="#1、通常情况下可以解决" class="headerlink" title="1、通常情况下可以解决"></a>1、通常情况下可以解决</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 先监听键盘通知</span></div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(keyboardWillChangeFrame:) name:<span class="built_in">UIKeyboardWillChangeFrameNotification</span> object:<span class="literal">nil</span>];</div></pre></td></tr></table></figure>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#pragma mark - 键盘处理</span></div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)keyboardWillChangeFrame:(<span class="built_in">NSNotification</span> *)note &#123;</div><div class="line">    <span class="comment">// 取出键盘最终的frame</span></div><div class="line">    <span class="built_in">CGRect</span> rect = [note.userInfo[<span class="built_in">UIKeyboardFrameEndUserInfoKey</span>] <span class="built_in">CGRectValue</span>];</div><div class="line">    <span class="comment">// 取出键盘弹出需要花费的时间</span></div><div class="line">    <span class="keyword">double</span> duration = [note.userInfo[<span class="built_in">UIKeyboardAnimationDurationUserInfoKey</span>] doubleValue];</div><div class="line">    <span class="comment">// 修改transform</span></div><div class="line">    [<span class="built_in">UIView</span> animateWithDuration:duration animations:^&#123;</div><div class="line">        <span class="built_in">CGFloat</span> ty = [<span class="built_in">UIScreen</span> mainScreen].bounds.size.height - rect.origin.y;</div><div class="line">        <span class="keyword">self</span>.view.transform = <span class="built_in">CGAffineTransformMakeTranslation</span>(<span class="number">0</span>, - ty);</div><div class="line">    &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//最后清空通知</span></div><div class="line">- (<span class="keyword">void</span>)dealloc</div><div class="line">&#123;</div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] removeObserver:<span class="keyword">self</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>###2、另一种解决方案、没第一种逼格高但周全</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//注册键盘出现的通知</span></div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span></div><div class="line">                                             selector:<span class="keyword">@selector</span>(keyboardWillShow:)</div><div class="line">                                                 name:<span class="built_in">UIKeyboardWillShowNotification</span> object:<span class="literal">nil</span>];</div><div class="line">    <span class="comment">//注册键盘消失的通知</span></div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span></div><div class="line">                                             selector:<span class="keyword">@selector</span>(keyboardWillHide:)</div><div class="line">                                                 name:<span class="built_in">UIKeyboardWillHideNotification</span> object:<span class="literal">nil</span>];</div></pre></td></tr></table></figure>
+<h3 id="2、另一种解决方案、没第一种逼格高但周全"><a href="#2、另一种解决方案、没第一种逼格高但周全" class="headerlink" title="2、另一种解决方案、没第一种逼格高但周全"></a>2、另一种解决方案、没第一种逼格高但周全</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//注册键盘出现的通知</span></div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span></div><div class="line">                                             selector:<span class="keyword">@selector</span>(keyboardWillShow:)</div><div class="line">                                                 name:<span class="built_in">UIKeyboardWillShowNotification</span> object:<span class="literal">nil</span>];</div><div class="line">    <span class="comment">//注册键盘消失的通知</span></div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span></div><div class="line">                                             selector:<span class="keyword">@selector</span>(keyboardWillHide:)</div><div class="line">                                                 name:<span class="built_in">UIKeyboardWillHideNotification</span> object:<span class="literal">nil</span>];</div></pre></td></tr></table></figure>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//点击空白收起键盘</span></div><div class="line">- (<span class="keyword">void</span>)touchesBegan:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UITouch</span> *&gt; *)touches withEvent:(<span class="built_in">UIEvent</span> *)event&#123;</div><div class="line">    [<span class="keyword">self</span> resignFirstresponder];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)resignFirstresponder&#123;</div><div class="line">    [<span class="keyword">self</span>.phone resignFirstResponder];</div><div class="line">    [<span class="keyword">self</span>.bossPhone resignFirstResponder];</div><div class="line">    [<span class="keyword">self</span>.code resignFirstResponder];</div><div class="line">    [<span class="keyword">self</span>.name resignFirstResponder];</div><div class="line">    [<span class="keyword">self</span>.idNumber resignFirstResponder];</div><div class="line">    [<span class="keyword">self</span>.AliAccount resignFirstResponder];</div><div class="line">&#125;</div><div class="line"><span class="meta">#pragma mark - 键盘处理</span></div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)keyboardWillShow:(<span class="built_in">NSNotification</span> *)note &#123;</div><div class="line">    <span class="comment">// 取出键盘最终的frame</span></div><div class="line">    <span class="built_in">CGRect</span> rect = [note.userInfo[<span class="built_in">UIKeyboardFrameEndUserInfoKey</span>] <span class="built_in">CGRectValue</span>];</div><div class="line">    <span class="comment">// 取出键盘弹出需要花费的时间</span></div><div class="line">    <span class="keyword">double</span> duration = [note.userInfo[<span class="built_in">UIKeyboardAnimationDurationUserInfoKey</span>] doubleValue];</div><div class="line">    <span class="built_in">CGFloat</span> ty = rect.size.height + textHeightY_zm + <span class="number">180</span> - <span class="keyword">self</span>.view.size.height + <span class="number">64</span>;</div><div class="line">    <span class="keyword">if</span> (ty&gt;<span class="number">0</span>) &#123;</div><div class="line">        <span class="comment">// 修改transform</span></div><div class="line">        [<span class="built_in">UIView</span> animateWithDuration:duration animations:^&#123;</div><div class="line">            <span class="keyword">self</span>.view.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, -ty, <span class="keyword">self</span>.view.frame.size.width, <span class="keyword">self</span>.view.frame.size.height);</div><div class="line">        &#125;];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">///键盘消失事件</span></div><div class="line">- (<span class="keyword">void</span>) keyboardWillHide:(<span class="built_in">NSNotification</span> *)notify &#123;</div><div class="line">    <span class="comment">// 键盘动画时间</span></div><div class="line">    <span class="keyword">double</span> duration = [[notify.userInfo objectForKey:<span class="built_in">UIKeyboardAnimationDurationUserInfoKey</span>] doubleValue];</div><div class="line">    </div><div class="line">    <span class="comment">//视图下沉恢复原状</span></div><div class="line">    [<span class="built_in">UIView</span> animateWithDuration:duration animations:^&#123;</div><div class="line">        <span class="keyword">self</span>.view.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">64</span>, <span class="keyword">self</span>.view.frame.size.width, <span class="keyword">self</span>.view.frame.size.height);</div><div class="line">    &#125;];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="built_in">BOOL</span>)textFieldShouldReturn:(<span class="built_in">UITextField</span> *)textField</div><div class="line">&#123;</div><div class="line">    [textField resignFirstResponder];</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="built_in">BOOL</span>)textFieldShouldBeginEditing:(<span class="built_in">UITextField</span> *)textField&#123;</div><div class="line">    textHeightY_zm = textField.frame.origin.y;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)tapAction:(<span class="built_in">UITapGestureRecognizer</span> *)tap&#123;</div><div class="line">    [<span class="keyword">self</span> resignFirstresponder];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//最后清空通知</span></div><div class="line">- (<span class="keyword">void</span>)dealloc&#123;</div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter]removeObserver:<span class="keyword">self</span> name:<span class="built_in">UIKeyboardWillShowNotification</span> object:<span class="literal">nil</span>];</div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter]removeObserver:<span class="keyword">self</span> name:<span class="built_in">UIKeyboardWillHideNotification</span> object:<span class="literal">nil</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/18/键盘弹出/" data-id="cjaghuv5n0019dwiplsfs5n6v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/05/18/键盘弹出/" data-id="cjb0aksqr001cvhipx6lvylj9" class="article-share-link">Share</a>
       
       
       
@@ -200,42 +198,24 @@
 
   
     
-  
+    <div class="widget-wrap">
     
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title recent-posts">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/11/26/常见手势(敲击:旋转:捏合:长按:轻扫:混合等)/">常见手势(敲击/旋转/捏合/长按/轻扫/混合等)</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/26/确保代码在程序生命周期运行中只执行一遍/">确保代码在程序生命周期运行中只执行一遍</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/26/UICollectionView格式示例模板/">UICollectionView格式示例模板</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/26/tableView的常用MVC框架模板 /">tableView的常用MVC框架模板</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/18/屏幕获取不准的原因/">屏幕获取不准的原因</a>
-          </li>
-        
-      </ul>
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">Content</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、通常情况下可以解决"><span class="toc-number">1.</span> <span class="toc-text">1、通常情况下可以解决</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、另一种解决方案、没第一种逼格高但周全"><span class="toc-number">2.</span> <span class="toc-text">2、另一种解决方案、没第一种逼格高但周全</span></a></li></ol>
+          </div>
+      </div>
     </div>
-  </div>
 
+  
+    
+
+  
+    
+  
+    
   
     
 

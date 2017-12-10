@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>iOS 常用组件-高效切圆角方法总结 | 神棍MAX的iOS杂货铺</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言iOS 客户端开发中，经常碰到圆角视图的需求，本文简单总结一下 UIView 及其子类的一些切圆角方法，并且保证避免出现离屏渲染。 UIView（不包括其子类）123456789UIView *view = [[UIView alloc] init];view.backgroundColor = [UIColor blackColor];view.layer.cornerRadius = 3.">
+<meta name="keywords" content="圆角,总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 常用组件-高效切圆角方法总结">
+<meta property="og:url" content="http://yoursite.com/2017/12/10/iOS 常用组件-高效切圆角方法总结/index.html">
+<meta property="og:site_name" content="神棍MAX的iOS杂货铺">
+<meta property="og:description" content="前言iOS 客户端开发中，经常碰到圆角视图的需求，本文简单总结一下 UIView 及其子类的一些切圆角方法，并且保证避免出现离屏渲染。 UIView（不包括其子类）123456789UIView *view = [[UIView alloc] init];view.backgroundColor = [UIColor blackColor];view.layer.cornerRadius = 3.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-10T04:20:01.262Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 常用组件-高效切圆角方法总结">
+<meta name="twitter:description" content="前言iOS 客户端开发中，经常碰到圆角视图的需求，本文简单总结一下 UIView 及其子类的一些切圆角方法，并且保证避免出现离屏渲染。 UIView（不包括其子类）123456789UIView *view = [[UIView alloc] init];view.backgroundColor = [UIColor blackColor];view.layer.cornerRadius = 3.">
+  
+    <link rel="alternate" href="/atom.xml" title="神棍MAX的iOS杂货铺" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">神棍MAX的iOS杂货铺</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-iOS 常用组件-高效切圆角方法总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/10/iOS 常用组件-高效切圆角方法总结/" class="article-date">
+  <time datetime="2017-12-10T04:20:01.262Z" itemprop="datePublished">2017-12-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS 常用组件-高效切圆角方法总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>iOS 客户端开发中，经常碰到圆角视图的需求，本文简单总结一下 UIView 及其子类的一些切圆角方法，并且保证避免出现离屏渲染。</p>
+<h4 id="UIView（不包括其子类）"><a href="#UIView（不包括其子类）" class="headerlink" title="UIView（不包括其子类）"></a>UIView（不包括其子类）</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIView</span> *view = [[<span class="built_in">UIView</span> alloc] init];</div><div class="line">view.backgroundColor = [<span class="built_in">UIColor</span> blackColor];</div><div class="line">view.layer.cornerRadius = <span class="number">3.</span>f;</div><div class="line"><span class="comment">// 以下两行，任写一行</span></div><div class="line">view.layer.masksToBounds = <span class="literal">NO</span>;</div><div class="line">view.clipToBounds = <span class="literal">NO</span>;</div><div class="line"><span class="comment">// 以下两行，千万不要加！</span></div><div class="line">view.layer.masksToBounds = <span class="literal">YES</span>;</div><div class="line">view.clipToBounds = <span class="literal">YES</span>;</div></pre></td></tr></table></figure>
+<p>注意点：UIView 只要设置图层的 cornerRadius 属性即可（不明白的话，可以看看官方文档里对 cornerRadius 的描述），如果设置 layer.masksToBounds = YES，会造成不必要的离屏渲染。</p>
+<h4 id="文本类视图"><a href="#文本类视图" class="headerlink" title="文本类视图"></a>文本类视图</h4><h4 id="1、UITextField"><a href="#1、UITextField" class="headerlink" title="1、UITextField"></a>1、UITextField</h4><p>UITextField有两种实现方法</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 天然支持设置圆角边框</span></div><div class="line"><span class="built_in">UITextField</span> *textField = [[<span class="built_in">UITextField</span> alloc] init];</div><div class="line">textField.borderStyle = <span class="built_in">UITextBorderStyleRoundedRect</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 与 UIView 类似</span></div><div class="line"><span class="built_in">UITextField</span> *textField = [[<span class="built_in">UITextField</span> alloc] init];</div><div class="line">textField.layer.cornerRadius = cornerRadius;</div></pre></td></tr></table></figure>
+<h4 id="2、UITextView"><a href="#2、UITextView" class="headerlink" title="2、UITextView"></a>2、UITextView</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 与 UIView 类似</span></div><div class="line"><span class="built_in">UITextView</span> *textView = [[<span class="built_in">UITextView</span> alloc] init];</div><div class="line">textView.layer.cornerRadius = cornerRadius;</div></pre></td></tr></table></figure>
+<h4 id="3、UILabel"><a href="#3、UILabel" class="headerlink" title="3、UILabel"></a>3、UILabel</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UILabel</span> *label = [[<span class="built_in">UILabel</span> alloc] init];</div><div class="line"><span class="comment">// 重点在此！！设置视图的图层背景色，千万不要直接设置 label.backgroundColor</span></div><div class="line">label.layer.backgroundColor = [<span class="built_in">UIColor</span> grayColor].CGColor;</div><div class="line">label.layer.cornerRadius = cornerRadius;</div></pre></td></tr></table></figure>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><h4 id="1、UIButton"><a href="#1、UIButton" class="headerlink" title="1、UIButton"></a>1、UIButton</h4><p>说明：UIButton 的背景图片，如果是复杂的图片，可以依靠 UI 切图来实现。如果是简单的纯色背景图片，可以利用代码绘制带圆角的图片。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIButton</span> *button = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</div><div class="line"><span class="comment">// 设置 UIButton 的背景图片。</span></div><div class="line">[button setBackgroundImage:image forState:<span class="built_in">UIControlStateNormal</span>];</div></pre></td></tr></table></figure>
+<p>背景图片绘制方法</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">UIImage</span> *)pureColorImageWithSize:(<span class="built_in">CGSize</span>)size color:(<span class="built_in">UIColor</span> *)color cornRadius:(<span class="built_in">CGFloat</span>)cornRadius &#123;</div><div class="line">  <span class="built_in">UIView</span> *view = [[<span class="built_in">UIView</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0.0</span>f, <span class="number">0.0</span>f, size.width, size.height)];</div><div class="line">  view.backgroundColor = color;</div><div class="line">  view.layer.cornerRadius = cornerRadius;</div><div class="line">  <span class="comment">// 下面方法，第一个参数表示区域大小。第二个参数表示是否是非透明的。如果需要显示半透明效果，需要传NO，否则传YES。第三个参数是屏幕密度</span></div><div class="line">  <span class="built_in">UIGraphicsBeginImageContextWithOptions</span>(view.bounds.size, <span class="literal">NO</span>, [<span class="built_in">UIScreen</span> mainScreen].scale);</div><div class="line">  [view.layer renderInContext:<span class="built_in">UIGraphicsGetCurrentContext</span>()];</div><div class="line">  <span class="built_in">UIImage</span> *image = <span class="built_in">UIGraphicsGetImageFromCurrentImageContext</span>();</div><div class="line">  <span class="built_in">UIGraphicsEndImageContext</span>();</div><div class="line">  <span class="keyword">return</span> image;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="2、UIImageView"><a href="#2、UIImageView" class="headerlink" title="2、UIImageView"></a>2、UIImageView</h4><p>UIImageView 有三种方式实现圆角：</p>
+<ul>
+<li>贝塞尔曲线切割圆角</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">UIImageView</span> *)roundedRectImageViewWithCornerRadius:(<span class="built_in">CGFloat</span>)cornerRadius &#123;</div><div class="line">    <span class="built_in">UIBezierPath</span> *bezierPath = [<span class="built_in">UIBezierPath</span> bezierPathWithRoundedRect:<span class="keyword">self</span>.bounds cornerRadius:cornerRadius];</div><div class="line">    <span class="built_in">CAShapeLayer</span> *layer = [<span class="built_in">CAShapeLayer</span> layer];</div><div class="line">    layer.path = bezierPath.CGPath;</div><div class="line">    <span class="keyword">self</span>.layer.mask = layer;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>绘制四个角的遮罩（使用场景受限）</li>
+</ul>
+<p>在 UIImageView 上添加一个四个角有内容，其它部分是透明的视图，只对 UIImageView 圆角部分进行遮挡。但要保证被遮挡的部分背景色要与周围背景相同，避免穿帮。所以当 UIImageView 处于一个复杂的背景时，是不适合使用这个方法的。</p>
+<ul>
+<li>最不推荐做法（当一个页面只有少量圆角图片时才推荐使用）</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIImageView</span> *imageView = [[<span class="built_in">UIImageView</span> alloc] init];</div><div class="line">imageView.layer.cornerRadius = <span class="number">5.</span>f;</div><div class="line">imageView.layer.masksToBounds = <span class="literal">YES</span>;</div></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上是开发过程常用组件的切圆角方法总结，如果有更好的方法或者文中有不对的地方，还请指正提出，谢谢。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/10/iOS 常用组件-高效切圆角方法总结/" data-id="cjb0akspj0007vhippitterld" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/圆角/">圆角</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>Recommended Posts</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =8
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/10/高效开发之KVC干货小技巧/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          高效开发之KVC干货小技巧
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/26/常见手势(敲击:旋转:捏合:长按:轻扫:混合等)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">常见手势(敲击/旋转/捏合/长按/轻扫/混合等)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">Content</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#UIView（不包括其子类）"><span class="toc-number">1.1.</span> <span class="toc-text">UIView（不包括其子类）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文本类视图"><span class="toc-number">1.2.</span> <span class="toc-text">文本类视图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1、UITextField"><span class="toc-number">1.3.</span> <span class="toc-text">1、UITextField</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、UITextView"><span class="toc-number">1.4.</span> <span class="toc-text">2、UITextView</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、UILabel"><span class="toc-number">1.5.</span> <span class="toc-text">3、UILabel</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其它"><span class="toc-number">2.</span> <span class="toc-text">其它</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、UIButton"><span class="toc-number">2.1.</span> <span class="toc-text">1、UIButton</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、UIImageView"><span class="toc-number">2.2.</span> <span class="toc-text">2、UIImageView</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 TQMAX&nbsp;|&nbsp;
+      Theme by <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      Contact&nbsp;|&nbsp;q452316q@163.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>
