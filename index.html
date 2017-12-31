@@ -41,7 +41,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -68,6 +68,50 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-透明状态栏" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/31/透明状态栏/" class="article-date">
+  <time datetime="2017-12-31T09:16:38.156Z" itemprop="datePublished">2017-12-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/31/透明状态栏/">透明状态栏</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="效果如下："><a href="#效果如下：" class="headerlink" title="效果如下："></a>效果如下：</h3><p><img src="https://raw.githubusercontent.com/TQMAX/Markdown-Res/master/WechatIMG61.png" alt=""></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)viewWillAppear:(<span class="built_in">BOOL</span>)animated&#123;</div><div class="line">    [<span class="keyword">super</span> viewWillAppear:animated];</div><div class="line">    </div><div class="line">    <span class="comment">//状态栏设置透明</span></div><div class="line">    <span class="keyword">self</span>.navigationController.navigationBar.translucent = <span class="literal">YES</span>;</div><div class="line">    [<span class="keyword">self</span>.navigationController.navigationBar setBackgroundImage:[<span class="built_in">UIImage</span> new] forBarMetrics:<span class="built_in">UIBarMetricsDefault</span>];</div><div class="line">    <span class="keyword">self</span>.navigationController.navigationBar.shadowImage = [<span class="built_in">UIImage</span> new];</div><div class="line">   <span class="comment">//标题设置样式</span></div><div class="line">    <span class="keyword">self</span>.navigationController.navigationBar.titleTextAttributes=@&#123;<span class="built_in">NSForegroundColorAttributeName</span>:<span class="built_in">UIColorFromRGB</span>(<span class="number">0xffffff</span>),<span class="built_in">NSFontAttributeName</span>:[<span class="built_in">UIFont</span> fontWithName:<span class="string">@"HiraKakuProN-W6"</span> size:<span class="number">18</span>]&#125;;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)viewWillDisappear:(<span class="built_in">BOOL</span>)animated&#123;</div><div class="line">    [<span class="keyword">super</span> viewWillDisappear:animated];</div><div class="line">    <span class="keyword">self</span>.navigationController.navigationBar.translucent = <span class="literal">NO</span>;</div><div class="line">    <span class="comment">//还原回状态栏原来的样子</span></div><div class="line">    <span class="keyword">self</span>.navigationController.navigationBar.titleTextAttributes=@&#123;<span class="built_in">NSForegroundColorAttributeName</span>:<span class="built_in">UIColorFromRGB</span>(<span class="number">0xff386b</span>),<span class="built_in">NSFontAttributeName</span>:[<span class="built_in">UIFont</span> fontWithName:<span class="string">@"HiraKakuProN-W6"</span> size:<span class="number">15</span>]&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/31/透明状态栏/" data-id="cjbukvrfj001fh3ipjwnh9sa0" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/状态栏/">状态栏</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/透明/">透明</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
   
     <article id="post-iOS计算一段代码执行时间" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -101,7 +145,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/10/iOS计算一段代码执行时间/" data-id="cjbukhrxr000cd3ipakbju180" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/10/iOS计算一段代码执行时间/" data-id="cjbukvre3000ah3ipy9wcaidv" class="article-share-link">Share</a>
       
       
       
@@ -148,7 +192,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/10/高效开发之KVC干货小技巧/" data-id="cjbukhrzw001nd3ipdwfjagst" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/10/高效开发之KVC干货小技巧/" data-id="cjbukvrfz001rh3ipjnriw2t0" class="article-share-link">Share</a>
       
       
       
@@ -216,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/10/iOS 常用组件-高效切圆角方法总结/" data-id="cjbukhrxj0007d3iphrrvkvhj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/10/iOS 常用组件-高效切圆角方法总结/" data-id="cjbukvrdx0007h3ipehowmgal" class="article-share-link">Share</a>
       
       
       
@@ -273,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/26/常见手势(敲击:旋转:捏合:长按:轻扫:混合等)/" data-id="cjbukhryl0011d3ipuycudv4c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/26/常见手势(敲击:旋转:捏合:长按:轻扫:混合等)/" data-id="cjbukvrew0011h3ipruzgwqt6" class="article-share-link">Share</a>
       
       
       
@@ -315,7 +359,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/26/确保代码在程序生命周期运行中只执行一遍/" data-id="cjbukhryp0016d3ipdung4umz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/26/确保代码在程序生命周期运行中只执行一遍/" data-id="cjbukvrf20018h3ipakwi110c" class="article-share-link">Share</a>
       
       
       
@@ -359,7 +403,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/26/UICollectionView格式示例模板/" data-id="cjbukhrxc0003d3ipvm5gkse0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/26/UICollectionView格式示例模板/" data-id="cjbukvrdi0001h3ipleo07ozi" class="article-share-link">Share</a>
       
       
       
@@ -412,7 +456,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/26/tableView的常用MVC框架模板 /" data-id="cjbukhrxx000id3ipmhw8qviq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/26/tableView的常用MVC框架模板 /" data-id="cjbukvreb000ih3ipopaxuiqg" class="article-share-link">Share</a>
       
       
       
@@ -456,7 +500,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/屏幕获取不准的原因/" data-id="cjbukhryj000zd3ipfr40zt6f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/18/屏幕获取不准的原因/" data-id="cjbukvres000zh3ipngrlzntw" class="article-share-link">Share</a>
       
       
       
@@ -499,7 +543,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/09/iOS 11地图不提示是否允许定位/" data-id="cjbukhrxg0005d3ipbvjgp7cb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/09/iOS 11地图不提示是否允许定位/" data-id="cjbukvrdu0005h3ipsdr0oglw" class="article-share-link">Share</a>
       
       
       
@@ -513,53 +557,10 @@
 
 
   
-    <article id="post-iOS11数字精度问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/27/iOS11数字精度问题/" class="article-date">
-  <time datetime="2017-10-27T13:22:58.000Z" itemprop="datePublished">2017-10-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/27/iOS11数字精度问题/">iOS11数字精度问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/*!</span></div><div class="line"><span class="comment"> @brief 修正浮点型精度丢失</span></div><div class="line"><span class="comment"> @param str 传入接口取到的数据</span></div><div class="line"><span class="comment"> @return 修正精度后的数据</span></div><div class="line"><span class="comment"> */</span></div><div class="line">+(<span class="built_in">NSString</span> *)reviseString:(<span class="built_in">NSString</span> *)str</div><div class="line">&#123;</div><div class="line">    <span class="comment">//直接传入精度丢失有问题的Double类型</span></div><div class="line">    <span class="keyword">double</span> conversionValue = [str doubleValue];</div><div class="line">    <span class="built_in">NSString</span> *doubleString = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%lf"</span>, conversionValue];</div><div class="line">    <span class="built_in">NSDecimalNumber</span> *decNumber = [<span class="built_in">NSDecimalNumber</span> decimalNumberWithString:doubleString];</div><div class="line">    <span class="keyword">return</span> [decNumber stringValue];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/27/iOS11数字精度问题/" data-id="cjbukhrxl0008d3ipl9kqbj34" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS-11/">iOS 11</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/精度/">精度</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Neste&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next&raquo;</a>
   </nav>
 </section>
            
@@ -595,16 +596,20 @@
   <div class="widget-wrap">
     <h3 class="widget-title tagcloud">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AlertView/" style="font-size: 14px; color: #00f">AlertView</a> <a href="/tags/JSON/" style="font-size: 14px; color: #00f">JSON</a> <a href="/tags/KVC/" style="font-size: 14px; color: #00f">KVC</a> <a href="/tags/Mansonry/" style="font-size: 14px; color: #00f">Mansonry</a> <a href="/tags/POI/" style="font-size: 14px; color: #00f">POI</a> <a href="/tags/collectionView/" style="font-size: 14px; color: #00f">collectionView</a> <a href="/tags/iOS-11/" style="font-size: 21.33px; color: #9f57f4">iOS 11</a> <a href="/tags/label/" style="font-size: 17.67px; color: #4f2bf9">label</a> <a href="/tags/pch/" style="font-size: 14px; color: #00f">pch</a> <a href="/tags/tabBarItem/" style="font-size: 14px; color: #00f">tabBarItem</a> <a href="/tags/tableview/" style="font-size: 25px; color: #ee82ee">tableview</a> <a href="/tags/textfiled/" style="font-size: 14px; color: #00f">textfiled</a> <a href="/tags/trandform/" style="font-size: 14px; color: #00f">trandform</a> <a href="/tags/wkwebview/" style="font-size: 14px; color: #00f">wkwebview</a> <a href="/tags/代理/" style="font-size: 14px; color: #00f">代理</a> <a href="/tags/动画/" style="font-size: 14px; color: #00f">动画</a> <a href="/tags/占位语/" style="font-size: 14px; color: #00f">占位语</a> <a href="/tags/只执行一遍/" style="font-size: 14px; color: #00f">只执行一遍</a> <a href="/tags/圆角/" style="font-size: 14px; color: #00f">圆角</a> <a href="/tags/地图/" style="font-size: 17.67px; color: #4f2bf9">地图</a> <a href="/tags/字典/" style="font-size: 14px; color: #00f">字典</a> <a href="/tags/富文本/" style="font-size: 17.67px; color: #4f2bf9">富文本</a> <a href="/tags/对齐/" style="font-size: 14px; color: #00f">对齐</a> <a href="/tags/引用/" style="font-size: 14px; color: #00f">引用</a> <a href="/tags/总结/" style="font-size: 14px; color: #00f">总结</a> <a href="/tags/手势/" style="font-size: 17.67px; color: #4f2bf9">手势</a> <a href="/tags/手势、只执行一遍/" style="font-size: 14px; color: #00f">手势、只执行一遍</a> <a href="/tags/数组/" style="font-size: 14px; color: #00f">数组</a> <a href="/tags/模板/" style="font-size: 17.67px; color: #4f2bf9">模板</a> <a href="/tags/泛型/" style="font-size: 14px; color: #00f">泛型</a> <a href="/tags/滑动/" style="font-size: 14px; color: #00f">滑动</a> <a href="/tags/滚动/" style="font-size: 14px; color: #00f">滚动</a> <a href="/tags/滚动视图/" style="font-size: 14px; color: #00f">滚动视图</a> <a href="/tags/笔记/" style="font-size: 17.67px; color: #4f2bf9">笔记</a> <a href="/tags/精度/" style="font-size: 14px; color: #00f">精度</a> <a href="/tags/获取屏幕/" style="font-size: 14px; color: #00f">获取屏幕</a> <a href="/tags/设置/" style="font-size: 14px; color: #00f">设置</a> <a href="/tags/调试/" style="font-size: 14px; color: #00f">调试</a> <a href="/tags/跨页面/" style="font-size: 14px; color: #00f">跨页面</a> <a href="/tags/跳转/" style="font-size: 14px; color: #00f">跳转</a> <a href="/tags/输入/" style="font-size: 14px; color: #00f">输入</a> <a href="/tags/返回/" style="font-size: 14px; color: #00f">返回</a> <a href="/tags/通知/" style="font-size: 14px; color: #00f">通知</a> <a href="/tags/键盘/" style="font-size: 21.33px; color: #9f57f4">键盘</a> <a href="/tags/限制输入/" style="font-size: 14px; color: #00f">限制输入</a> <a href="/tags/高效/" style="font-size: 14px; color: #00f">高效</a>
+      <a href="/tags/AlertView/" style="font-size: 14px; color: #00f">AlertView</a> <a href="/tags/JSON/" style="font-size: 14px; color: #00f">JSON</a> <a href="/tags/KVC/" style="font-size: 14px; color: #00f">KVC</a> <a href="/tags/Mansonry/" style="font-size: 14px; color: #00f">Mansonry</a> <a href="/tags/POI/" style="font-size: 14px; color: #00f">POI</a> <a href="/tags/collectionView/" style="font-size: 14px; color: #00f">collectionView</a> <a href="/tags/iOS-11/" style="font-size: 21.33px; color: #9f57f4">iOS 11</a> <a href="/tags/label/" style="font-size: 17.67px; color: #4f2bf9">label</a> <a href="/tags/pch/" style="font-size: 14px; color: #00f">pch</a> <a href="/tags/tabBarItem/" style="font-size: 14px; color: #00f">tabBarItem</a> <a href="/tags/tableview/" style="font-size: 25px; color: #ee82ee">tableview</a> <a href="/tags/textfiled/" style="font-size: 14px; color: #00f">textfiled</a> <a href="/tags/trandform/" style="font-size: 14px; color: #00f">trandform</a> <a href="/tags/wkwebview/" style="font-size: 14px; color: #00f">wkwebview</a> <a href="/tags/代理/" style="font-size: 14px; color: #00f">代理</a> <a href="/tags/动画/" style="font-size: 14px; color: #00f">动画</a> <a href="/tags/占位语/" style="font-size: 14px; color: #00f">占位语</a> <a href="/tags/只执行一遍/" style="font-size: 14px; color: #00f">只执行一遍</a> <a href="/tags/圆角/" style="font-size: 14px; color: #00f">圆角</a> <a href="/tags/地图/" style="font-size: 17.67px; color: #4f2bf9">地图</a> <a href="/tags/字典/" style="font-size: 14px; color: #00f">字典</a> <a href="/tags/富文本/" style="font-size: 17.67px; color: #4f2bf9">富文本</a> <a href="/tags/对齐/" style="font-size: 14px; color: #00f">对齐</a> <a href="/tags/引用/" style="font-size: 14px; color: #00f">引用</a> <a href="/tags/总结/" style="font-size: 14px; color: #00f">总结</a> <a href="/tags/手势/" style="font-size: 17.67px; color: #4f2bf9">手势</a> <a href="/tags/手势、只执行一遍/" style="font-size: 14px; color: #00f">手势、只执行一遍</a> <a href="/tags/数组/" style="font-size: 14px; color: #00f">数组</a> <a href="/tags/模板/" style="font-size: 17.67px; color: #4f2bf9">模板</a> <a href="/tags/泛型/" style="font-size: 14px; color: #00f">泛型</a> <a href="/tags/滑动/" style="font-size: 14px; color: #00f">滑动</a> <a href="/tags/滚动/" style="font-size: 14px; color: #00f">滚动</a> <a href="/tags/滚动视图/" style="font-size: 14px; color: #00f">滚动视图</a> <a href="/tags/状态栏/" style="font-size: 14px; color: #00f">状态栏</a> <a href="/tags/笔记/" style="font-size: 17.67px; color: #4f2bf9">笔记</a> <a href="/tags/精度/" style="font-size: 14px; color: #00f">精度</a> <a href="/tags/获取屏幕/" style="font-size: 14px; color: #00f">获取屏幕</a> <a href="/tags/设置/" style="font-size: 14px; color: #00f">设置</a> <a href="/tags/调试/" style="font-size: 14px; color: #00f">调试</a> <a href="/tags/跨页面/" style="font-size: 14px; color: #00f">跨页面</a> <a href="/tags/跳转/" style="font-size: 14px; color: #00f">跳转</a> <a href="/tags/输入/" style="font-size: 14px; color: #00f">输入</a> <a href="/tags/返回/" style="font-size: 14px; color: #00f">返回</a> <a href="/tags/透明/" style="font-size: 14px; color: #00f">透明</a> <a href="/tags/通知/" style="font-size: 14px; color: #00f">通知</a> <a href="/tags/键盘/" style="font-size: 21.33px; color: #9f57f4">键盘</a> <a href="/tags/限制输入/" style="font-size: 14px; color: #00f">限制输入</a> <a href="/tags/高效/" style="font-size: 14px; color: #00f">高效</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title recent-posts">Siste innlegg</h3>
+    <h3 class="widget-title recent-posts">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/12/31/透明状态栏/">透明状态栏</a>
+          </li>
         
           <li>
             <a href="/2017/12/10/iOS计算一段代码执行时间/">iOS计算一段代码执行时间</a>
@@ -622,10 +627,6 @@
             <a href="/2017/11/26/常见手势(敲击:旋转:捏合:长按:轻扫:混合等)/">常见手势(敲击/旋转/捏合/长按/轻扫/混合等)</a>
           </li>
         
-          <li>
-            <a href="/2017/11/26/确保代码在程序生命周期运行中只执行一遍/">确保代码在程序生命周期运行中只执行一遍</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -633,9 +634,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title archive">Arkiv</h3>
+    <h3 class="widget-title archive">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

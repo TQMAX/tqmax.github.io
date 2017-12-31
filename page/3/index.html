@@ -41,7 +41,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -68,6 +68,52 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-键盘输入框限制输入等处理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/06/键盘输入框限制输入等处理/" class="article-date">
+  <time datetime="2017-06-06T13:18:09.000Z" itemprop="datePublished">2017-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/06/键盘输入框限制输入等处理/">键盘输入框限制输入等处理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>1.先加入事件</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[_phoneTextField addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(textFieldDidChange:) forControlEvents:<span class="built_in">UIControlEventEditingChanged</span>];</div></pre></td></tr></table></figure>
+<p>2.处理方法</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)textFieldDidChange:(<span class="built_in">UITextField</span> *)textField&#123;</div><div class="line">    <span class="built_in">UITextRange</span> *selectedRange = textField.markedTextRange;</div><div class="line">    <span class="built_in">UITextPosition</span> *position = [textField positionFromPosition:selectedRange.start offset:<span class="number">0</span>];</div><div class="line">    <span class="keyword">if</span> (!position) &#123;</div><div class="line">        <span class="comment">// 没有高亮选择的字</span></div><div class="line">        <span class="comment">// 1. 过滤非汉字、字母、数字字符</span></div><div class="line">        <span class="keyword">self</span>.phoneTextField.text = [<span class="keyword">self</span> filterCharactor:textField.text withRegex:<span class="string">@"[^0-9]"</span>];</div><div class="line">        <span class="comment">// 2. 截取</span></div><div class="line">        <span class="keyword">if</span> (<span class="keyword">self</span>.phoneTextField.text.length &gt;= <span class="number">12</span>) &#123;</div><div class="line">            <span class="keyword">self</span>.phoneTextField.text = [<span class="keyword">self</span>.phoneTextField.text substringToIndex:<span class="number">11</span>];</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="comment">// 有高亮选择的字 不做任何操作</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 过滤字符串中的非汉字、字母、数字</span></div><div class="line">- (<span class="built_in">NSString</span> *)filterCharactor:(<span class="built_in">NSString</span> *)string withRegex:(<span class="built_in">NSString</span> *)regexStr&#123;</div><div class="line">    <span class="built_in">NSString</span> *filterText = string;</div><div class="line">    <span class="built_in">NSError</span> *error = <span class="literal">NULL</span>;</div><div class="line">    <span class="built_in">NSRegularExpression</span> *regex = [<span class="built_in">NSRegularExpression</span> regularExpressionWithPattern:regexStr options:<span class="built_in">NSRegularExpressionCaseInsensitive</span> error:&amp;error];</div><div class="line">    <span class="built_in">NSString</span> *result = [regex stringByReplacingMatchesInString:filterText options:<span class="built_in">NSMatchingReportCompletion</span> range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, filterText.length) withTemplate:<span class="string">@""</span>];</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/06/06/键盘输入框限制输入等处理/" data-id="cjbukvrfl001hh3ipkvc03ebw" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/键盘/">键盘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/限制输入/">限制输入</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
   
     <article id="post-跨多级页面跳转" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -98,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/23/跨多级页面跳转/" data-id="cjbukhryz001ad3ip8ue7rr7i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/05/23/跨多级页面跳转/" data-id="cjbukvrff001dh3ipukt3wkx6" class="article-share-link">Share</a>
       
       
       
@@ -145,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/18/键盘弹出/" data-id="cjbukhrz8001dd3ip32cyxlte" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/05/18/键盘弹出/" data-id="cjbukvrfw001ph3ipi67pf2xk" class="article-share-link">Share</a>
       
       
       
@@ -193,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/15/修改UIAlertView设置文字左对齐/" data-id="cjbukhryb000td3ipi00ecm5b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/15/修改UIAlertView设置文字左对齐/" data-id="cjbukvrek000rh3ip8s2wg927" class="article-share-link">Share</a>
       
       
       
@@ -245,7 +291,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/22/富文本的修改/" data-id="cjbukhrye000wd3ipr2z3c01y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/22/富文本的修改/" data-id="cjbukvreq000yh3ip1j0uefx3" class="article-share-link">Share</a>
       
       
       
@@ -291,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/09/oc中的泛型/" data-id="cjbukhrxs000fd3ip61dfiexk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/09/oc中的泛型/" data-id="cjbukvre6000fh3ipabt808l9" class="article-share-link">Share</a>
       
       
       
@@ -341,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/28/pch自定义日志输出/" data-id="cjbukhrxu000gd3iplg9ewgu3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/02/28/pch自定义日志输出/" data-id="cjbukvre8000gh3ip3xzt195q" class="article-share-link">Share</a>
       
       
       
@@ -384,7 +430,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/21/transform动画/" data-id="cjbukhry6000pd3ipxeytay21" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/01/21/transform动画/" data-id="cjbukvrei000ph3ip7r1lluih" class="article-share-link">Share</a>
       
       
       
@@ -427,7 +473,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/08/统一设置所有 UITabBarItem 的文字属性/" data-id="cjbukhrz2001bd3iptvpsbju0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/01/08/统一设置所有 UITabBarItem 的文字属性/" data-id="cjbukvrfb001ch3ipl98d4bzt" class="article-share-link">Share</a>
       
       
       
@@ -470,7 +516,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/12/29/textfiled占位语的设置/" data-id="cjbukhry1000md3ipc9g4kddu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/12/29/textfiled占位语的设置/" data-id="cjbukvreh000mh3ip9kxxtc3o" class="article-share-link">Share</a>
       
       
       
@@ -484,53 +530,10 @@
 
 
   
-    <article id="post-本地字典转JSON" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/05/本地字典转JSON/" class="article-date">
-  <time datetime="2016-12-05T12:15:30.000Z" itemprop="datePublished">2016-12-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/05/本地字典转JSON/">本地字典写成需要的JSON 本地文件</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1.判断当前对象是否能够转换成JSON数据.</span></div><div class="line">  <span class="comment">// YES if obj can be converted to JSON data, otherwise NO</span></div><div class="line">  <span class="built_in">BOOL</span> isYes = [<span class="built_in">NSJSONSerialization</span> isValidJSONObject:dict];</div><div class="line">  </div><div class="line">  <span class="keyword">if</span> (isYes) &#123;</div><div class="line">      <span class="built_in">NSLog</span>(<span class="string">@"可以转换"</span>);</div><div class="line">      </div><div class="line">      <span class="comment">/* JSON data for obj, or nil if an internal error occurs. The resulting data is a encoded in UTF-8.</span></div><div class="line"><span class="comment">       */</span></div><div class="line">      <span class="built_in">NSData</span> *jsonData = [<span class="built_in">NSJSONSerialization</span> dataWithJSONObject:dict options:<span class="number">0</span> error:<span class="literal">NULL</span>];</div><div class="line">      </div><div class="line">      </div><div class="line">      <span class="comment">// 将JSON数据写成文件</span></div><div class="line">      <span class="comment">// 文件添加后缀名: 告诉别人当前文件的类型.</span></div><div class="line">      <span class="comment">// 注意: AFN是通过文件类型来确定数据类型的!如果不添加类型,有可能识别不了! 自己最好添加文件类型.</span></div><div class="line">      [jsonData writeToFile:<span class="string">@"/Users/ygkj/Desktop/shopCartTestData.json"</span> atomically:<span class="literal">YES</span>];</div><div class="line">      </div><div class="line">      <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, [[<span class="built_in">NSString</span> alloc] initWithData:jsonData encoding:<span class="built_in">NSUTF8StringEncoding</span>]);</div><div class="line">      </div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">      </div><div class="line">      <span class="built_in">NSLog</span>(<span class="string">@"JSON数据生成失败，请检查数据格式"</span>);</div><div class="line">      </div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/12/05/本地字典转JSON/" data-id="cjbukhrym0014d3ip3a8iyv7j" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSON/">JSON</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字典/">字典</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Forrige</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Neste&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next&raquo;</a>
   </nav>
 </section>
            
@@ -548,9 +551,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title recent-posts">Siste innlegg</h3>
+    <h3 class="widget-title recent-posts">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/12/31/透明状态栏/">透明状态栏</a>
+          </li>
         
           <li>
             <a href="/2017/12/10/iOS计算一段代码执行时间/">iOS计算一段代码执行时间</a>
@@ -566,10 +573,6 @@
         
           <li>
             <a href="/2017/11/26/常见手势(敲击:旋转:捏合:长按:轻扫:混合等)/">常见手势(敲击/旋转/捏合/长按/轻扫/混合等)</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/26/确保代码在程序生命周期运行中只执行一遍/">确保代码在程序生命周期运行中只执行一遍</a>
           </li>
         
       </ul>
