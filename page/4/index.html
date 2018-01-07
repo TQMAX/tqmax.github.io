@@ -69,6 +69,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-统一设置所有 UITabBarItem 的文字属性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/08/统一设置所有 UITabBarItem 的文字属性/" class="article-date">
+  <time datetime="2017-01-08T13:19:05.000Z" itemprop="datePublished">2017-01-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/08/统一设置所有 UITabBarItem 的文字属性/">统一设置所有 UITabBarItem 的文字属性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#pragma mark - 统一设置所有 UITabBarItem 的文字属性</span></div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>)initialize &#123;</div><div class="line">    <span class="built_in">NSMutableDictionary</span> *attrs = [<span class="built_in">NSMutableDictionary</span> dictionary];</div><div class="line">    attrs[<span class="built_in">NSFontAttributeName</span>] = [<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">12</span>];</div><div class="line">    attrs[<span class="built_in">NSForegroundColorAttributeName</span>] = [<span class="built_in">UIColor</span> grayColor];</div><div class="line">    </div><div class="line">    <span class="built_in">NSMutableDictionary</span> *selectedAttrs = [<span class="built_in">NSMutableDictionary</span> dictionary];</div><div class="line">    selectedAttrs[<span class="built_in">NSFontAttributeName</span>] = attrs[<span class="built_in">NSFontAttributeName</span>];</div><div class="line">    selectedAttrs[<span class="built_in">NSForegroundColorAttributeName</span>] = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">255</span>/<span class="number">255.0</span> green:<span class="number">125</span>/<span class="number">255.0</span> blue:<span class="number">0</span> alpha:<span class="number">1</span>];</div><div class="line">    </div><div class="line">    <span class="built_in">UITabBarItem</span> *items = [<span class="built_in">UITabBarItem</span> appearance];</div><div class="line">    [items setTitleTextAttributes:attrs forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    [items setTitleTextAttributes:selectedAttrs forState:<span class="built_in">UIControlStateSelected</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/01/08/统一设置所有 UITabBarItem 的文字属性/" data-id="cjc4klkga001h9lipjr9xwk14" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tabBarItem/">tabBarItem</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设置/">设置</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-textfiled占位语的设置" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/12/29/textfiled占位语的设置/" class="article-date">
@@ -98,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/12/29/textfiled占位语的设置/" data-id="cjc4a1vpj000un6ipd64mzl9w" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2016/12/29/textfiled占位语的设置/" data-id="cjc4klkf1000k9lipnbci3taj" class="article-share-link">分享</a>
       
       
       
@@ -141,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/12/05/本地字典转JSON/" data-id="cjc4a1vpw0016n6ipihdoyvuj" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2016/12/05/本地字典转JSON/" data-id="cjc4klkfv00189lipwu2ziv4b" class="article-share-link">分享</a>
       
       
       
@@ -242,7 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/11/11/代理 与 通知/" data-id="cjc4a1vpg000pn6ipk4mtl4rm" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2016/11/11/代理 与 通知/" data-id="cjc4klkfg000u9lip67zoygi6" class="article-share-link">分享</a>
       
       
       
@@ -415,7 +458,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/16/UITableView/" data-id="cjc4a1voo0003n6ip6dyhswk7" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2016/08/16/UITableView/" data-id="cjc4klkee00059lip5n69duac" class="article-share-link">分享</a>
       
       
       
@@ -455,6 +498,10 @@
       <ul>
         
           <li>
+            <a href="/2018/01/07/iOS常用扩展工具类（只为你的开发能更得心应手~）/">iOS常用扩展工具类（只为你的开发能更得心应手~）</a>
+          </li>
+        
+          <li>
             <a href="/2018/01/01/常见的TabBar框架+多Tap处理的小Demo/">常见的TabBar框架+多Tap处理的小Demo</a>
           </li>
         
@@ -468,10 +515,6 @@
         
           <li>
             <a href="/2017/12/10/高效开发之KVC干货小技巧/">高效开发之KVC干货小技巧</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/10/iOS 常用组件-高效切圆角方法总结/">iOS 常用组件-高效切圆角方法总结</a>
           </li>
         
       </ul>

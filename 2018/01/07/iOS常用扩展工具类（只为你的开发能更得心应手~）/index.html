@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>滚动视图不滚动的问题 | 神棍MAX的iOS杂货铺</title>
+  <title>iOS常用扩展工具类（只为你的开发能更得心应手~） | 神棍MAX的iOS杂货铺</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1234-(void)viewDidLayoutSubviews&amp;#123;    _BaseScore.contentSize = CGSizeMake(SCREEN_WIDTH, xxxx);&amp;#125;">
-<meta name="keywords" content="滚动视图,滚动">
+  <meta name="description" content="本帖只做个汇总以及简单的介绍，具体的效果以及使用说明请点击超链接跳转查看~注：本帖长期更新，但具体更新时间不定(:з」∠) 1、UIview拓展类我们在开发中经常需要获取或者改变控件的位置以及大小，这个时候这种类的价值就能体现出来了，你可以通过它来轻松方便（真的炒鸡方便呢）地任意改变控件的位置以及大小（动画中也很方便喔），直接戳上面链接查看具体详情吧~">
+<meta name="keywords" content="总结,拓展,工具">
 <meta property="og:type" content="article">
-<meta property="og:title" content="滚动视图不滚动的问题">
-<meta property="og:url" content="http://yoursite.com/2017/08/16/滚动试图不滚动的问题/index.html">
+<meta property="og:title" content="iOS常用扩展工具类（只为你的开发能更得心应手~）">
+<meta property="og:url" content="http://yoursite.com/2018/01/07/iOS常用扩展工具类（只为你的开发能更得心应手~）/index.html">
 <meta property="og:site_name" content="神棍MAX的iOS杂货铺">
-<meta property="og:description" content="1234-(void)viewDidLayoutSubviews&amp;#123;    _BaseScore.contentSize = CGSizeMake(SCREEN_WIDTH, xxxx);&amp;#125;">
+<meta property="og:description" content="本帖只做个汇总以及简单的介绍，具体的效果以及使用说明请点击超链接跳转查看~注：本帖长期更新，但具体更新时间不定(:з」∠) 1、UIview拓展类我们在开发中经常需要获取或者改变控件的位置以及大小，这个时候这种类的价值就能体现出来了，你可以通过它来轻松方便（真的炒鸡方便呢）地任意改变控件的位置以及大小（动画中也很方便喔），直接戳上面链接查看具体详情吧~">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-18T09:11:44.198Z">
+<meta property="og:updated_time" content="2018-01-07T09:21:01.617Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="滚动视图不滚动的问题">
-<meta name="twitter:description" content="1234-(void)viewDidLayoutSubviews&amp;#123;    _BaseScore.contentSize = CGSizeMake(SCREEN_WIDTH, xxxx);&amp;#125;">
+<meta name="twitter:title" content="iOS常用扩展工具类（只为你的开发能更得心应手~）">
+<meta name="twitter:description" content="本帖只做个汇总以及简单的介绍，具体的效果以及使用说明请点击超链接跳转查看~注：本帖长期更新，但具体更新时间不定(:з」∠) 1、UIview拓展类我们在开发中经常需要获取或者改变控件的位置以及大小，这个时候这种类的价值就能体现出来了，你可以通过它来轻松方便（真的炒鸡方便呢）地任意改变控件的位置以及大小（动画中也很方便喔），直接戳上面链接查看具体详情吧~">
   
     <link rel="alternate" href="/atom.xml" title="神棍MAX的iOS杂货铺" type="application/atom+xml">
   
@@ -69,10 +69,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-滚动试图不滚动的问题" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-iOS常用扩展工具类（只为你的开发能更得心应手~）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/16/滚动试图不滚动的问题/" class="article-date">
-  <time datetime="2017-08-16T13:34:26.000Z" itemprop="datePublished">2017-08-16</time>
+    <a href="/2018/01/07/iOS常用扩展工具类（只为你的开发能更得心应手~）/" class="article-date">
+  <time datetime="2018-01-07T09:21:01.617Z" itemprop="datePublished">2018-01-07</time>
 </a>
     
   </div>
@@ -83,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      滚动视图不滚动的问题
+      iOS常用扩展工具类（只为你的开发能更得心应手~）
     </h1>
   
 
@@ -93,16 +93,17 @@
       
         <!-- Table of Contents -->
         
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)viewDidLayoutSubviews</div><div class="line">&#123;</div><div class="line">    _BaseScore.contentSize = <span class="built_in">CGSizeMake</span>(SCREEN_WIDTH, xxxx);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h4 id="本帖只做个汇总以及简单的介绍，具体的效果以及使用说明请点击超链接跳转查看"><a href="#本帖只做个汇总以及简单的介绍，具体的效果以及使用说明请点击超链接跳转查看" class="headerlink" title="本帖只做个汇总以及简单的介绍，具体的效果以及使用说明请点击超链接跳转查看~"></a>本帖只做个汇总以及简单的介绍，具体的效果以及使用说明请点击超链接跳转查看~</h4><p>注：本帖长期更新，但具体更新时间不定<em>(:з」∠)</em></p>
+<h3 id="1、UIview拓展类"><a href="#1、UIview拓展类" class="headerlink" title="1、UIview拓展类"></a>1、<a href="https://github.com/TQMAX/iOS-Commons-ViewFrameGeometry" target="_blank" rel="external">UIview拓展类</a></h3><p>我们在开发中经常需要获取或者改变控件的位置以及大小，这个时候这种类的价值就能体现出来了，你可以通过它来轻松方便（真的炒鸡方便呢）地任意改变控件的位置以及大小（动画中也很方便喔），直接戳上面链接查看具体详情吧~</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/16/滚动试图不滚动的问题/" data-id="cjc4klkg1001d9lipws3j0mzx" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/01/07/iOS常用扩展工具类（只为你的开发能更得心应手~）/" data-id="cjc4klkf4000m9lipn0p0qb4p" class="article-share-link">分享</a>
       
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/滚动/">滚动</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/滚动视图/">滚动视图</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/拓展/">拓展</a></li></ul>
 
     </footer>
   </div>
@@ -152,19 +153,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/09/01/禁止屏幕滑动返回/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          禁止屏幕滑动返回
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/08/03/tableview数组越界/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/01/01/常见的TabBar框架+多Tap处理的小Demo/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">tableview数组越界</div>
+      <div class="article-nav-title">常见的TabBar框架+多Tap处理的小Demo</div>
     </a>
   
 </nav>
@@ -194,42 +186,24 @@
 
   
     
-  
+    <div class="widget-wrap">
     
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title recent-posts">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/01/07/iOS常用扩展工具类（只为你的开发能更得心应手~）/">iOS常用扩展工具类（只为你的开发能更得心应手~）</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/01/常见的TabBar框架+多Tap处理的小Demo/">常见的TabBar框架+多Tap处理的小Demo</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/31/透明状态栏/">透明状态栏</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/10/iOS计算一段代码执行时间/">iOS计算一段代码执行时间</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/10/高效开发之KVC干货小技巧/">高效开发之KVC干货小技巧</a>
-          </li>
-        
-      </ul>
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#本帖只做个汇总以及简单的介绍，具体的效果以及使用说明请点击超链接跳转查看"><span class="toc-number">1.</span> <span class="toc-text">本帖只做个汇总以及简单的介绍，具体的效果以及使用说明请点击超链接跳转查看~</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1、UIview拓展类"><span class="toc-number"></span> <span class="toc-text">1、UIview拓展类</span></a>
+          </div>
+      </div>
     </div>
-  </div>
 
+  
+    
+
+  
+    
+  
+    
   
     
 

@@ -69,6 +69,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-键盘遮挡问题 手势冲突" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/29/键盘遮挡问题 手势冲突/" class="article-date">
+  <time datetime="2017-07-29T13:08:09.000Z" itemprop="datePublished">2017-07-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/29/键盘遮挡问题 手势冲突/">键盘遮挡问题 手势冲突</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//解决手势冲突 网格点击</span></div><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldReceiveTouch:(<span class="built_in">UITouch</span> *)touch</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (touch.view != <span class="keyword">self</span>.customCollectionView) &#123;</div><div class="line">        [<span class="keyword">self</span>.view endEditing:<span class="literal">YES</span>];</div><div class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/29/键盘遮挡问题 手势冲突/" data-id="cjc4klkht00419lipoxy4y45n" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/手势/">手势</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/键盘/">键盘</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-Mansonry不用弱引用 为什么不会循环引用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/06/12/Mansonry不用弱引用 为什么不会循环引用/" class="article-date">
@@ -100,7 +143,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/12/Mansonry不用弱引用 为什么不会循环引用/" data-id="cjc4a1vos0005n6ipiu7pxxn4" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/06/12/Mansonry不用弱引用 为什么不会循环引用/" data-id="cjc4klke500019lipby98fd1x" class="article-share-link">分享</a>
       
       
       
@@ -146,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/06/键盘输入框限制输入等处理/" data-id="cjc4a1vrd001mn6ipjdfr0t9q" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/06/06/键盘输入框限制输入等处理/" data-id="cjc4klkhp00409lipsa0ph0af" class="article-share-link">分享</a>
       
       
       
@@ -189,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/23/跨多级页面跳转/" data-id="cjc4a1vr6001hn6iper50u6b6" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/05/23/跨多级页面跳转/" data-id="cjc4klkgb001i9lip65nozb2q" class="article-share-link">分享</a>
       
       
       
@@ -236,7 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/18/键盘弹出/" data-id="cjc4a1vr7001kn6ipkh5aonpv" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/05/18/键盘弹出/" data-id="cjc4klkge001m9lip3ab5cizg" class="article-share-link">分享</a>
       
       
       
@@ -284,7 +327,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/15/修改UIAlertView设置文字左对齐/" data-id="cjc4a1vpi000rn6ip7o1jl53x" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/04/15/修改UIAlertView设置文字左对齐/" data-id="cjc4klkfc000s9lipa4f1r6n7" class="article-share-link">分享</a>
       
       
       
@@ -336,7 +379,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/22/富文本的修改/" data-id="cjc4a1vpm000yn6ipyzc2qqjw" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/03/22/富文本的修改/" data-id="cjc4klkfm000z9lipffewf50j" class="article-share-link">分享</a>
       
       
       
@@ -382,7 +425,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/09/oc中的泛型/" data-id="cjc4a1vp3000fn6iprnegkalu" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/03/09/oc中的泛型/" data-id="cjc4klkeu000f9lip2wzxcmyp" class="article-share-link">分享</a>
       
       
       
@@ -432,7 +475,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/28/pch自定义日志输出/" data-id="cjc4a1vp6000gn6ipmvcuaa3r" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/02/28/pch自定义日志输出/" data-id="cjc4klkew000g9lipccchydb4" class="article-share-link">分享</a>
       
       
       
@@ -475,54 +518,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/21/transform动画/" data-id="cjc4a1vpf000nn6ip5rv9h9i8" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/01/21/transform动画/" data-id="cjc4klkf9000p9lipstxc5hqe" class="article-share-link">分享</a>
       
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/trandform/">trandform</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-统一设置所有 UITabBarItem 的文字属性" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/08/统一设置所有 UITabBarItem 的文字属性/" class="article-date">
-  <time datetime="2017-01-08T13:19:05.000Z" itemprop="datePublished">2017-01-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/08/统一设置所有 UITabBarItem 的文字属性/">统一设置所有 UITabBarItem 的文字属性</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#pragma mark - 统一设置所有 UITabBarItem 的文字属性</span></div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>)initialize &#123;</div><div class="line">    <span class="built_in">NSMutableDictionary</span> *attrs = [<span class="built_in">NSMutableDictionary</span> dictionary];</div><div class="line">    attrs[<span class="built_in">NSFontAttributeName</span>] = [<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">12</span>];</div><div class="line">    attrs[<span class="built_in">NSForegroundColorAttributeName</span>] = [<span class="built_in">UIColor</span> grayColor];</div><div class="line">    </div><div class="line">    <span class="built_in">NSMutableDictionary</span> *selectedAttrs = [<span class="built_in">NSMutableDictionary</span> dictionary];</div><div class="line">    selectedAttrs[<span class="built_in">NSFontAttributeName</span>] = attrs[<span class="built_in">NSFontAttributeName</span>];</div><div class="line">    selectedAttrs[<span class="built_in">NSForegroundColorAttributeName</span>] = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">255</span>/<span class="number">255.0</span> green:<span class="number">125</span>/<span class="number">255.0</span> blue:<span class="number">0</span> alpha:<span class="number">1</span>];</div><div class="line">    </div><div class="line">    <span class="built_in">UITabBarItem</span> *items = [<span class="built_in">UITabBarItem</span> appearance];</div><div class="line">    [items setTitleTextAttributes:attrs forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    [items setTitleTextAttributes:selectedAttrs forState:<span class="built_in">UIControlStateSelected</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/08/统一设置所有 UITabBarItem 的文字属性/" data-id="cjc4a1vr1001dn6iphgvgarb6" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tabBarItem/">tabBarItem</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设置/">设置</a></li></ul>
 
     </footer>
   </div>
@@ -558,6 +558,10 @@
       <ul>
         
           <li>
+            <a href="/2018/01/07/iOS常用扩展工具类（只为你的开发能更得心应手~）/">iOS常用扩展工具类（只为你的开发能更得心应手~）</a>
+          </li>
+        
+          <li>
             <a href="/2018/01/01/常见的TabBar框架+多Tap处理的小Demo/">常见的TabBar框架+多Tap处理的小Demo</a>
           </li>
         
@@ -571,10 +575,6 @@
         
           <li>
             <a href="/2017/12/10/高效开发之KVC干货小技巧/">高效开发之KVC干货小技巧</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/10/iOS 常用组件-高效切圆角方法总结/">iOS 常用组件-高效切圆角方法总结</a>
           </li>
         
       </ul>
