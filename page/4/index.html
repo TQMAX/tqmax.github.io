@@ -69,6 +69,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-transform动画" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/21/transform动画/" class="article-date">
+  <time datetime="2017-01-21T13:28:46.000Z" itemprop="datePublished">2017-01-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/21/transform动画/">transform动画</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//点击屏幕开始动画</span></div><div class="line">- (<span class="keyword">void</span>)touchesBegan:(<span class="built_in">NSSet</span> *)touches withEvent:(<span class="built_in">UIEvent</span> *)event &#123;</div><div class="line">    <span class="comment">// 清空transform，以前的平移、缩放、旋转都会消失</span></div><div class="line"><span class="comment">//    [UIView animateWithDuration:2.0 animations:^&#123;</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformIdentity;</span></div><div class="line"><span class="comment">//        </span></div><div class="line"><span class="comment">//    &#125;];</span></div><div class="line">    </div><div class="line"><span class="comment">//    self.angle += M_PI_4;</span></div><div class="line">    </div><div class="line"><span class="comment">//    [UIView animateWithDuration:1.0 animations:^&#123;</span></div><div class="line"><span class="comment">//       self.tempView.transform = CGAffineTransformScale(self.tempView.transform, 0.8, 0.8);</span></div><div class="line"><span class="comment">//       self.tempView.transform = CGAffineTransformRotate(self.tempView.transform, M_PI_4);</span></div><div class="line"><span class="comment">//    &#125;];</span></div><div class="line">    </div><div class="line">    <span class="comment">// transform:形变属性，能完成的功能：平移、缩放、旋转</span></div><div class="line">    [<span class="built_in">UIView</span> animateWithDuration:<span class="number">2.0</span> animations:^&#123;</div><div class="line"><span class="comment">//        // 缩放</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformMakeScale(0.5, 0.5);</span></div><div class="line"><span class="comment">//        // 平移</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformMakeTranslation(-100, 100);</span></div><div class="line">        <span class="comment">// 旋转</span></div><div class="line"><span class="comment">//        self.tempView.transform = CGAffineTransformMakeRotation(-M_PI_4);</span></div><div class="line">    </div><div class="line">        <span class="built_in">CGAffineTransform</span> translation = <span class="built_in">CGAffineTransformMakeTranslation</span>(<span class="number">-100</span>, <span class="number">100</span>);</div><div class="line">        <span class="built_in">CGAffineTransform</span> scaleTranslation = <span class="built_in">CGAffineTransformScale</span>(translation, <span class="number">0.5</span>, <span class="number">0.5</span>);</div><div class="line">        <span class="built_in">CGAffineTransform</span> rotateScaleTranslation = <span class="built_in">CGAffineTransformRotate</span>(scaleTranslation, M_PI_2);</div><div class="line">        <span class="keyword">self</span>.tempView.transform = rotateScaleTranslation;</div><div class="line">    &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/01/21/transform动画/" data-id="cjcwxfc4j000p9mip5uj08o49" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/trandform/">trandform</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-统一设置所有 UITabBarItem 的文字属性" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/08/统一设置所有 UITabBarItem 的文字属性/" class="article-date">
@@ -98,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/08/统一设置所有 UITabBarItem 的文字属性/" data-id="cjcdg04oy001gg3ipdupkrbg5" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/01/08/统一设置所有 UITabBarItem 的文字属性/" data-id="cjcwxfc5d001d9mipouxr1lyp" class="article-share-link">分享</a>
       
       
       
@@ -141,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/12/29/textfiled占位语的设置/" data-id="cjcdg04o5000wg3ipcxy5acu0" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2016/12/29/textfiled占位语的设置/" data-id="cjcwxfc4f000m9mip2o86mdfs" class="article-share-link">分享</a>
       
       
       
@@ -184,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/12/05/本地字典转JSON/" data-id="cjcdg04om0018g3ipqj3pg0ps" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2016/12/05/本地字典转JSON/" data-id="cjcwxfc5100169mip63w0ys5q" class="article-share-link">分享</a>
       
       
       
@@ -285,7 +328,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/11/11/代理 与 通知/" data-id="cjcdg04o3000ug3ipbhwtdjl8" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2016/11/11/代理 与 通知/" data-id="cjcwxfc4n000t9mipnfbf8pld" class="article-share-link">分享</a>
       
       
       
@@ -458,7 +501,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/16/UITableView/" data-id="cjcdg04mx0001g3ip02m8fagq" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2016/08/16/UITableView/" data-id="cjcwxfc3l00049mipvh8ih53u" class="article-share-link">分享</a>
       
       
       
@@ -498,6 +541,10 @@
       <ul>
         
           <li>
+            <a href="/2018/01/27/常见购物车的简单实现方式/">常见购物车的简单实现方式</a>
+          </li>
+        
+          <li>
             <a href="/2018/01/07/iOS常用扩展工具类（只为你的开发能更得心应手~）/">iOS常用扩展工具类（只为你的开发能更得心应手~）</a>
           </li>
         
@@ -511,10 +558,6 @@
         
           <li>
             <a href="/2017/12/10/iOS计算一段代码执行时间/">iOS计算一段代码执行时间</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/10/高效开发之KVC干货小技巧/">高效开发之KVC干货小技巧</a>
           </li>
         
       </ul>

@@ -69,6 +69,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-tableView的常用MVC框架模板 " class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/26/tableView的常用MVC框架模板 /" class="article-date">
+  <time datetime="2017-11-26T06:50:33.702Z" itemprop="datePublished">2017-11-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/26/tableView的常用MVC框架模板 /">tableView的常用MVC框架模板</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>SchoolViewController.h</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">SchoolViewController</span> : <span class="title">UIViewController</span></span></div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>SchoolViewController.m</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"SchoolViewController.h"</span></span></div><div class="line"><span class="meta">#import <span class="meta-string">"SchoolTableViewCell.h"</span></span></div><div class="line"><span class="meta">#import <span class="meta-string">"SchoolModel.h"</span></span></div><div class="line"><span class="meta">#import <span class="meta-string">"CollocationDetailController.h"</span></span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">SchoolViewController</span> ()&lt;<span class="title">UITableViewDelegate</span>,<span class="title">UITableViewDataSource</span>&gt;</span></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>)<span class="built_in">UITableView</span> *tableview;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>)<span class="built_in">NSMutableArray</span> *dataArry;</div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">SchoolViewController</span></span></div><div class="line">-(<span class="built_in">NSMutableArray</span> *)dataArry&#123;</div><div class="line">    <span class="keyword">if</span> (!_dataArry) &#123;</div><div class="line">        _dataArry = [<span class="built_in">NSMutableArray</span> array];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> _dataArry;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    [MBProgressHUD showHUDAddedTo:<span class="keyword">self</span>.view animated:<span class="literal">YES</span>];</div><div class="line">    <span class="comment">// Do any additional setup after loading the view.</span></div><div class="line">    <span class="keyword">self</span>.navigationItem.title = <span class="string">@"专题列表"</span>;</div><div class="line">    <span class="keyword">self</span>.view.backgroundColor = [<span class="built_in">UIColor</span> whiteColor];</div><div class="line">    [<span class="keyword">self</span> network];</div><div class="line">    [<span class="keyword">self</span> setupTableview];</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)didReceiveMemoryWarning &#123;</div><div class="line">    [<span class="keyword">super</span> didReceiveMemoryWarning];</div><div class="line">    <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)setupTableview&#123;</div><div class="line">    <span class="keyword">self</span>.tableview = [[<span class="built_in">UITableView</span> alloc]initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, ScreenW, ScreenH <span class="number">-64</span>) style:<span class="built_in">UITableViewStyleGrouped</span>];</div><div class="line">    <span class="keyword">self</span>.tableview.delegate = <span class="keyword">self</span>;</div><div class="line">    <span class="keyword">self</span>.tableview.dataSource = <span class="keyword">self</span>;</div><div class="line">    <span class="keyword">self</span>.tableview.showsVerticalScrollIndicator = <span class="literal">NO</span>;</div><div class="line">    <span class="keyword">self</span>.tableview.scrollEnabled = <span class="literal">YES</span>;</div><div class="line">    <span class="keyword">self</span>.tableview.separatorStyle = <span class="built_in">UITableViewCellSeparatorStyleNone</span>;</div><div class="line">    <span class="keyword">self</span>.tableview.backgroundColor = [<span class="built_in">UIColor</span> whiteColor];</div><div class="line">    [<span class="keyword">self</span>.view addSubview:<span class="keyword">self</span>.tableview];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">#pragma mark -- tableviewDelegate</span></div><div class="line">- (<span class="built_in">NSInteger</span>)numberOfSectionsInTableView:(<span class="built_in">UITableView</span> *)tableView&#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">- (<span class="built_in">NSInteger</span>)tableView:(<span class="built_in">UITableView</span> *)tableView numberOfRowsInSection:(<span class="built_in">NSInteger</span>)section&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>.dataArry.count;</div><div class="line">&#125;</div><div class="line">- (<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView heightForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">120</span>;</div><div class="line">&#125;</div><div class="line">- (<span class="built_in">UITableViewCell</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView cellForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    SchoolTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<span class="string">@"cell"</span>];</div><div class="line">    <span class="keyword">if</span> (!cell)&#123;</div><div class="line">        cell = [[SchoolTableViewCell alloc]initWithStyle:<span class="built_in">UITableViewCellStyleDefault</span> reuseIdentifier:<span class="string">@"cell"</span>];</div><div class="line">    &#125;</div><div class="line">    cell.selectionStyle = <span class="built_in">UITableViewCellSelectionStyleNone</span>;</div><div class="line">    SchoolModel *model =  <span class="keyword">self</span>.dataArry[indexPath.row];</div><div class="line">    cell.model = model;</div><div class="line">    <span class="keyword">return</span> cell;</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">void</span>)tableView:(<span class="built_in">UITableView</span> *)tableView didSelectRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    SchoolModel *model = <span class="keyword">self</span>.dataArry[indexPath.row];</div><div class="line">    CollocationDetailController *detail = [[CollocationDetailController alloc]init];</div><div class="line">    detail.guid = model.special_guid;</div><div class="line">    detail.thum = model.special_thumb;</div><div class="line">    detail.indexpath = indexPath.row;</div><div class="line">    detail.hidesBottomBarWhenPushed = <span class="literal">YES</span>;</div><div class="line">    [<span class="keyword">self</span>.navigationController pushViewController:detail animated:<span class="literal">YES</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (<span class="built_in">UIView</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView viewForHeaderInSection:(<span class="built_in">NSInteger</span>)section&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">&#125;</div><div class="line">-(<span class="built_in">UIView</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView viewForFooterInSection:(<span class="built_in">NSInteger</span>)section&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">&#125;</div><div class="line">- (<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView heightForHeaderInSection:(<span class="built_in">NSInteger</span>)section&#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">0.001</span>;</div><div class="line">&#125;</div><div class="line">- (<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView heightForFooterInSection:(<span class="built_in">NSInteger</span>)section&#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">0.001</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">-(<span class="keyword">void</span>)network&#123;</div><div class="line">   <span class="comment">//获取网络数据，并赋值</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>SchoolModel.h</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">SchoolModel</span> : <span class="title">NSObject</span></span></div><div class="line"></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>)<span class="built_in">NSString</span> *special_content;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>)<span class="built_in">NSString</span> *special_guid;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>)<span class="built_in">NSString</span> *special_thumb;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>)<span class="built_in">NSString</span> *special_title;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>)<span class="built_in">NSString</span> *special_type;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>SchoolModel.m</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"SchoolModel.h"</span></span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">SchoolModel</span></span></div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>SchoolTableViewCell.h</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></div><div class="line"><span class="class"><span class="keyword">@class</span> <span class="title">SchoolModel</span>;</span></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">SchoolTableViewCell</span> : <span class="title">UITableViewCell</span></span></div><div class="line"></div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>)<span class="built_in">UIImageView</span> *imgView;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>)<span class="built_in">UILabel</span> *titleLabel;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>)<span class="built_in">UILabel</span> *detailLabel;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>)<span class="built_in">UIView</span> *line;</div><div class="line"></div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>)SchoolModel *model;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>SchoolTableViewCell.m</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"SchoolTableViewCell.h"</span></span></div><div class="line"><span class="meta">#import <span class="meta-string">"SchoolModel.h"</span></span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">SchoolTableViewCell</span></span></div><div class="line"></div><div class="line">- (<span class="keyword">instancetype</span>)initWithStyle:(<span class="built_in">UITableViewCellStyle</span>)style reuseIdentifier:(<span class="built_in">NSString</span> *)reuseIdentifier &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span> = [<span class="keyword">super</span> initWithStyle:style reuseIdentifier:reuseIdentifier]) &#123;</div><div class="line">    </div><div class="line">        <span class="keyword">self</span>.imgView = [[<span class="built_in">UIImageView</span> alloc]initWithImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"aaa"</span>]];</div><div class="line">        [<span class="keyword">self</span>.contentView  addSubview:<span class="keyword">self</span>.imgView];</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.titleLabel = [[<span class="built_in">UILabel</span> alloc]init];</div><div class="line">        <span class="keyword">self</span>.titleLabel.textColor = <span class="built_in">UIColorFromRGB</span>(<span class="number">0x333333</span>);</div><div class="line">        <span class="keyword">self</span>.titleLabel.font =  [<span class="built_in">UIFont</span> fontWithName:<span class="string">@"PingFangSC-Medium"</span> size:<span class="number">14</span>];</div><div class="line">        [<span class="keyword">self</span>.contentView addSubview:<span class="keyword">self</span>.titleLabel];</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.detailLabel = [[<span class="built_in">UILabel</span> alloc]init];</div><div class="line">        <span class="keyword">self</span>.detailLabel.textColor = <span class="built_in">UIColorFromRGB</span>(<span class="number">0x999999</span>);</div><div class="line">        <span class="keyword">self</span>.detailLabel.font =  [<span class="built_in">UIFont</span> fontWithName:<span class="string">@"PingFangSC-Regular"</span> size:<span class="number">12</span>];</div><div class="line">        [<span class="keyword">self</span>.contentView addSubview:<span class="keyword">self</span>.detailLabel];</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.line = [[<span class="built_in">UIView</span> alloc]init];</div><div class="line">        <span class="keyword">self</span>.line.backgroundColor = <span class="built_in">UIColorFromRGB</span>(<span class="number">0xe5e5e5</span>);</div><div class="line">        [<span class="keyword">self</span>.contentView addSubview:<span class="keyword">self</span>.line];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">-(<span class="keyword">void</span>)layoutSubviews</div><div class="line">&#123;</div><div class="line">    [<span class="keyword">super</span> layoutSubviews];</div><div class="line">    [<span class="keyword">self</span>.imgView mas_makeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">        make.size.equalTo(<span class="built_in">CGSizeMake</span>(<span class="number">100</span>,<span class="number">100</span>));</div><div class="line">        make.left.equalTo(<span class="keyword">self</span>.contentView.left).offset(<span class="number">10</span>);</div><div class="line">        make.top.equalTo(<span class="keyword">self</span>.contentView.top).offset(<span class="number">10</span>);</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">    [<span class="keyword">self</span>.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">        make.size.equalTo(<span class="built_in">CGSizeMake</span>(ScreenW - <span class="number">130</span>,<span class="number">33</span>));</div><div class="line">        make.left.equalTo(<span class="keyword">self</span>.imgView.right).offset(<span class="number">10</span>);</div><div class="line">        make.top.equalTo(<span class="keyword">self</span>.contentView.top).offset(<span class="number">10</span>);</div><div class="line">    &#125;];</div><div class="line">    </div><div class="line">    [<span class="keyword">self</span>.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">        make.size.equalTo(<span class="built_in">CGSizeMake</span>(ScreenW - <span class="number">130</span>,<span class="number">31</span>));</div><div class="line">        make.left.equalTo(<span class="keyword">self</span>.imgView.right).offset(<span class="number">10</span>);</div><div class="line">        make.top.equalTo(<span class="keyword">self</span>.titleLabel.bottom).offset(<span class="number">10</span>);</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">    [<span class="keyword">self</span>.line mas_makeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">        make.size.equalTo(<span class="built_in">CGSizeMake</span>(ScreenW,<span class="number">1</span>));</div><div class="line">        make.left.equalTo(<span class="keyword">self</span>.contentView.left).offset(<span class="number">0</span>);</div><div class="line">        make.top.equalTo(<span class="keyword">self</span>.contentView.bottom).offset(<span class="number">-1</span>);</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">-(<span class="keyword">void</span>)setModel:(SchoolModel *)model&#123;</div><div class="line">    [<span class="keyword">self</span>.imgView sd_setImageWithURL:[<span class="built_in">NSURL</span> URLWithString:[<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@"</span>,model.special_thumb]]];</div><div class="line">    <span class="keyword">self</span>.titleLabel.text = model.special_title;</div><div class="line">    <span class="keyword">self</span>.detailLabel.text = model.special_content;</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/26/tableView的常用MVC框架模板 /" data-id="cjcwxfc4d000k9mipg8d6u6kt" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tableview/">tableview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模板/">模板</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-屏幕获取不准的原因" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/18/屏幕获取不准的原因/" class="article-date">
@@ -99,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/18/屏幕获取不准的原因/" data-id="cjcdg04oi0016g3ip02tqorn4" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/11/18/屏幕获取不准的原因/" data-id="cjcwxfc4t000z9mip3j3ew517" class="article-share-link">分享</a>
       
       
       
@@ -142,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/09/iOS 11地图不提示是否允许定位/" data-id="cjcdg04n90005g3ipam6jxl1s" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/11/09/iOS 11地图不提示是否允许定位/" data-id="cjcwxfc3v00089mipuv0msm8y" class="article-share-link">分享</a>
       
       
       
@@ -185,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/27/iOS11数字精度问题/" data-id="cjcdg04nj000ag3ip1yrlq1s7" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/10/27/iOS11数字精度问题/" data-id="cjcwxfc42000a9mip6qyvqsrm" class="article-share-link">分享</a>
       
       
       
@@ -228,7 +281,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/11/ iOS 11 tableview适配/" data-id="cjcdg04mt0000g3ipr2s0kn0t" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/10/11/ iOS 11 tableview适配/" data-id="cjcwxfc3900009mipu4jxvuzk" class="article-share-link">分享</a>
       
       
       
@@ -275,7 +328,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/02/高德地图点击手势添加标记 进行POI检索/" data-id="cjcdg04pd001og3ipd5rac091" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/10/02/高德地图点击手势添加标记 进行POI检索/" data-id="cjcwxfc65001q9mip1zdkzecl" class="article-share-link">分享</a>
       
       
       
@@ -326,7 +379,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/16/label中划线设置/" data-id="cjcdg04ne0008g3ipytvu2x5h" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/09/16/label中划线设置/" data-id="cjcwxfc46000f9mipdw74xyaw" class="article-share-link">分享</a>
       
       
       
@@ -369,7 +422,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/16/多层wkwebview返回/" data-id="cjcdg04ob000zg3ip9a83pf44" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/09/16/多层wkwebview返回/" data-id="cjcwxfc4p000w9mip553uo2in" class="article-share-link">分享</a>
       
       
       
@@ -412,7 +465,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/禁止屏幕滑动返回/" data-id="cjcdg04p0001ig3ipo6916574" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/09/01/禁止屏幕滑动返回/" data-id="cjcwxfc5h001e9mipf4rgk99x" class="article-share-link">分享</a>
       
       
       
@@ -455,59 +508,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/16/滚动试图不滚动的问题/" data-id="cjcdg04of0014g3ip5115zccz" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/08/16/滚动试图不滚动的问题/" data-id="cjcwxfc5500199miphk8kqbos" class="article-share-link">分享</a>
       
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/滚动/">滚动</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/滚动视图/">滚动视图</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-tableview数组越界" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/03/tableview数组越界/" class="article-date">
-  <time datetime="2017-08-03T13:25:56.000Z" itemprop="datePublished">2017-08-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/03/tableview数组越界/">tableview数组越界</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>使用懒加载的数组只创建一次刷新数据的时候要记得移除所有的数组元素</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.dataArray removeAllObjects];</div></pre></td></tr></table></figure>
-<p>判断数组为空时候的越界问题当首次数据没有请求完毕的时候[tableVIew reloadData];就会导致crash这个时候需要做一次判断：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="keyword">self</span>.dataArray.count != <span class="number">0</span>)&#123;</div><div class="line"> MOdel * model = <span class="keyword">self</span>.dataArray[indexPath.row];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>有时候会出现上拉加载更多后点击下拉出现crash 这个时候提示数组越界但是并不是真的越界 因为这个时候的indexpath.row &gt; 数组的元素个数的。所以需要以下处理</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(!(indexPath.row &gt; rewardArray.count))&#123;</div><div class="line"> Model* model = slef.dataArray[indexpath.row];</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/03/tableview数组越界/" data-id="cjcdg04nx000pg3ip3u5ngt61" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tableview/">tableview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组/">数组</a></li></ul>
 
     </footer>
   </div>
@@ -543,6 +548,10 @@
       <ul>
         
           <li>
+            <a href="/2018/01/27/常见购物车的简单实现方式/">常见购物车的简单实现方式</a>
+          </li>
+        
+          <li>
             <a href="/2018/01/07/iOS常用扩展工具类（只为你的开发能更得心应手~）/">iOS常用扩展工具类（只为你的开发能更得心应手~）</a>
           </li>
         
@@ -556,10 +565,6 @@
         
           <li>
             <a href="/2017/12/10/iOS计算一段代码执行时间/">iOS计算一段代码执行时间</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/10/高效开发之KVC干货小技巧/">高效开发之KVC干货小技巧</a>
           </li>
         
       </ul>
